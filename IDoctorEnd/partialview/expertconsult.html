@@ -170,11 +170,11 @@
                         <!--index="$index" ng-repeat="tab in doctorExpterts" heading="{{tab.title}}" active="tab.active">-->
                         <!--</uib-tab>-->
                         <!--</uib-tabset>-->
-                        <button class="mybtn radiusBtn btn-default active" type="button" ng-click="getExpLevel(0)">全部
+                        <button class="mybtn radiusBtn btn-default active" type="button" ng-click="searchByLevel(0)">全部
                         </button>
-                        <button class="mybtn radiusBtn btn-default" type="button" ng-click="getExpLevel(2)">全国顶级</button>
-                        <button class="mybtn radiusBtn btn-default" type="button" ng-click="getExpLevel(3)">全国知名</button>
-                        <button class="mybtn radiusBtn btn-default" type="button" ng-click="getExpLevel(4)">省级知名</button>
+                        <button class="mybtn radiusBtn btn-default" type="button" ng-click="searchByLevel(2)">全国顶级</button>
+                        <button class="mybtn radiusBtn btn-default" type="button" ng-click="searchByLevel(3)">全国知名</button>
+                        <button class="mybtn radiusBtn btn-default" type="button" ng-click="searchByLevel(4)">省级知名</button>
 
 
                     </div>
@@ -197,7 +197,7 @@
                         <td style="width: 60px;">
                             <label>
                                 <input name="instMainExp" type="checkbox" value=""
-                                       ng-model="item.checked" ng-change="ChangeDoctor(item)"/>
+                                       ng-model="item.checked" ng-change="changeDoctor(item)"/>
                             </label>
                         </td>
                         <td style="width: 60px;">
@@ -235,7 +235,7 @@
                             force-ellipses="true" rotate="true"
                             previous-text="上一页" next-text="下一页"
                             first-text="首页" last-text="尾页" num-pages="doctor_numPages"
-                            items-per-page="doctor_itemsPerPage"
+                            items-per-page="doctor_selectValue.pagesize"
                             ng-change="doctor_setNumPage()"></ul>
                         <input type="text" ng-model="doctor_jumpTo" ng-keyup="doctor_pageKeyup($event)">
                         <button type="button" class="btn-success" ng-click="doctor_setInputPage()">确定</button>
