@@ -1,0 +1,230 @@
+@mainGreen: #5eca5d;
+//主题绿
+@gray-base: #656565;
+@gray-darker: #282828;
+@gray-dark: #323232;
+@gray: #1e1e1e;
+@gray-light: #e7e7e9;
+@gray-lighter: #cacacb;
+.header {
+  height: 59px;
+  width: 100%;
+  background-color: @gray-dark;
+  border-bottom: 1px solid #202020;
+  position: relative;
+  left: 0;
+  .searchbar {
+    position: absolute;
+    width: 21%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    input {
+      background-color: @gray;
+      line-height: 34px;
+      width: 100%;
+      border-radius: 34px;
+      color: #fff;
+      font-size: 14px;
+      margin-top: 13px;
+      padding: 0 15px;
+      padding-right: 60px;
+      position: relative;
+      &::-webkit-input-placeholder {
+        color: #787878;
+      }
+    }
+    .glass{
+      width: 46px;
+      height: 34px;
+      position: absolute;
+      top:13px;
+      right: 0;
+      .mainSearch{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        height: 18px;
+        width: 18px;
+        background: url("../image/icon.png") no-repeat -20px -100px;
+      }
+    }
+
+  }
+  .loginName {
+    float: right;
+    margin-top: 21px;
+    span {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 18px;
+      color: #99ffffff;
+      margin-right: 60px;
+      float: left;
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        float: left;
+        background: url("../image/icon.png") no-repeat -73px -100px;
+        margin-right: 10px;
+      }
+    }
+    a {
+      float: right;
+      width: 18px;
+      height: 18px;
+      background: url("../image/icon.png") no-repeat -132px -100px;
+      margin-right: 20px;
+    }
+  }
+}
+
+.content {
+  //background-color: gold;
+  padding-bottom: 40px;
+  .screenBar {
+    .selectBtn {
+      padding: 20px 15px 20px 15px;
+      //display: inline-block;
+      float: left;
+    }
+    .selectTime {
+      padding: 20px 0;
+      float: left;
+      input {
+        width: 120px;
+        height: 40px;
+        cursor: pointer;
+        &.tit-input {
+          width: 260px;
+        }
+      }
+      .seach-btn {
+        height: 40px;
+        line-height: 40px;
+      }
+    }
+    .nav-pills > li {
+      background-color: transparent;
+      margin: 0 5px;
+      a {
+        border-radius: 40px;
+      }
+    }
+    //医生端tab按钮颜色
+    &.doctorContent .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+      color: #fff;
+      background-color: @mainGreen;
+    }
+    &.doctorContent .nav>li>a:hover{
+      background-color: @mainGreen;
+    }
+  }
+  .tableCon {
+    padding-bottom: 70px;
+    table {
+      tr {
+        &.cut {
+          text-align: left;
+          td {
+            border: 0 none;
+            font-size: 14px;
+            p {
+              overflow: hidden;
+              height: 24px;
+              line-height: 24px;
+            }
+            &:hover {
+              p {
+                overflow: visible;
+                height: auto;
+              }
+            }
+          }
+        }
+        td {
+          &.handle-td {
+            border-left: 1px solid #ebebed;
+          }
+          &.tipTd {
+            strong{
+              font-weight: bold;
+            }
+            border-right: 1px solid #ebebed;
+          }
+          img {
+            margin: 0 auto;
+            border-radius: 4px;
+            width: 60px;
+            height: 60px;
+          }
+          &.tdSnd {
+            width: 60px;
+            .classify-btn {
+              width: 60px;
+              height: 24px;
+              line-height: 24px;
+              border-radius: 24px;
+              padding: 0;
+              background-color: #e6e6e6;
+              &.expert {
+                background-color: #3ed2d7;
+                color: #fff;
+              }
+            }
+
+          }
+          .handle-btn {
+            width: 120px;
+            height: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    width: 100%;
+    background-color: #ebedf0;
+    position: fixed;
+    bottom: 0;
+    p {
+      padding-left:15px;
+      font-size: 14px;
+      color: #4f4f4f;
+      line-height: 40px;
+    }
+    input {
+      width: 40px;
+      line-height: 24px;
+      height: 24px;
+      background-color: #fff;
+      border-radius: 2px;
+      margin: 6px 12px;
+      text-align: center;
+    }
+    button {
+      font-size: 12px;
+      line-height: 24px;
+      height: 24px;
+      border-radius: 2px;
+      margin: 6px 0;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .content {
+    padding-bottom: 80px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    padding-bottom: 120px;
+  }
+}
+

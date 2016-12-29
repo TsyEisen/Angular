@@ -1,0 +1,332 @@
+.addShare .inlineP{
+    padding-top:16px;
+}
+
+.chooseImg {
+    content: "";
+    display: inline-block;
+    width: 33px;
+    height: 31px;
+    float: left;
+    margin-right: 10px;
+}
+
+.littleTile{
+    line-height: 31px;
+    font-size: 18px;
+}
+
+.addShare .postionTop{
+    margin-top:16px;
+}
+
+.addShare .imgPositon{
+    width: 37px;
+    margin:auto;
+}
+
+.addShare .tdSnd{
+    width:80px;
+}
+
+.addShare .sideSircle{
+
+}
+
+.addShare .footerPos{
+    position: relative;
+    margin-top:0;
+}
+
+.addShare .tablePositon{
+    margin-bottom: 0px;
+}
+
+.addShare #secndchooseImg{
+    background: url("../image/icon.png") no-repeat -67px -186px;
+}
+
+.addShare #firstchooseImg{
+    background: url("../image/icon.png") no-repeat -15px -186px;
+}
+
+.addShare #thirdchooseImg{
+    background: url("../image/icon.png") no-repeat -120px -186px;
+}
+
+.addShare #quechooseImg{
+    background: url("../image/icon.png") no-repeat -174px -186px;
+}
+
+.addShare .smallTitlename{
+    display: inline;
+    float: left;
+}
+
+.share-setting{
+    margin-bottom: 10px;
+    line-height: 35px;
+    padding-left: 63px;
+    margin-top: 20px;
+}
+
+.addShare .borderRadus{
+    border-radius: 0px !important;
+}
+
+.addShare .shareCkeckbox{
+    margin-left:63px;
+}
+
+.radio-border{
+    padding-top: 6px;
+    /*padding-left: 63px;*/
+}
+
+.addShare .paddingleft{
+    float: left;
+    width: 100%;
+    padding-left: 63px;
+}
+
+.addShare .paddingleft .radio-border{
+    float: left;
+}
+.addShare .radio-border .radio{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.addShare #passWord{
+    width:638px;
+    border-radius: 0px !important;
+}
+
+.addShare #endDate{
+    position:relative;
+}
+
+.addShare .calender{
+    position: absolute;
+    background: url("../image/icon.png") no-repeat -175px -131px;
+    width: 32px;
+    height: 30px;
+    left: 590px;
+    z-index: 999;
+    cursor:pointer;
+}
+
+.addShare #datePointer{
+    cursor:pointer;
+}
+
+.addShare .footerBorder{
+    margin-top:50px;
+    width:100%;
+    height: 100px;
+    background: #ebedf0;
+}
+
+.addShare .buttonPositon{
+    margin: 30px 47%;
+}
+
+.addShare #doctorDetails{
+    background-color: white;
+}
+
+.addShare .details-bor img{
+    width:80px;
+    height:80px;
+    border-radius: 50%;
+    border:1px solid #d6d7d9 ;
+    float: left;
+    margin-top: 29px;
+}
+
+.addShare #secTitle{
+    height:143px;
+}
+
+.addShare .doctorBase{
+    margin-left: 20px;
+    float: left;
+}
+
+.addShare #doctorName{
+    margin-top: 25px;
+}
+
+.addShare .lineheight{
+    line-height: 20px;
+}
+
+.addShare .leftsize{
+    margin-left: 30px;
+}
+
+.addShare .doctortitle{
+    float: left;
+}
+
+.addShare #likeplace ,#zylace{
+    margin-top: -49px;
+    float: left;
+    margin-left: 99px;
+}
+
+.addShare #doctorDetails{
+    height:910px;
+    border-radius: 5px;
+}
+
+.addShare .paddingstyle{
+    padding: 35px 200px;
+}
+
+.share .colheight{
+    height:100%;
+}
+
+.addShare .titleBorder{
+    height:70px;
+}
+
+.addShare .col-lg-9 .tit-input{
+    margin-bottom: 40px;
+}
+
+.share .titleBorder .secondtitle{
+    font-size: 14px;
+    color: #8c8c8c;
+}
+
+.red {
+    color: #ff5039;
+    font-size: 14px;
+}
+.gray {
+    color: #8c8c8c;
+    font-size: 14px;
+}
+.column .detailTit h3 {
+    float: left;
+    font-size: 20px;
+    color: #505050;
+}
+ .column .detailTit button {
+    float: right;
+}
+ .column .colunmCon.formCon {
+    width: 84%;
+}
+.column .colunmCon .addForm {
+    padding-top: 60px;
+}
+.column .colunmCon .addForm .myformGroup {
+    margin-bottom: 40px;
+}
+.column .colunmCon .addForm .myformGroup .btn-ensure {
+    width: 120px;
+    margin: 20px auto 40px auto;
+}
+.column .colunmCon .addForm .myformGroup .formLeft label {
+    font-weight: normal;
+    color: #3d3d3d;
+    padding-top: 0;
+}
+ .column .colunmCon .addForm .myformGroup .formLeft label.patient-head {
+    line-height: 100px;
+}
+.column .colunmCon .addForm .myformGroup .formLeft .required {
+    font-size: 14px;
+    display: block;
+}
+.column .colunmCon .addForm .myformGroup .formRight label {
+    font-weight: normal;
+}
+.column .colunmCon .addForm .myformGroup .formRight .fieldInput {
+    border-radius: 0;
+    height: 40px;
+    line-height: 40px;
+}
+.column .colunmCon .addForm .myformGroup .formRight .degreeSelect {
+    width: 100%;
+    margin: 0;
+}
+.column .colunmCon .addForm .myformGroup .formRight img {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    float: left;
+}
+.column .colunmCon .addForm .myformGroup .formRight .file-btn {
+    width: 120px;
+    height: 40px;
+    border-radius: 0;
+    border: 1px solid #b4b4b4;
+    background-color: #ebedf0;
+    margin: 30px 0 0 20px;
+}
+.column .colunmCon .addForm .myformGroup .formRight .calendar {
+    position: absolute;
+    right: 10px;
+    top: 14px;
+}
+.column .colunmCon .addForm .myformGroup .formRight textarea {
+    resize: none;
+    overflow-y: auto;
+    border-radius: 0;
+    height: 120px;
+}
+@media screen and (max-width: 768px) {
+    .content .addImg .column .colunmCon .addForm {
+        padding-top: 10px;
+    }
+}
+
+.share #upload_sure{
+    margin: 10px 0;
+    width: 100%;
+}
+
+.share #select1{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    /*width:263px;*/
+    height:40px;
+    border-radius: 5px;
+}
+
+.share .select2{
+    width:160px;
+    height:40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.share .select2{
+    width:160px;
+    height:40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.share #ilessHostipal{
+    width:260px!important;
+}
+
+.docExpAsk{
+    .active{
+    background-color: pink;
+}
+}

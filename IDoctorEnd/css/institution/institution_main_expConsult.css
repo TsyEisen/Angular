@@ -1,0 +1,57 @@
+.instMainExpConsult .nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  color: #fff;
+  background-color: #4887dc;
+}
+.instMainExpConsult .nav > li > a:hover {
+  background-color: #4887dc;
+}
+.hospital_doctor {
+  width: 200px;
+  height: 40px;
+  border: 1px solid #CCCCCC;
+  border-radius: 5%;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+.content .screenBar.doctorContent .nav-pills > li.active > a,
+.content .screenBar .nav-pills > li.active > a:hover,
+.content .screenBar .nav-pills > li.active > a:focus {
+  color: #fff;
+  background-color: #5eca5d;
+}
+.InstMainExp button {
+  background-color: #E6E6E6;
+}
+.InstMainExp button:hover {
+  background-color: #4887dc;
+}
+.InstMainExp .radiusBtn {
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  margin-right: 10px;
+}
+.InstMainExp .active {
+  background-color: #4887dc;
+}
+.expfileUpload {
+  border: 1px solid #ccc;
+  height: 40px;
+  line-height: 40px;
+  width: 85%;
+}
+.truenameStyle {
+  color: #4887dc !important;
+}
+.docExpAsk button:hover {
+  background-color: #5ECA5D;
+}
+.docExpAsk .radiusBtn {
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  margin-right: 10px;
+}
+.docExpAsk .active {
+  background-color: #5ECA5D;
+}

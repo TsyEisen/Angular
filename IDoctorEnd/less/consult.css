@@ -1,0 +1,42 @@
+.content .screenBar .statusBtn {
+  width: 120px;
+}
+.doctor_Exptab .active {
+  background-color: #5ECA5D !important;
+  color: #fff !important;
+}
+.doctor_Exptab button:hover {
+  background-color: #5ECA5D !important;
+}
+.expert_table .imgstatus {
+  padding-left: 32px;
+}
+.expert_table .payed {
+  color: #3ed2d7;
+  background: url("../image/payed.png") no-repeat left center;
+}
+.expert_table .flyback {
+  color: #3ed2d7;
+  background: url("../image/fly.png") no-repeat left center;
+}
+.expert_table .readingback {
+  color: #4887dc;
+  background: url("../image/reading.png") no-repeat left center;
+}
+.expert_table .refausedtback {
+  color: #ff5039;
+  background: url("../image/refause.png") no-repeat left center;
+}
+.expert_table .complentback {
+  color: #5bcc5a;
+  background: url("../image/complent.png") no-repeat left center;
+}
+.expert_table .review {
+  color: #ffbd2e;
+  padding-left: 32px;
+  background: url("../image/review.png") no-repeat left center;
+}
+.expert_table .canceled {
+  color: #cbcbcb;
+  background: url("../image/canceled.png") no-repeat left center;
+}

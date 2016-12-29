@@ -1,0 +1,59 @@
+.institution_install .content .sideNav .group-content li.chosen h6{
+    color:#4887dc;
+}
+
+.institution_install .card{
+    width:100px;
+    height:100px;
+    background-image: url("../../image/institution/logo.png");
+}
+
+.institution_install select {
+    margin-top: 17px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    height: 34px;
+    width: 100%;
+    border-radius: 0;
+    padding-bottom: 0px !important;
+    margin: 0!important;
+}
+
+.institution_install .cardIcon{
+    margin-bottom: 22px;
+    text-align: right;
+    margin: 17px 0 0 0;
+    height: 200px;
+    line-height: 97px;
+    height:113px;
+}
+
+.institution_install .cardIcon{
+    line-height: 97px;
+}
+
+.institution_install .btnBox{
+    width: 120px;
+    height: 50px;
+    float: left;
+    text-align: center;
+    position: relative;
+}
+
+.institution_install .firstBorder{
+    margin-top: 28px;
+}
+
+.institution_install .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
+    background-color: #ebedf0;
+}
+
+.institution_install .sure-btn{
+    margin-top: 70px;
+}
+
+.institution_install .instrute{
+    margin-top: 23px;
+}

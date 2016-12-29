@@ -1,0 +1,308 @@
+<div ng-controller="shareController" class="share">
+    <!--高级搜索框-->
+    <script type="text/ng-template" id="highSearchModal.html">
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">高级搜索</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal " role="form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">分享名称</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="shareName" ng-model="shareTit">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">分享日期</label>
+                        <div class="col-sm-9">
+                            <div class="form-inline">
+                                <div class="timeInput">
+                                    <timebase time="shareStartTime" date-options="shareStartOptions"
+                                              placeholder="shareStartPlaceholder" class="highSearchTime"></timebase>
+                                    <span>-</span>
+                                    <timebase time="shareEndTime" date-options="shareEndOptions"
+                                              placeholder="shareEndPlaceholder" class="highSearchTime"></timebase>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="cancel()">
+                                    关闭
+                                </button>
+                                <button class="btn btn-success popBtn" type="button"
+                                        ng-click="ensure()">查询
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+    <div class="header clearfix" id="left">
+        <div class="searchbar">
+            <input type="text" placeholder="分享标题"
+                   ng-model="shareTotalTerm">
+            <div class="glass" ng-click="mainSearch()">
+                <button class="mainSearch"></button>
+            </div>
+        </div>
+        <div class="loginName">
+            <span>{{logName}}</span>
+            <a href="#"></a>
+        </div>
+    </div>
+    <!--//内容-->
+    <div class="content">
+        <div class="showPrompt" ng-show="prompt.show"></div>
+        <div class="container-fluid addBar">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="mybtn btn-success add-btn" ng-click="jumpToAdd()">新增分享</button>
+                </div>
+            </div>
+        </div>
+
+        <!--搜索模块-->
+        <div class="screenBar clearfix">
+            <div class="row"></div>
+            <div class="col-md-12">
+                <div class="selectTime">
+                    <div class="form-inline shareLeft">
+                        <div class="input-group">
+                            <input type="text" placeholder="分享标题" ng-model="shareTerm" class="form-control tit-input"/>
+                        </div>
+                        <button class="mybtn btn-success seach-btn" ng-click="search()">搜索</button>
+                        <button class="mybtn seach-btn" ng-click="highSearch()">高级搜索</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--页面内容-->
+        <div class="table-responsive tableCon">
+            <table class="table table-hover table-striped table-bordered text-center imgTable">
+                <tr>
+                    <th class="text-center" style="width:65px">影像</th>
+                    <th class="text-center" style="width:65px;">二维码</th>
+                    <th class="text-center">分享标题</th>
+                    <th class="text-center">分享时间</th>
+                    <th class="text-center">分享结束时间</th>
+                    <th class="text-center">链接地址</th>
+                    <th class="text-center">操作</th>
+                </tr>
+                <tr ng-repeat="item in sharedetail track by $index" class="relative" style="position:relative">
+                    <td><img afkl-lazy-image="{{item.image}}" src="{{item.image}}"></td>
+                    <td>
+                        <img class="imgborder" src="image/qRsmall.png" err-src="/IDoctorEnd/image/imgError.png"
+                             ng-mouseenter="qrShow = true" ng-mouseleave="qrShow = false">
+                        <div class="bigqrcode" ng-show="qrShow">
+                            <img class="imgerwei" afkl-lazy-image="{{item.qrfile}}" src="{{item.qrfile}}"  err-src="/IDoctorEnd/image/qrerror.png">
+                        </div>
+                    </td>
+                    <td ng-bind="item.sharename"></td>
+                    <td ng-bind="item.sharetime"></td>
+                    <td ng-bind="item.endtime"></td>
+                    <td ng-bind="item.url" class="adressFont" ng-click="jumpToLink(item.shareid)"></td>
+                    <td class="handle-td">
+                        <button class="mybtn btn-default group-btn buttonstyle" ng-click="changeShare(item)">详细
+                        </button>
+                        <button class="mybtn btn-default group-btn buttonstyle" ng-click="removeShare(item.shareid)">
+                            删除
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <p>每页显示
+                        <select ng-model="selectValue"
+                                ng-options="item.pagesize for item in pageList track by item.id" value="{{item.id}}"
+                                ng-change="getPagesize()">
+                        </select>
+                        条，
+                        共{{totalItems}}条记录
+                    </p>
+                </div>
+                <div class="col-md-8 col-sm-12 ">
+                    <ul uib-pagination boundary-links="true" total-items="totalItems"
+                        ng-model="currentPage"
+                        max-size="maxSize"
+                        force-ellipses="true" rotate="true"
+                        previous-text="上一页" next-text="下一页"
+                        first-text="首页" last-text="尾页" num-pages="numPages"
+                        items-per-page="itemsPerPage"
+                        ng-change="setNumPage()"></ul>
+                    <input type="text" ng-model="jumpTo" ng-keyup="pageKeyup($event)">
+                    <button type="button" class="btn-success" ng-click="setInputPage()">确定</button>
+                </div>
+            </div>
+        </div>
+        <!--footer模块-->
+    </div>
+</div>
+
+<!--分享详细模态框-->
+<script type="text/ng-template" id="changeShareModal.html">
+    <div class="popBox">
+        <div class="shareDetails">
+            <!--<div class="shareDetails" ng-repeat="item in sharedetail track by $index">-->
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">×</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">分享详细信息</h4>
+            </div>
+            <!--modal-header-->
+            <div class="details-bor">
+                <div class="secTitle">
+                    分享名称：<span ng-bind="share.sharename"></span>
+                </div>
+
+                <div class="threeBor">
+                    <div class="smallTitle">影像缩略图</div>
+                    <div><img class="square" ng-src="{{share.image}}"></div>
+                </div>
+
+                <div class="threeBor">
+                    <div class="smallTitle">分享二维码</div>
+                    <div><img class="square" ng-src="{{share.qrfile}}"></div>
+                </div>
+
+                <div class="threeBor">
+                    <div class="smallTitle">分享地址</div>
+                    <div class="square" id="adressFont" ng-bind="share.url"
+                    ng-click="shareLink(share.url)"></div>
+                </div>
+
+                <div class="inputBorder">
+                    <div class="btn btn-default handle-btn buttonstyle" ng-click="newShare()">新分享
+                    </div>
+                    <div class="btn btn-default handle-btn buttonstyle" ng-click="forwardShare(share.url)">转发</div>
+                    <div class="btn btn-default handle-btn buttonstyle" ng-click="detailRemoveShare(share.shareid)">删除</div>
+                </div>
+
+                <div class="secTitle">
+                    影像信息
+                </div>
+
+                <div class="mes-border">
+                    <div class="mesBorder">
+                        <!--<span>患者&nbsp&nbspI D：</span>-->
+                        <span>影像&nbsp&nbspI D：</span>
+                        <span ng-bind="imgInfo.imageid" class="mes-secName"></span>
+                    </div>
+                    <div class="mesBorder">
+                        <span>患者姓名：</span>
+                        <span ng-bind="imgInfo.patientname" class="mes-secName"></span>
+                    </div>
+                    <div class="mesBorder">
+                        <span>拍摄时间：</span>
+                        <span ng-bind="imgInfo.studydate" class="mes-secName"></span>
+                    </div>
+                    <div class="mesBorder">
+                        <span>医疗机构：</span>
+                        <span ng-bind="imgInfo.institutionname" class="mes-secName"></span>
+                    </div>
+                    <div class="mesBorder">
+                        <span>主管医生：</span>
+                        <span ng-bind="imgInfo.uploaduser" class="mes-secName"></span>
+                    </div>
+                </div>
+
+                <div class="secTitle">
+                    分享设置
+                    <div class="editor">
+                        <button class="mybtn btn-success add-btn"
+                                ng-if="!show" ng-click="editShare()">编辑</button>
+                        <button class="mybtn btn-default add-btn cancel-btn"
+                                ng-if="show" ng-click="cancelEdit()">取消</button>
+                        <button class="mybtn btn-success add-btn"
+                                ng-if="show" ng-click="save()">保存</button>
+
+                    </div>
+
+                </div>
+                <div class="mes-border">
+                    <div class="mesBorder">
+                        <span>共享限制</span>
+                        <div class="btn-group">
+                            <select style="height:34px" ng-model="share.privacy"
+                                    ng-class="{'disable':disabled}"
+                                    ng-change="privacySelected()"
+                                    ng-options="it.privacyValue as it.privacyCon for it in sharePrivacy"
+                                    value="{{it.privacyValue}}"
+                                    ng-disabled="disabled">
+                                <option value="" ng-show="">{{it.privacyValue}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mes-border">
+                    <div class="mesBorder">
+                        <span>验证码</span>
+                        <div class="btn-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control borderRadus"
+                                       ng-class="{'disable':disabled}"
+                                       ng-model="share.checkcode"
+                                       ng-disabled="disabled">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mes-border">
+                    <div class="mesBorder">
+                        <span>信息匿名化</span>
+                        <div class="btn-group">
+                            <select style="height:34px;" ng-model="share.anonymous"
+                                    ng-change="anonymousSelected()"
+                                    ng-class="{'disable':disabled}"
+                                    ng-options="it.anonymousValue as it.anonymousCon for it in shareAnonymous"
+                                    value="{{it.anonymousValue}}"
+                                    ng-disabled="disabled">
+                                <option value="" ng-show="">{{it.anonymous}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mes-border">
+                    <div class="timeBox">
+                        <span>截止时间</span>
+                        <div class="input-group" style="float: right;width: 570px;">
+                            <input type="text" class="form-control fieldInput" uib-datepicker-popup="{{format}}"
+                                   placeholder={{endtime}}
+                                   required
+                                   ng-model="endtime" is-open="endOpened"
+                                   datepicker-options="endOptions"
+                                   close-text="关闭" current-text="今天" clear-text="清除"
+                                   ng-click="endTimeOpen()"
+                                   ng-disabled="disabled"
+                                   ng-class="{'disable':disabled}"/>
+                            <div class="calendar"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--details-bor-->
+
+            <button class="mybtn btn-default classify-btn check-btn"  ng-click="cancel()">关闭
+            </button>
+
+        </div>
+        <!--shareDetails-->
+    </div>
+</script>

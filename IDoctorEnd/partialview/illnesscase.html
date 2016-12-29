@@ -1,0 +1,264 @@
+<div ng-controller="illnessController">
+    <!--新建分组弹出框-->
+    <script type="text/ng-template" id="newBuildGruopModal.html">
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">新建分组</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal " role="form" novalidate
+                      name="newIllGroupForm" ng-submit="newGroupForm(newIllGroupForm.$valid)">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">分组名称</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="请输入分组名称"
+                                   ng-model="groupName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="cancel()">
+                                    取消
+                                </button>
+                                <button class="btn btn-success popBtn" type="submit"
+                                        ng-click="ensure()">确认
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+    <!--新建分组弹出框-->
+    <!--编辑病例分组弹出框-->
+    <script type="text/ng-template" id="editCardGruopModal.html">
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">编辑分组</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal " role="form" novalidate
+                      name="newIllGroupForm" ng-submit="newGroupForm(newIllGroupForm.$valid)">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">分组名称</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="请输入分组名称"
+                                   ng-model="groupName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="cancel()">
+                                    取消
+                                </button>
+                                <button class="btn btn-success popBtn" type="submit"
+                                        ng-click="ensure()">确认
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+    <!--编辑病例分组弹出框-->
+    <!--高级搜索弹出框-->
+    <script type="text/ng-template" id="doctorCardHighSearchModal.html">
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">高级搜索</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal " role="form" novalidate
+                      name="editImgForm" ng-submit="imgForm(editImgForm.$valid)">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">姓名</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control"
+                                   ng-model="high.patientname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">性别</label>
+                        <div class="col-sm-9">
+                            <label class="radio-inline">
+                                <input type="radio" name="sex" value="1"
+                                       ng-model="high.gender">
+                                <label>男</label>
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="sex" value="2"
+                                       ng-model="high.gender">
+                                <label>女</label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">年龄</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control"
+                                   name="age"
+                                   ng-model="high.age">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">手机号码</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control"
+                                   ng-model="high.tel">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">就诊日期</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control fieldInput" uib-datepicker-popup="{{format}}"
+                                   ng-model="high.visittime" is-open="highOpened"
+                                   datepicker-options="highOptions"
+                                   close-text="关闭" current-text="今天" clear-text="清除"
+                                   ng-click="highOpen()"/>
+                            <span class="glyphicon glyphicon-calendar calendar"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="cancel()">
+                                    关闭
+                                </button>
+                                <button class="btn btn-success popBtn" type="submit"
+                                        ng-click="ensure()">查询
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+    <!--高级搜索弹出框-->
+    <div class="header clearfix">
+        <div class="loginName">
+            <span>{{logName}}</span>
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="content nonPaddingCon" autoheight ng-style="style()">
+        <div class="row">
+            <div class="col-md-3" >
+                <div class="sideNav">
+                    <div class="tit clearfix">
+                        <h3>我的病例</h3>
+                        <button class="mybtn btn-success add-btn"
+                                ng-click="jumpToAddIllness()">新增病例
+                        </button>
+                    </div>
+                    <div class="input-group">
+                        <input class="form-control advanced-search-bar" type="text"
+                               ng-model="cardTerm"
+                               placeholder="姓名、备注">
+                        <div class="input-group-addon glass"
+                             ng-click="cardTermData()"></div>
+
+                    </div>
+                    <h4 class="text-center advanced-search-tit" ng-click="highSearch()">高级搜索</h4>
+                    <div class="group-tit clearfix">
+                        <h5>病例分组</h5>
+                        <button class="btn btn-success new-btn" ng-click="newBuildGroup()">新建</button>
+                    </div>
+                    <ul class="group-content">
+                        <li ng-repeat="item in group track by $index" class="clearfix"
+                            ng-class-odd="'oddLi'" ng-class="{'chosen':current == $index,'default':current!=$index}"
+                        >
+                            <h6 ng-model="item" ng-click="changeList($index,item.groupid)">{{item.gname}}</h6>
+                            <button class="delete-btn" ng-click="removeGroup(item.groupid)"></button>
+                            <button class="edit-btn" ng-click="editGroup(item.groupid,item.gname)"></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-9 cardRight" autoheight ng-style="style()">
+                <div class="groupMain"  id="rightTable" >
+                    <div class="title">
+                        <h6>分组名称:<span ng-bind="groupname"></span></h6>
+                    </div>
+                    <div class="table-responsive tableCon cardTable">
+                        <table class="table tabel-hover table-striped table-bordered text-center cardTableContent">
+                            <tr>
+                                <th class="text-center">头像</th>
+                                <th class="text-center">姓名</th>
+                                <th class="text-center">性别</th>
+                                <th class="text-center">年龄</th>
+                                <th class="text-center">就诊日期</th>
+                                <th class="text-center">地址</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                            <tr ng-repeat="item in groupTable track by $index">
+                                <td>
+                                    <img afkl-lazy-image="{{item.headpic}}" src="{{item.headpic}}"   class="bigImg">
+                                </td>
+                                <td ng-bind="item.patientname"></td>
+                                <td ng-bind="item.gender"></td>
+                                <td ng-bind="item.age"></td>
+                                <td ng-bind="item.visittime"></td>
+                                <td ng-bind="item.address"></td>
+                                <td>
+                                    <button class="mybtn btn-default group-btn" ng-click="jumpToDetailIllness(item)">详细
+                                    </button>
+                                    <button class="mybtn btn-default group-btn" ng-click="removeCard(item.cardid,item.groupid)">删除</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12">
+                            <p>每页显示
+                                <select ng-model="selectValue"
+                                        ng-options="item.pagesize for item in pageList track by item.id"
+                                        value="{{item.id}}"
+                                        ng-change="getPagesize()">
+                                </select>
+                                条，
+                                共{{totalItems}}条记录
+                            </p>
+                        </div>
+                        <div class="col-md-9 col-sm-12 ">
+                            <ul uib-pagination boundary-links="true" total-items="totalItems"
+                                ng-model="currentPage"
+                                max-size="maxSize"
+                                force-ellipses="true" rotate="true"
+                                previous-text="上一页" next-text="下一页"
+                                first-text="首页" last-text="尾页"
+                                num-pages="numPages"
+                                items-per-page="itemsPerPage"
+                                ng-change="setNumPage()"></ul>
+                            <input type="text" ng-model="jumpTo" ng-keyup="pageKeyup($event)">
+                            <button type="button" class="btn-success" ng-click="setInputPage()">确定</button>
+                        </div>
+
+                    </div>
+                </div>
+                <!--footer模块-->
+
+            </div>
+
+        </div>
+    </div>
+</div>

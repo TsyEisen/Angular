@@ -1,0 +1,122 @@
+.addBar {
+  background-color: #282828;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.addBar .add-btn {
+  width: 200px;
+  height: 40px;
+  font-size: 16px;
+}
+.addBar .add-btn:before {
+  content: " ";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url("../image/icon.png") no-repeat -184px -100px;
+  margin-right: 10px;
+  z-index: 1;
+}
+.content .screenBar {
+  padding: 0 15px;
+}
+.content .screenBar .selectTime label {
+  font-weight: normal;
+  float: left;
+  color: #505050;
+  line-height: 34px;
+  margin-right: 10px;
+}
+.content .screenBar .selectTimeGroup {
+  width: 100%;
+}
+.content .screenBar .selectTimeGroup .timeStamp {
+  float: left;
+  padding-left: 10px;
+}
+.content .screenBar .selectTimeGroup .timeStamp .timeInput {
+  float: left;
+}
+.content .screenBar .selectTimeGroup .seach-btn {
+  margin-left: 5px;
+}
+.content .buttonGroup {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: right;
+}
+.content .buttonGroup .handle-btn {
+  border: 1px solid #cacacb;
+}
+.content .tableCon table.imgTable tr td {
+  padding: 6px 0;
+  vertical-align: middle;
+}
+.content .tableCon table tr td img {
+  width: 40px;
+  height: 40px;
+}
+.errorMsg {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(94, 202, 93, 0.7);
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  line-height: 48px;
+  top: -30px;
+}
+.popBox .modal-header button.close {
+  font-size: 40px;
+  text-shadow: none;
+  color: #fff;
+  font-weight: normal;
+  line-height: 60px;
+}
+.popBox .modal-body {
+  padding: 40px 75px;
+}
+.popBox .modal-body .form-group {
+  margin-bottom: 20px;
+}
+.popBox .modal-body .form-group label {
+  padding-right: 20px;
+  font-weight: normal;
+  font-size: 16px;
+  color: #505050;
+}
+.popBox .modal-body .form-group input,
+.popBox .modal-body .form-group select {
+  font-size: 16px;
+  border-radius: 0;
+}
+.popBox .modal-body .form-group .calendar {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.popBox .modal-body .form-group .btnGroup {
+  padding-top: 20px;
+}
+.popBox .modal-body .form-group .btnGroup .popBtn {
+  width: 120px;
+  margin: 0 10px;
+  height: 40px;
+}
+@media screen and (max-width: 992px) {
+  .content .buttonGroup {
+    text-align: left;
+  }
+}
+@media screen and (max-width: 768px) {
+  .content .screenBar .selectTimeGroup .timeStamp .timeInput {
+    width: 100%;
+  }
+  .errorMsg {
+    top: -10px;
+  }
+  .popBox .modal-body .form-group .btnGroup .popBtn {
+    margin: 5px 10px;
+  }
+}

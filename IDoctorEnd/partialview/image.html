@@ -1,0 +1,227 @@
+<div ng-controller="imageController">
+    <!--编辑弹出框-->
+    <script type="text/ng-template" id="imageEditModal.html">
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">编辑影像</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal " role="form" novalidate
+                      name="editImgForm" ng-submit="imgForm(editImgForm.$valid)">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">患者姓名</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" required
+                                   ng-model="user.editName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">年龄</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" required
+                                   name="age"
+                                   ng-model="user.editAge">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">性别</label>
+                        <div class="col-sm-9">
+                            <label class="radio-inline">
+                                <input type="radio" name="sex" value="0" ng-checked="female"
+                                       ng-model="user.editSex">
+                                <label>男</label>
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="sex" value="1" ng-checked="!female"
+                                       ng-model="user.editSex">
+                                <label>女</label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">拍摄机构</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control"
+                                   ng-model="user.editInstitutionname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">拍摄日期</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control fieldInput" uib-datepicker-popup="{{format}}"
+                                   placeholder={{user.editStudydate}}
+                                   ng-model="user.editStudydate" is-open="studyOpened"
+                                   datepicker-options="studyTimeOptions"
+                                   close-text="关闭" current-text="今天" clear-text="清除"
+                                   ng-click="studyTimeOpen()"/>
+                            <span class="glyphicon glyphicon-calendar calendar"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">影像类型</label>
+                        <div class="col-sm-9">
+                            <select class="form-control formInput" ng-model="user.editModality"
+                                    ng-change="selected()"
+                                    ng-options="item.id as item.mdality for item in imgModality"
+                                    value="{{item.mdality}}">
+                                <option value="" ng-show="">{{user.editModality}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="cancel()">
+                                    取消
+                                </button>
+                                <button class="btn btn-success popBtn" type="submit"
+                                        ng-click="ensure()">确认
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+    <!--编辑弹出框-->
+    <div class="header clearfix" id="left">
+        <div class="searchbar">
+            <input type="text" placeholder="患者姓名&ID、影像类型"
+                   ng-model="totalSearch">
+            <div class="glass" ng-click="mainSearch()">
+                <button class="mainSearch"></button>
+            </div>
+        </div>
+        <div class="loginName">
+            <span>{{logName}}</span>
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="content">
+        <!--<div class="container-fluid addBar">-->
+        <!--<div class="row">-->
+        <!--<div class="col-md-12 text-center">-->
+        <!--<button class="mybtn btn-success add-btn" ng-click="jumpToAdd()">新增影像</button>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--addBar模块-->
+        <div class="screenBar clearfix">
+            <div class="row">
+                <div class="col-md-7 clearfix">
+                    <div class="selectTime selectTimeGroup clearfix">
+                        <div class="form-inline timeStamp">
+                            <label style="">上传日期</label>
+                            <div class="timeInput">
+                                <timebase time="startUploaderDate" date-options="startUploaderOptions"
+                                          placeholder="startUploaderPlaceholder"></timebase>
+                                <span>-</span>
+                                <timebase time="endUploaderDate" date-options="endUploaderOptions"
+                                          placeholder="endUploaderPlaceholder"></timebase>
+                            </div>
+                        </div>
+
+                        <div class="form-inline timeStamp">
+                            <label style="">拍摄日期</label>
+                            <div class="timeInput">
+                                <timebase time="startScreenDate" date-options="startScreenOptions"
+                                          placeholder="startScreenPlaceholder"></timebase>
+                                <span>-</span>
+                                <timebase time="endScreenDate" date-options="endScreenOptions"
+                                          placeholder="endScreenPlaceholder"></timebase>
+                            </div>
+                            <button class="mybtn btn-success seach-btn" ng-click="search()">搜索</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 buttonGroup">
+                    <div class="mybtn btn-default handle-btn" ng-click="editModal()">编辑</div>
+                    <div class="mybtn btn-default handle-btn" ng-click="printMyImage()">电子单</div>
+                    <!--<div class="mybtn btn-default handle-btn">分享</div>-->
+                    <div class="mybtn btn-default handle-btn" ng-click="removeMyImage()">删除</div>
+                </div>
+            </div>
+        </div>
+        <!--screenBar模块-->
+        <div class="table-responsive tableCon">
+            <table class="table table-hover table-striped table-bordered text-center imgTable">
+                <tr>
+                    <th class="text-center">
+                        <input type="radio" disabled="disabled">
+                    </th>
+                    <th class="text-center">影像</th>
+                    <th class="text-center">类别</th>
+                    <th class="text-center">患者ID</th>
+                    <th class="text-center">姓名</th>
+                    <th class="text-center">性别</th>
+                    <th class="text-center">年龄</th>
+                    <th class="text-center">上传时间</th>
+                    <th class="text-center">拍摄时间</th>
+                    <th class="text-center">上传IP</th>
+                </tr>
+                <tr ng-repeat="item in tableTabs track by $index">
+                    <td>
+                        <!--<input type="radio" name="myImg" ng-value="item.imageid" ng-model="radioData[$parent.$index]"-->
+                               <!--ng-click="onChange(item)"-->
+                               <!--ng-checked="{{$index==1}}"-->
+                              <!--&gt;-->
+                        <input type="radio" name="myImg" ng-value="item.imageid"
+                               ng-click="onChange(item,$event)"
+                        >
+                    </td>
+                    <td>
+                        <button ng-click="NewWindow(item)" style="padding: 0;">
+                            <img afkl-lazy-image="{{item.image}}" src="{{item.image}}"
+                                 err-src="/IDoctorEnd/image/imgError.png">
+                        </button>
+                    </td>
+                    <td ng-bind="item.modality"></td>
+                    <td ng-bind="item.patientid"></td>
+                    <td ng-bind="item.patientname"></td>
+                    <td ng-bind="item.sex"></td>
+                    <td ng-bind="item.birthday"></td>
+                    <td ng-bind="item.uploadtime"></td>
+                    <td ng-bind="item.studydate"></td>
+                    <td ng-bind="item.serverip"></td>
+                    <td ng-bind="item.defaultImg"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!--表格模块-->
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <p>每页显示
+                        <select ng-model="selectValue"
+                                ng-options="item.pagesize for item in pageList track by item.id" value="{{item.id}}"
+                                ng-change="getPagesize()">
+                        </select>
+                        条，
+                        共{{totalItems}}条记录
+                    </p>
+                </div>
+                <div class="col-md-8 col-sm-12 ">
+                    <ul uib-pagination boundary-links="true" total-items="totalItems"
+                        ng-model="currentPage"
+                        max-size="maxSize"
+                        force-ellipses="true" rotate="true"
+                        previous-text="上一页" next-text="下一页"
+                        first-text="首页" last-text="尾页"
+                        num-pages="numPages"
+                        items-per-page="itemsPerPage"
+                        ng-change="setNumPage()"></ul>
+                    <input type="text" ng-model="jumpTo" ng-keyup="pageKeyup($event)">
+                    <button type="button" class="btn-success" ng-click="setInputPage()">确定</button>
+                </div>
+            </div>
+        </div>
+        <!--footer模块-->
+    </div>
+</div>
+

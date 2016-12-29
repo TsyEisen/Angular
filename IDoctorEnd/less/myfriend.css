@@ -1,0 +1,70 @@
+.friendRight {
+  background-color: #fff;
+}
+.content .groupMain .friendMain li {
+  border-top: 1px solid #d6d7d9;
+  padding: 20px 40px;
+  position: relative;
+}
+.content .groupMain .friendMain li .loadTime {
+  position: absolute;
+  right: 40px;
+  top: 32px;
+}
+.content .groupMain .friendMain li .loadTime p {
+  line-height: 28px;
+  font-size: 14px;
+  color: #636363;
+  float: left;
+}
+.content .groupMain .friendMain li .loadTime button {
+  width: 28px;
+  height: 28px;
+  float: left;
+  background: url("../image/icon.png") no-repeat -233px -189px;
+  margin-left: 20px;
+}
+.content .groupMain .friendMain li .baseInfo img {
+  width: 70px;
+  height: 70px;
+  border: 1px solid #d6d7d9;
+  border-radius: 50%;
+  float: left;
+  margin-right: 20px;
+}
+.content .groupMain .friendMain li .baseInfo .doctorBase {
+  float: left;
+}
+.content .groupMain .friendMain li .baseInfo .doctorBase p strong {
+  line-height: 25px;
+  font-weight: normal;
+  font-size: 18px;
+  color: #282828;
+  margin-right: 20px;
+  float: left;
+}
+.content .groupMain .friendMain li .baseInfo .doctorBase p span {
+  float: left;
+  word-spacing: 10px;
+  margin-right: 20px;
+  line-height: 25px;
+  color: #636363;
+}
+.content .groupMain .friendMain li .baseInfo .doctorBase p span.doctorTip {
+  line-height: 43px;
+}
+.content .groupMain .friendMain li .detailInfo {
+  margin-top: 5px;
+}
+.content .groupMain .friendMain li .detailInfo strong {
+  font-size: 16px;
+  line-height: 26px;
+  width: 90px;
+  color: #282828;
+}
+.content .groupMain .friendMain li .detailInfo p {
+  font-size: 14px;
+  color: #636363;
+  line-height: 26px;
+  text-align: justify;
+}

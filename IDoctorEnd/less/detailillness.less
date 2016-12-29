@@ -1,0 +1,61 @@
+.content {
+  .addImg {
+    .column {
+      .colunmCon {
+        .addForm {
+          .myformGroup {
+            .detailBtns {
+              width: 320px;
+              margin: 0 auto;
+              button {
+                float: left;
+                margin: 20px 20px 40px 20px;
+                width: 120px;
+                display: inline-block;
+                &.btn-cancel{
+                  background-color: #e7e7e9;
+                }
+              }
+            }
+            .formLeft {
+              &.detailLeft {
+                text-align: right;
+                padding-right: 30px;
+              }
+            }
+            .formRight{
+              .selectCon{
+                width: 100%;
+                margin-left: 0;
+              }
+              .able{
+                background-color: #fff;
+                border: 1px solid #b4b4b4;
+              }
+            }
+            .detailInput {
+              background-color: #ebedf0;
+              border: 0 none;
+              color: #505050;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .myformGroup {
+    .formLeft.detailLeft {
+      text-align: left !important;
+    }
+    .detailBtns {
+      width: 175px!important;
+      button {
+        width: 80px !important;
+        margin: 20px 0px 40px 5px!important;
+      }
+    }
+  }
+}

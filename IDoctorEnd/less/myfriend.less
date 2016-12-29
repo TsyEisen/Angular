@@ -1,0 +1,88 @@
+@mainGreen: #5eca5d;
+//主题绿
+@gray-base: #656565;
+@gray-darker: #282828;
+@gray-dark: #323232;
+@gray: #1e1e1e;
+@gray-light: #e7e7e9;
+@gray-lighter: #cacacb;
+.friendRight{
+  background-color: #fff;
+}
+.content {
+  .groupMain {
+    .friendMain {
+      li {
+        border-top: 1px solid #d6d7d9;
+        padding: 20px 40px;
+        position: relative;
+        .loadTime {
+          position: absolute;
+          right: 40px;
+          top: 32px;
+          p {
+            line-height: 28px;
+            font-size: 14px;
+            color: #636363;
+            float: left;
+          }
+          button {
+            width: 28px;
+            height: 28px;
+            float: left;
+            background: url("../image/icon.png") no-repeat -233px -189px;
+            margin-left: 20px;
+          }
+        }
+        .baseInfo {
+          img {
+            width: 70px;
+            height: 70px;
+            border: 1px solid #d6d7d9;
+            border-radius: 50%;
+            float: left;
+            margin-right: 20px;
+          }
+          .doctorBase {
+            float: left;
+            p {
+              strong {
+                line-height: 25px;
+                font-weight: normal;
+                font-size: 18px;
+                color: @gray-darker;
+                margin-right: 20px;
+                float: left;
+              }
+              span {
+                float: left;
+                word-spacing: 10px;
+                margin-right: 20px;
+                line-height: 25px;
+                color: #636363;
+                &.doctorTip {
+                  line-height: 43px;
+                }
+              }
+            }
+          }
+        }
+        .detailInfo {
+          margin-top: 5px;
+          strong {
+            font-size: 16px;
+            line-height: 26px;
+            width: 90px;
+            color: @gray-darker
+          }
+          p {
+            font-size: 14px;
+            color: #636363;
+            line-height: 26px;
+            text-align: justify;
+          }
+        }
+      }
+    }
+  }
+}

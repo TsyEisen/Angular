@@ -1,0 +1,67 @@
+@mainBlue: #4887dc;
+@mainGreen: #5eca5d;
+//主题蓝
+@gray-dark:#323232;
+//主要的深灰色，侧边栏和顶部搜索
+//侧边栏
+.sidebar {
+  .institution-tit{
+      float: left;
+      font-size: 18px;
+      line-height: 59px;
+      display: inline-block;
+      color: @mainBlue;
+  }
+  .institutionSideBar{
+    padding-top: 110px;
+    li {
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      cursor: pointer;
+      overflow: hidden;
+      &:hover{
+        background-color: #282828;
+      }
+      span {
+        display: inline-block;
+        float: left;
+        width: 20px;
+        height: 20px;
+        margin: 15px;
+        background: url("../../image/institution/sprite.png") no-repeat;
+      }
+      a {
+        float: left;
+        color: #999999;
+      }
+    }
+    li.tabActive {
+      span.checked0 {
+        background-position: -45px -8px !important;
+      }
+      span.checked1 {
+        background-position: -45px -38px !important;
+      }
+      span.checked2 {
+        background-position: -45px -68px !important;
+      }
+      span.checked3 {
+        background-position: -45px -93px !important;
+      }
+      span.checked4 {
+        background-position: -45px -122px !important;
+      }
+      span.checked5 {
+        background-position: -45px -152px !important;
+      }
+      span.checked6 {
+        background-position: -45px -179px !important;
+      }
+      span.checked7 {
+        background-position: -45px -209px !important;
+      }
+    }
+  }
+
+}

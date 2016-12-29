@@ -1,0 +1,115 @@
+@mainGreen: #5eca5d;
+//主题绿
+@gray-dark:#323232;
+//主要的深灰色，侧边栏和顶部搜索
+body{
+  overflow-x: hidden;
+}
+.sidebar {
+  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 100%;
+  background-color: @gray-dark;
+  transition: all .5s;
+  .logo{
+    width: 180px;
+    height: 59px;
+    background-color: #313232;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    border-bottom: 1px solid #202020;
+    span{
+      float: left;
+      width: 85px;
+      height: 59px;
+      display: inline-block;
+      background: url("../image/logo.png") no-repeat center center;
+    }
+    .doctor-tit{
+      float: left;
+      font-size: 18px;
+      line-height: 59px;
+      display: inline-block;
+      color: @mainGreen;
+    }
+  }
+  .doctorSideBar{
+    padding-top: 110px;
+    li {
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      cursor: pointer;
+      overflow: hidden;
+      &:hover{
+        background-color: #282828;
+      }
+      span {
+        display: inline-block;
+        float: left;
+        width: 20px;
+        height: 20px;
+        margin: 15px;
+        background: url("../image/icon.png") no-repeat;
+      }
+      a {
+        float: left;
+        color: #999999;
+      }
+    }
+    li.tabActive {
+      background-color: #282828;
+      a {
+        color: #fff;
+      }
+      span.checked0 {
+        background-position: -18px -55px !important;
+      }
+      span.checked1 {
+        background-position: -73px -55px !important;
+      }
+      span.checked2 {
+        background-position: -129px -55px !important;
+      }
+      span.checked3 {
+        background-position: -183px -55px !important;
+      }
+      span.checked4 {
+        background-position: -238px -55px !important;
+      }
+      span.checked5 {
+        background-position: -294px -55px !important;
+      }
+      span.checked6 {
+        background-position: -347px -55px !important;
+      }
+    }
+  }
+  //整个sidebar
+  &:hover {
+    width: 160px;
+  }
+}
+
+.left {
+  height: 500px;
+}
+
+.myContent {
+  width: 100%;
+  position: relative;
+  left: 50px;
+  top: 0;
+  padding-right: 50px;
+  transition: all .5s;
+}
+
+.mouseEnter {
+  transition: all .5s;
+  left: 160px;
+}

@@ -1,0 +1,199 @@
+@mainGreen: #5eca5d;
+//主题绿
+@mainBlue: #4887dc;
+//主题蓝
+@gray-base: #656565;
+@gray-darker: #282828;
+@gray-dark: #323232;
+@gray: #1e1e1e;
+@gray-light: #e7e7e9;
+@gray-lighter: #cacacb;
+.content {
+  &.nonPaddingCon{
+    padding-bottom: 0;
+    background-color: #ebedf0;
+  }
+  .sideNav {
+    padding: 20px 20px 0 20px;
+    background-color: #ebedf0;
+    height: 100%;
+    .tit {
+      margin-bottom: 40px;
+      h3 {
+        font-size: 18px;
+        color: @gray-darker;
+        line-height: 40px;
+        float: left;
+      }
+      .add-btn {
+        float: right;
+        width: 120px;
+        font-size: 16px;
+        &:before {
+          content: " ";
+          display: inline-block;
+          float: left;
+          margin: 10px 0 0 10px;
+          width: 18px;
+          height: 18px;
+          background: url("../image/icon.png") no-repeat -184px -100px;
+          margin-right: 10px;
+          z-index: 1;
+        }
+      }
+    }
+    .input-group {
+      .advanced-search-bar {
+        height: 34px;
+        line-height: 34px;
+        border-radius: 0;
+        border-top-left-radius: 34px;
+        border-bottom-left-radius: 34px;
+        background-color: #a4a5a8;
+        padding: 0 15px;
+        color: #fff;
+        font-size: 14px;
+        border: 0 none;
+        &::-webkit-input-placeholder {
+          color: #fff;
+        }
+      }
+      .glass {
+        border: 0 none;
+        border-radius: 0;
+        border-top-right-radius: 34px;
+        border-bottom-right-radius: 34px;
+        background-color: #a4a5a8;
+        cursor: pointer;
+        &:before {
+          content: " ";
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          background: url("../image/icon.png") no-repeat -20px -139px;
+          z-index: 1;
+        }
+      }
+    }
+    .advanced-search-tit {
+      line-height: 56px;
+      color: #8c8c8c;
+      margin-bottom: 46px;
+      cursor: pointer;
+      &:hover{
+        color: @mainGreen;
+      }
+    }
+    .group-tit {
+      h5 {
+        line-height: 30px;
+        color: #3c3c3c;
+        float: left;
+      }
+      .new-btn {
+        float: right;
+        height: 30px;
+      }
+    }
+    .group-content {
+      margin: 10px -20px 0 -20px;
+      border-top: 1px solid #c8c9cb;
+      li {
+        padding: 0 20px;
+        height: 50px;
+        &.oddLi{
+          background-color: #e3e4e7;
+        }
+        position: relative;
+        //当前选中
+        &.chosen{
+          h6{
+            color:@mainGreen;
+          }
+        }
+        &.institutionChosen{
+          h6{
+            color:@mainBlue;
+          }
+        }
+        //一般情况
+        &.default,&.institutionDefault{
+          h6{
+            color: #636363;
+          }
+        }
+        h6 {
+          float: left;
+          cursor: pointer;
+          line-height: 50px;
+          width: 100%;
+        }
+        button {
+          position: absolute;
+          width: 18px;
+          height: 18px;
+          top: 16px;
+          background: url("../image/icon.png") no-repeat;
+          &.delete-btn {
+            background-position: -128px -139px;
+            right: 19px;
+          }
+          &.edit-btn {
+            background-position: -73px -140px;
+            right: 67px;
+          }
+        }
+      }
+    }
+  }
+  .cardRight{
+    background-color: #fff;
+  }
+  .groupMain {
+    background-color: #fff;
+    .title{
+      h6{
+        line-height: 77px;
+        font-size: 18px;
+        color:#515151;
+        padding-left: 20px;
+      }
+    }
+    .cardTable{
+      padding-bottom: 0;
+      .cardTableContent{
+        margin-bottom: 80px;
+      }
+    }
+  }
+  .tableCon{
+    tr{
+      td{
+        .bigImg{
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+        }
+        .group-btn{
+          height: 30px;
+          line-height: 30px;
+          border: 1px solid @gray-lighter;
+          color:#636363;
+        }
+      }
+    }
+
+  }
+
+}
+
+@media (min-width:768px) and (max-width: 992px) {
+  .content .groupMain{
+    padding-bottom:80px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .content .groupMain{
+    padding-bottom:120px;
+  }
+}

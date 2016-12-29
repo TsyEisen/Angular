@@ -1,0 +1,25 @@
+.ng-pagination{font-family:'Microsoft YaHei';font-size:12px;}.ng-pagination>ul{display:inline-block;margin:0;padding:0;float:left;}.ng-pagination>ul>li{padding:6px 12px;margin-right:5px;border:1px solid #ddd;display:inline-block;cursor:pointer;border-radius:2px;background:#fff}.ng-pagination>ul>li.active,.ng-pagination>ul>li:hover{background-color:#eee;color:#23527c}.ng-pagination label{float:left;}.ng-pagination input{margin-left:2px;width:30px;border-radius:2px;border:1px solid #ddd;vertical-align:1px;text-align:center;padding:6px 3px}
+.ng-pagination button{margin-left:5px;background-color:#E5E6E9;}
+@media only screen and (width: 1024px ){
+.ng-pagination>ul>li {
+    padding: 0px 5px;
+}
+.ng-pagination>ul {
+    padding: 2px;
+}
+.ng-pagination input {
+    width: 20px;
+    height: 20px;
+}
+.ng-pagination lable {
+margin-top:2px;
+}
+.allContainer .mainContainier .pagination .itemCount {
+    top: -2px!important;
+}
+.ng-pagination button {
+    margin-top: 2px;
+    margin-right: 150px;
+}
+
+}

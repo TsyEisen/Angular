@@ -1,0 +1,51 @@
+{
+  "data": {
+    "dataCnt": 1000,
+    "sharedetail": [
+      {
+        "adress": "Rzknlcs",
+        "erwei": "image/erwei.png",
+        "hospital": "首都医科大学附属北京友谊医院",
+        "ilessID": 31351,
+        "ilessName": "周杰伦",
+        "image": "image/image.png",
+        "photoTime": "2016-06-04 18:30:25",
+        "qRImage": "image/bigImage.png",
+        "shareEndtime": "2016-06-04 18:30:25",
+        "shareTime": "2016-06-04 18:30:25",
+        "shareTitle": "分享影像—2016-07-05 10：23:09—66",
+        "theDoctor": "张三丰"
+      },
+      {
+        "adress": "Rzknlcs",
+        "erwei": "image/erwei.png",
+        "hospital": "首都医科大学附属北京友谊医院",
+        "ilessID": 31351,
+        "ilessName": "周杰伦",
+        "image": "image/image.png",
+        "photoTime": "2016-06-04 18:30:25",
+        "qRImage": "image/bigImage.png",
+        "shareEndtime": "2016-06-04 18:30:25",
+        "shareTime": "2016-06-04 18:30:25",
+        "shareTitle": "分享影像—2016-07-05 10：23:09—66",
+        "theDoctor": "张三丰"
+      },
+      {
+        "adress": "Rzknlcs",
+        "erwei": "image/erwei.png",
+        "hospital": "首都医科大学附属北京友谊医院",
+        "ilessID": 31351,
+        "ilessName": "周杰伦",
+        "image": "image/image.png",
+        "photoTime": "2016-06-04 18:30:25",
+        "qRImage": "image/bigImage.png",
+        "shareEndtime": "2016-06-04 18:30:25",
+        "shareTime": "2016-06-04 18:30:25",
+        "shareTitle": "分享影像—2016-07-05 10：23:09—66",
+        "theDoctor": "张三丰"
+      }
+    ]
+  }
+}
+
+

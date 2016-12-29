@@ -1,0 +1,344 @@
+.install .col3pos{
+    padding: 20px 20px 0 20px;
+    background-color: #ebedf0;
+}
+
+.install .content .sideNav .group-content {
+    margin: 25px -20px 0 -20px;
+    border-top: 1px solid #c8c9cb;
+}
+
+.install .settingTitle{
+    font-size: 20px;
+    height: 34px;
+    line-height: 38px;
+}
+
+.install .privacy{
+    background:white;
+}
+
+.install .privacy-title{
+    padding: 15px 18px;
+    background-color: #ebedf0;
+}
+
+.install .sideNav{
+    border-right: 1px solid #c8c9cb;
+}
+
+.install label{
+    margin-left: 38%;
+    height: 35px;
+    line-height: 35px;
+    display: block;
+    font-weight: 500!important;
+}
+
+.install .labelBorder{
+    padding: 30px 100px;
+}
+
+.install .footerBorder{
+    margin-top: 10%;
+    text-align: center;
+}
+
+.install .buttonPositon{
+
+}
+
+/*.install .privacy{*/
+    /*display: none;*/
+/*}*/
+
+.install .inputGroup{
+
+    float: right;
+    width: 400px;
+}
+
+.install .noradius{
+    border-radius: 0;
+}
+.install .labelBorder .littTitle{
+    float: right;
+    margin-right: 20px;
+    height: 34px;
+    line-height: 34px;
+}
+
+.install .outBorder{
+    width: 100%;
+    /* margin: 20px 0; */
+    margin: 20px 0;
+    float: left;
+}
+
+.install .footstyle{
+    float: left;
+    margin-top:2%;
+    width: 100%;
+}
+
+/*.install .password{*/
+    /*display: none;*/
+/*}*/
+
+.install .headIcon{
+    text-align: right;
+    margin: 35px 0 0 0;
+    height: 106px;
+    line-height: 106px;
+}
+
+.install .leftFont,.rightBorder{
+    height: 100%;
+    padding-left: 30px;
+}
+
+.install .headImg{
+    float: left;
+    height:106px;
+    width:106px;
+    /*background: url("../image/icon.png") no-repeat -11px -255px;*/
+}
+
+.install .seach-btn{
+    margin-top: 33px;
+    width: 120px;
+    float: left;
+    margin-left: 20px;
+    border-radius: 0;
+    border: 1px solid #c8c9cb;
+}
+
+.install .sure-btn{
+    margin: auto;
+    width: 120px;
+    border-radius: 0;
+    border: 1px solid #c8c9cb;
+}
+
+
+.install .border-line{
+    text-align: right;
+    height: 76px;
+    line-height: 76px;
+}
+.install .birthday{
+    text-align: right;
+    height: 56px;
+}
+
+.install .border-line2{
+    text-align: right;
+    height: 56px;
+    line-height: 56px;
+}
+
+.install .input-group .borderRadus{
+    margin-top: 20px;
+    border-radius: 0;
+}
+
+.install .border-line2 .radio{
+    float: left;
+    margin-left: 7px;
+    margin-top: 18px;
+}
+
+.install .calender{
+    top:12px;
+    position: absolute;
+    background: url("../image/icon.png") no-repeat -175px -131px;
+    width: 32px;
+    height: 30px;
+    right: 10px;
+    z-index: 999;
+    cursor:pointer;
+}
+
+.install #endDate{
+
+    position: relative;
+}
+
+.install #datePointer{
+    margin-top: 13px;
+}
+
+.install .rightBorder2{
+    height: 100%;
+    padding-left: 30px;
+    margin-top: -6px;
+}
+
+.install #per_mes{
+    margin-top: 28px;
+}
+
+.install .card{
+    float: left;
+    width:200px;
+    height:200px;
+}
+
+.install .leftcard{
+
+}
+
+.install .cardIcon{
+    margin-bottom: 22px;
+    text-align: right;
+    margin: 35px 0 0 0;
+    height: 200px;
+    line-height: 200px;
+}
+
+.install .cardBtn{
+    margin-top: 81px;
+}
+
+.install #radio2{
+    margin-left: 60px;
+}
+
+.install .border-line2 .radioSpan{
+    position:absolute;
+    top:-8px;
+}
+.install .border-line2 .setSelect{
+     width: 100%;
+     margin: 0;
+     border-radius: 0;
+     border: 1px solid #b4b4b4;
+ }
+
+.install .border-line2 .hospitalSelect{
+    margin: 0;
+    border-radius: 0;
+    border: 1px solid #b4b4b4;
+}
+
+.install .timeInput{
+    text-align: left;
+}
+
+.install #selectBox{
+    text-align: left;
+}
+
+.install select{
+    margin-top: 17px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    height:34px;
+    width:100%;
+}
+
+.install .border-line2 .btn-group{
+    float: left;
+}
+
+.install .rightBorder2 .input-group{
+     max-width: 638px;
+     width: 80%;
+}
+
+.install .rightBorder2 .btn-group{
+    max-width: 638px;
+    width: 80%;
+}
+
+.install .rightBorder .input-group{
+    max-width: 638px;
+    width: 100%;
+}
+
+.install .content .groupMain {
+     background-color: #fff;
+     padding-bottom: 0px !important;
+}
+
+.install img{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+}
+
+.install .btnBox{
+    width: 120px;
+    height: 100px;
+    float: left;
+    text-align: center;
+    position: relative;
+}
+
+.install .file-btn{
+    line-height: 40px;
+    width: 120px;
+    height: 40px;
+    border-radius: 0;
+    border: 1px solid #b4b4b4;
+    background-color: #ebedf0;
+    position: absolute;
+    margin: 0;
+    left: 0;
+    top: 100%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.install .file-iconbtn{
+    line-height: 40px;
+    width: 120px;
+    height: 40px;
+    border-radius: 0;
+    border: 1px solid #b4b4b4;
+    background-color: #ebedf0;
+    position: absolute;
+    margin: 0;
+    left: 0;
+    top: 54%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.install .file-input{
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    font-size: 0;
+    left: 0;
+    top: 100%;
+    opacity: 0;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.install .iconfile-input{
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    font-size: 0;
+    left: 0;
+    top: 54%;
+    opacity: 0;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.install .illneesize{
+    height:1832px;
+}
+.formerror{
+    font-size: 14px;
+    color:red;
+}

@@ -1,0 +1,248 @@
+.shareLeft{
+    margin-left:20px;
+}
+
+.share .handle-btn{
+    border: 1px solid #cacacb;
+}
+
+.popBox .shareDetails{
+    z-index: 500;
+    top: 27px;
+    width: 800px;
+    position: absolute;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.share .detailTitle{
+    background-color: #323232;
+    color: white;
+    height:60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.popBox .details-bor{
+    width: 800px;
+    padding: 0px 40px;
+    background-color: white;
+    height: 740px;
+}
+
+.popBox .secTitle{
+    float: left;
+    width:100%;
+    margin-bottom: 22px;
+    border-bottom: 1px solid #d6d7d9;
+    height: 56px;
+    line-height: 56px;
+}
+
+.share #bigImage{
+    background-image: url("../image/bigImage.png");
+}
+
+.popBox .threeBor{
+    margin-right:40px;
+    text-align: center;
+    float: left;
+    width: 140px;
+}
+
+.popBox .square{
+    width:140px;
+    height: 140px;
+    border-radius: 4px;
+}
+
+.popBox .smallTitle{
+    margin-bottom: 13px;
+    color:#282828;
+}
+
+.share #erwei{
+    background-image: url("../image/erwei.png");
+}
+
+.popBox #adressFont{
+    line-height: 140px;
+    color: #4887dc;
+}
+
+
+.adressFont:hover{
+    color: #5eca5d;
+    cursor: pointer;
+}
+
+.popBox .inputBorder{
+    padding-top: 25px;
+    margin-left: 95px;
+    float: left;
+}
+
+.popBox .handle-btn{
+    margin-bottom: 16px;
+    display: block;
+}
+
+.popBox .mes-border{
+    width:100%;
+    float: left;
+    padding: 0 20px;
+}
+
+.popBox .mesBorder{
+    height:50px;
+    line-height:50px;
+}
+
+.popBox .secTitle{
+    position: relative;
+    font-size: 18px;
+    color:#282828;
+}
+
+.popBox .editor{
+    position: absolute;
+    right: 0;
+    top: -10px;
+}
+.popBox .cancel-btn{
+    color:#a0a0a0;
+}
+
+.popBox .check-btn{
+    background-color: #ccc;
+    border-radius: 2px;
+    margin-left: 327px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    float: left;
+}
+.popBox .timeInput .highSearchTime input{
+    width: 170px!important;
+}
+
+.share .buttonstyle{
+    margin-bottom: 0;
+    display: inline;
+}
+
+.share .imgborder{
+    position: relative;
+    cursor:pointer;
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius:0!important;
+    width:20px!important;
+    height:20px!important;
+}
+
+.share .bigqrcode{
+    left: 20px;
+    z-index: 300;
+    margin-top: -190px;
+    background-image: url("../image/qrcodeborder.png");
+    width: 140px;
+    height: 170px;
+    position: absolute;
+}
+
+.share .shareDetails .close{
+    font-size: 40px;
+    text-shadow: none;
+    color: #fff;
+    font-weight: normal;
+    line-height: 60px;
+}
+
+.popBox .shareDetails{
+    left:-10%;
+}
+
+.popBox .mesBorder .btn-group{
+    margin-top: 13px;
+    width:570px;
+    float:right;
+}
+
+.popBox .mesBorder .btn-group select{
+    width:570px;
+    float:right;
+}
+
+/*.popBox .mesBorder #endtime{*/
+    /*margin-top: 8px;*/
+    /*float:right;*/
+/*}*/
+
+.popBox .mesBorder .input-group input{
+    border-radius: 0px !important;
+    width: 570px;
+}
+.borderRadus{
+    border-color: #a9a9a9;
+}
+.timeBox{
+    margin-top: 12px;
+}
+.timeBox .input-group input{
+    width: 570px;
+    border-color: #a9a9a9;
+    border-radius: 0!important;
+    position: relative;
+}
+.popBox .calendar{
+    top: 9px;
+    width: 39px;
+    height: 40px;
+    right: 10px;
+    z-index: 2;
+    position: absolute;
+    background: url("../image/icon.png") no-repeat -163px -138px;
+}
+.popBox .disable{
+    background-color: #ebedf0;
+    cursor:not-allowed;
+    border:0 none;
+}
+
+.share .bigqrcode .imgerwei{
+    margin-top: 19px;
+    width: 120px;
+    height: 120px;
+    margin-left: 14px;
+}
+
+.share .content{
+    position: relative;
+}
+.share .showPrompt{
+    color: white;
+    line-height: 48px;
+    text-align: center;
+    width:100%;
+    top: 0;
+    background-color: #5eca5d;
+    height:48px;
+    position: absolute;
+}
+
+.share .timeInput .input-group input{
+    margin-right: 30px;
+}
+
+.popBox .modal-body .form-inline input{
+    width:150px;
+}
+
+.popBox .buttonstyle{
+    background-color: #f8f8f8;
+}
+
+.popBox .mes-secName{
+    margin-left: 26px;
+}
+

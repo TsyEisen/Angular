@@ -1,0 +1,60 @@
+{
+  "data":{
+    "inHostipal": [
+      {
+        "id": "123",
+        "type":"MR"
+      },
+      {
+        "id": "456",
+        "type":"CT"
+      },
+      {
+        "id": "789",
+        "type":"CR"
+      }
+    ],
+    "highCall": [
+      {"name":"高级职称"},
+      {"name":"不搞基职称"}
+    ],
+    "keshi": [
+      {"name":"小科室"},
+      {"name":"大科室"}
+    ],
+    "docCall": [
+      {"name":"一般职称"},
+      {"name":"高级职称"}
+    ],
+    "shareLevel": [
+      {"name":"所有人"},
+      {"name":"只有我"}
+    ],
+    "urgentLevel": [
+      {"name":"一般"},
+      {"name":"很紧急"},
+      {"name":"不紧急"}
+    ],
+    "consultPlace": [
+      {"name":"中国"},
+      {"name":"上海"},
+      {"name":"菲律宾"}
+    ],
+    "consultCall": [
+      {"name":"高级"},
+      {"name":"中级"},
+      {"name":"低级"}
+    ],
+    "consultKeshi": [
+      {"name":"以及科室"},
+      {"name":"耳机科室"},
+      {"name":"三级科室"}
+    ],
+    "consultjinjiLevel": [
+      {"name":"一般紧急"},
+      {"name":"二班紧急"},
+      {"name":"三班紧急"}
+    ]
+  }
+}
+

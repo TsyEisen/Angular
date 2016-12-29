@@ -1,0 +1,104 @@
+.content {
+  padding-bottom: 0;
+}
+.content .addImg {
+  background-color: #ebedf0;
+}
+.content .addImg .backBar {
+  padding: 20px 0 10px 20px;
+}
+.content .addImg .backBar .back-btn {
+  width: 80px;
+}
+.content .addImg .column {
+  width: 84.2%;
+  background-color: #fff;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 80px;
+}
+.content .addImg .column .title {
+  font-size: 20px;
+  color: #505050;
+  padding-bottom: 20px;
+  background-color: #ebedf0;
+}
+.content .addImg .column .colunmCon {
+  width: 79%;
+  margin: 0 auto;
+}
+.content .addImg .column .colunmCon .tab-btns {
+  margin-bottom: 100px;
+  height: 50px;
+}
+.content .addImg .column .colunmCon .tab-btns button {
+  width: 50%;
+  padding: 0;
+  background-color: #fff;
+  font-size: 18px;
+  line-height: 57px;
+  float: left;
+  border-bottom: 1px solid #d2d2d2;
+  color: #a0a0a0;
+}
+.content .addImg .column .colunmCon .tab-btns button.currentBtn {
+  color: #5eca5d;
+  border-bottom: 1px solid #5eca5d;
+}
+.content .addImg .column .colunmCon .tab-btns button.test {
+  color: red;
+}
+.content .addImg .column .colunmCon .uploadBar {
+  padding: 0 70px;
+}
+.content .addImg .column .colunmCon .uploadBar .uploadInput {
+  position: relative;
+}
+.content .addImg .column .colunmCon .uploadBar .uploadInput .inputLabel {
+  border-radius: 0;
+  background-color: #fff;
+  color: #646464;
+  font-size: 16px;
+  border-right: 0;
+}
+.content .addImg .column .colunmCon .uploadBar .uploadInput .cloudInput {
+  margin-bottom: 20px;
+}
+.content .addImg .column .colunmCon .uploadBar .uploadInput input {
+  height: 40px;
+  border-radius: 0;
+  padding-right: 140px;
+}
+.content .addImg .column .colunmCon .uploadBar .uploadInput .file-btn {
+  line-height: 36px;
+  border: 1px solid #b4b4b4;
+  background-color: #ebedf0;
+  color: #646464;
+  width: 120px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.content .addImg .column .colunmCon .uploadBar .uploadInput .fileName {
+  margin: 10px 0 18px 0;
+}
+.content .addImg .column .colunmCon .uploadBar .uploadInput .fileName span {
+  line-height: 34px;
+  font-size: 14px;
+  display: block;
+}
+.content .addImg .column .colunmCon .uploadBar .uploadInput .ensure-btn {
+  height: 40px;
+  border-radius: 0;
+}
+@media screen and (max-width: 768px) {
+  .content .addImg .column {
+    width: 100%;
+  }
+  .content .addImg .column .colunmCon .uploadBar {
+    padding: 0 10px;
+  }
+  .content .addImg .column .colunmCon .tab-btns {
+    margin-bottom: 30px;
+  }
+}

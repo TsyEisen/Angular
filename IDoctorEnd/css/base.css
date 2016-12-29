@@ -1,0 +1,32 @@
+/* css reset*/
+/* 初始化CSS  重置浏览器样式*/
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form,img,input{ margin:0; padding:0; }
+/*内外边距重置*/
+h1, h2, h3, h4, h5, h6{ font-size:16px; font-weight:normal;} /*h标签重置*/
+strong{ font-weight: normal;}
+img{display: block; border:0 none;}  /*图片重置*/
+ul, ol { list-style:none; }
+input {  font-family: "Microsoft YaHei"; outline-style:none;border: 0 none;} /*表单样式*/
+/*去掉input在chrome的黄色背景*/
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+input:focus:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+button{border:0 none;outline:none;}
+button:active,button:visited{outline:none;border:0 none;}
+
+.clearfix:after{content:''; height:0; line-height:0; visibility:hidden; display:block; clear:both;}
+.clearfix{zoom:1;} /*针对ie低级版本的浏览器*/  /*清楚浮动*/
+
+body {font-size:16px; color:#656565; font-family: "Microsoft YaHei";}  /*正文的字体大小和颜色*/
+
+a {  text-decoration:none; font-family: "Microsoft YaHei"; }
+a:hover,a:visited,a:link,a:active{ text-decoration:none; }  /*a标签的重置*/
+
+.row{
+    margin-right:0;
+    margin-left: 0;
+}
+

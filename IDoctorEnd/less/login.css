@@ -1,0 +1,106 @@
+.loginContent {
+  background: url("../image/loginBackground.jpg") no-repeat left top;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.loginContent .banner-l {
+  position: relative;
+  height: 100%;
+}
+.loginContent .banner-l .imgBox {
+  width: 440px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.loginContent .banner-l .imgBox .banner-txt {
+  color: #fff;
+  margin-bottom: 72px;
+}
+.loginContent .banner-l .imgBox .banner-txt h2 {
+  font-size: 48px;
+  line-height: 45px;
+  float: left;
+  margin-right: 20px;
+}
+.loginContent .banner-l .imgBox .banner-txt span {
+  font-size: 24px;
+  float: left;
+  line-height: 45px;
+}
+.loginContent .banner-r {
+  position: relative;
+  height: 100%;
+}
+.loginContent .banner-r .loginBox {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 190px;
+  width: 300px;
+  height: 400px;
+  background-color: rgba(18, 23, 36, 0.5);
+}
+.loginContent .banner-r .loginBox .cloud {
+  width: 300px;
+  height: 73px;
+  display: block;
+  background: url("../image/yun.png") no-repeat bottom center;
+}
+.loginContent .banner-r .loginBox h2 {
+  font-size: 18px;
+  color: #a0a5aa;
+  line-height: 57px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.loginContent .banner-r .loginBox form .userInfo {
+  margin-top: 10px;
+  width: 240px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 2px;
+  padding-left: 40px;
+  padding-right: 10px;
+  background-position: 12px center;
+  background-repeat: no-repeat;
+  font-size: 14px;
+}
+.loginContent .banner-r .loginBox form .userInfo:nth-of-type(2) {
+  background-image: url("../image/password.png");
+}
+.loginContent .banner-r .loginBox form .userInfo:nth-of-type(1) {
+  background-image: url("../image/usename.png");
+}
+.loginContent .banner-r .loginBox form .submit-btn {
+  width: 240px;
+  line-height: 40px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #036298;
+  margin-top: 36px;
+}
+.loginContent .banner-r .loginBox form .error {
+  font-size: 14px;
+  color: red;
+}
+@media screen and (max-width: 992px) {
+  .loginContent .banner-r .loginBox {
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}

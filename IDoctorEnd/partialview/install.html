@@ -1,0 +1,368 @@
+<div ng-controller="installController" class="ng-scope install">
+    <div class="header clearfix" id="left">
+        <div class="loginName">
+            <span>{{logName}}</span>
+            <a href="#"></a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="row">
+            <div class="col-md-3 illneesize">
+                <div class="sideNav">
+                    <div class="settingTitle">设置</div>
+                    <ul class="group-content">
+                        <li ng-repeat="item in group track by $index" class="clearfix"
+                            ng-class-odd="'oddLi'" ng-class="{'chosen':current == $index,'default':current!=$index}"
+                            ng-click="changeList($index)">
+                            <h6 ng-bind="item.groupName"></h6>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9" id="rightCon">
+                <div class="groupMain">
+                    <div class="baseMes" install ng-show='firstState.show'>
+                        <form name="personalInfoForm" ng-submit="personInfo_Submit(personalInfoForm.$valid)">
+                            <div class="privacy-title">
+                                基本信息
+                            </div>
+                            <!--头像-->
+                            <div class="headIcon">
+                                <div class="col-md-3 leftFont">头像</div>
+                                <div class="col-md-9 rightBorder">
+                                    <img ng-src="{{user.headpic}}">
+                                    <div class="btnBox">
+                                        <div class="file-iconbtn"><span>选择文件</span></div>
+                                        <!--<div class="file-iconbtn modify"><button>修改</button><button>删除</button></div>-->
+                                        <input type="file" accept="image/*" id="myfile" class="iconfile-input"
+                                               onchange="angular.element(this).scope().getfile_headpic(this.files)">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--用户名-->
+                            <div class="border-line">
+                                <div class="col-md-3 leftFont">用户名</div>
+                                <div class="col-md-9 rightBorder">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control tit-input borderRadus"
+                                               ng-model="user.username">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--性别-->
+                            <div class="border-line2">
+                                <div class="col-md-3 leftFont">性别</div>
+                                <div class="col-md-9 rightBorder">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value=1
+                                                   ng-model="user.gender" ng-checked="user.gender==1"><span
+                                                class="radioSpan">男</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio" id="radio2">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value=2
+                                                   ng-checked="user.gender==2"
+                                                   ng-model="user.gender"><span class="radioSpan">女</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--生日-->
+                            <div class="birthday">
+                                <div class="col-md-3 leftFont">生日</div>
+                                <div class="col-md-9 rightBorder">
+                                    <div class="form-inline timeStamp">
+                                        <div class="timeInput">
+                                            <div class="input-group">
+                                                <timebase time="user.birthday" date-options="birthdayOptions"
+                                                          class="shareTime"></timebase>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--邮箱-->
+                            <div class="border-line2">
+                                <div class="col-md-3 leftFont">邮箱</div>
+                                <div class="col-md-9 rightBorder2">
+                                    <div class="input-group">
+                                        <input type="email" class="form-control tit-input borderRadus"
+                                               ng-model="user.email">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--通讯地址-->
+                            <div class="border-line2">
+                                <div class="col-md-3 leftFont">通信地址</div>
+                                <div class="col-md-9 rightBorder2">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control tit-input borderRadus"
+                                               ng-model="user.address">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="privacy-title" id="per_mes">
+                                认证个人信息
+                            </div>
+                            <!--真实姓名-->
+                            <div class="border-line2">
+                                <div class="col-md-3 leftFont">真实姓名</div>
+                                <div class="col-md-9 rightBorder2">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control tit-input borderRadus"
+                                               ng-model="user.truename">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-line2">
+                                <div class="col-md-3 leftFont">所在医院</div>
+                                <div class="col-md-9 rightBorder2" id="selectBox">
+                                    <div class="btn-group">
+                                        <select ng-model="selectProvince" class="hospitalSelect"
+                                                ng-options="item.name for item in provinces track by item.code"
+                                                value="{{item.code}}"
+                                                ng-change="clickProvince()">
+                                            <option value="" ng-show="">省份</option>
+                                        </select>
+                                        <select ng-model="selectCity" class="hospitalSelect"
+                                                ng-options="item.name for item in citys track by item.code"
+                                                value="{{item.code}}"
+                                                ng-change="clickCity()">
+                                            <option value="" ng-show="">市/区</option>
+                                        </select>
+                                        <select ng-model="selectDistrict" class="hospitalSelect"
+                                                ng-options="item.name for item in districts track by item.code"
+                                                value="{{item.code}}"
+                                                ng-change="clickDistrict()">
+                                            <option value="" ng-show="">区/县</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--医院名称-->
+                            <div class="border-line2">
+                                <div class="col-md-3 leftFont"></div>
+                                <div class="col-md-9 rightBorder2">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control tit-input borderRadus" placeholder="医院名称"
+                                               ng-model="user.hospital">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-line2">
+                                <div class="col-md-3 leftFont">科室</div>
+                                <div class="col-md-9 rightBorder2">
+                                    <div class="btn-group">
+                                        <select ng-model="user.department" class="setSelect"
+                                                ng-options="a.name group by a.type for a in department">
+                                            <option value="" ng-show="">{{user.department}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-line2">
+                                <div class="col-md-3 leftFont">医师职称</div>
+                                <div class="col-md-9 rightBorder2">
+                                    <div class="input-group">
+                                        <select ng-model="user.title" class="setSelect"
+                                                ng-options="item.title for item in doctorTitleList track by item.id">
+                                            <option value="" ng-show="">{{user.title}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-line2">
+                                <div class="col-md-3 leftFont">高校职务</div>
+                                <div class="col-md-9 rightBorder2">
+                                    <div class="input-group">
+                                        <select ng-model="user.post" class="setSelect"
+                                                ng-options="item.name for item in doctorPost track by item.id">
+                                            <option value="" ng-show="">{{user.post}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--擅长-->
+                            <div class="border-line2">
+                                <div class="col-md-3 leftFont">擅长</div>
+                                <div class="col-md-9 rightBorder2">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control tit-input borderRadus"
+                                               ng-model="user.skilled">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--职业经历-->
+                            <div class="border-line2">
+                                <div class="col-md-3 leftFont">职业经历</div>
+                                <div class="col-md-9 rightBorder2">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control tit-input borderRadus"
+                                               ng-model="user.experience">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="privacy-title">
+                                认证个人证件
+                            </div>
+                            <div class="cardIcon">
+                                <div class="col-md-3 leftcard">工牌</div>
+                                <div class="col-md-9 rightBorder">
+                                    <img class="card" ng-src="{{user.workingCard}}" alt="头像">
+                                    <div class="btnBox">
+                                        <div class="file-btn"><span>选择文件</span></div>
+                                        <input type="file" accept="image/*" id="myCard" class="file-input"
+                                               onchange="angular.element(this).scope().getfile_workingCard(this.files)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cardIcon">
+                                <div class="col-md-3 leftcard">职业证书</div>
+                                <div class="col-md-9 rightBorder">
+                                    <img class="card" ng-src="{{user.certificate}}">
+                                    <div class="btnBox">
+                                        <div class="file-btn"><span>选择文件</span></div>
+                                        <input type="file" accept="image/*" id="myZhi" class="file-input"
+                                               onchange="angular.element(this).scope().getfile_certificate(this.files)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cardIcon">
+                                <div class="col-md-3 leftcard">签名</div>
+                                <div class="col-md-9 rightBorder">
+                                    <img class="card" ng-src="{{user.signature}}">
+                                    <div class="btnBox">
+                                        <div class="file-btn">选择文件</div>
+                                        <input type="file" accept="image/*" id="myQian" class="file-input"
+                                               onchange="angular.element(this).scope().getfile_signature(this.files)">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="footerBorder footstyle">
+                                <button type="submit" class="mybtn btn-success sure-btn buttonPositon" >
+                                    确认更新
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="password" ng-show='secondState.show'>
+                    <div class="privacy-title">
+                        修改您的密码
+                    </div>
+                    <form name="setPasswordForm" novalidate
+                          ng-submit="submitPasswordForm(setPasswordForm.$valid)">
+                        <div class="labelBorder col-md-9">
+                            <div>
+                                <div class="outBorder">
+                                    <div class="input-group inputGroup">
+                                        <input type="password" class="form-control tit-input noradius"
+                                               name="oldpassword"
+                                               required
+                                               ng-minlength="6"
+                                               ng-model="userpassword.oldpassword">
+
+                                        <p class="formerror"
+                                           ng-show="setPasswordForm.oldpassword.$touched && setPasswordForm.oldpassword.$invalid">
+                                            请输入至少六位数的正确密码</p>
+                                    </div>
+                                    <div class="littTitle">原密码</div>
+                                </div>
+                                <div class="outBorder">
+                                    <div class="input-group inputGroup">
+                                        <input type="password" class="form-control tit-input noradius"
+                                               name="newpassword"
+                                               required
+                                               ng-minlength="6"
+                                               ng-model="userpassword.newpassword">
+                                        <p class="formerror"
+                                           ng-show="setPasswordForm.newpassword.$touched && setPasswordForm.newpassword.$invalid">
+                                            请输入至少六位数的正确密码</p>
+                                    </div>
+                                    <div class="littTitle">新密码</div>
+                                </div>
+                                <div class="outBorder">
+                                    <div class="input-group inputGroup">
+                                        <input type="password" class="form-control tit-input noradius"
+                                               name="confirmpassword"
+                                               required
+                                               ng-minlength="6"
+                                               ng-model="userpassword.confirmpassword">
+                                        <p class="formerror"
+                                           ng-show="setPasswordForm.confirmpassword.$touched && setPasswordForm.confirmpassword.$invalid">
+                                            请输入至少六位数的正确密码</p>
+                                        <p class="formerror"
+                                           ng-show="setPasswordForm.confirmpassword.$touched && setPasswordForm.newpassword.$touched">
+                                        <span ng-show="(userpassword.confirmpassword!=userpassword.newpassword)">
+                                            与新密码输入不一致</span>
+                                        </p>
+
+                                    </div>
+                                    <div class="littTitle">确认密码</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="footerBorder footstyle">
+                            <button class="mybtn btn-success sure-btn buttonPositon"
+                                    type="submit">
+                                确认
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="privacy" ng-show='thirdState.show'>
+                    <div class="privacy-title">
+                        勾选下面的设置，将避免搜索引擎找到您
+                    </div>
+
+                    <div class="labelBorder">
+                        <label><input class="form-group-lg" type="checkbox"  ng-true-value="1" ng-false-value="0" ng-model="privacy.userfind">禁止其他用户找我（好友除外）</label>
+                        <label><input class="form-group-lg" type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="privacy.doctorfind">禁止医生找我（医生朋友除外）</label>
+                        <label><input class="form-group-lg" type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="privacy.instfind">禁止医疗机构找我（好友除外）</label>
+                    </div>
+
+
+                    <div class="privacy-title">
+                        勾选下面的设置，将避免接受信息
+                    </div>
+
+                    <div class="labelBorder">
+                        <label><input class="form-group-lg" type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="privacy.usermsg">禁止接受其他用户（好友除外）的消息</label>
+                        <label><input class="form-group-lg" type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="privacy.doctormsg">禁止接受医生（医生朋友除外）的消息</label>
+                        <label><input class="form-group-lg" type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="privacy.instmsg">禁止接受医疗机构（好友除外）的消息</label>
+                    </div>
+                    <div class="privacy-title">
+                        勾选下面的设置阅片获取影像的格式（DICOM/JPG）
+                    </div>
+
+                    <div class="labelBorder">
+                        <label><input class="form-group-lg" type="radio" value="1" ng-checked="privacy.isDicomOrJpg==1"
+                                      name="imgtype"
+                        >获取DICOM原图影像</label>
+                        <label><input class="form-group-lg" type="radio" value="0" ng-checked="privacy.isDicomOrJpg==0"
+                                      name="imgtype"
+                        >获取JPG格式影像</label>
+                    </div>
+
+                    <div class="footerBorder">
+                        <button class="mybtn btn-success sure-btn buttonPositon" ng-click="updatePrivate()">确认
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

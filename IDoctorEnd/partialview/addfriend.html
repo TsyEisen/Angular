@@ -1,0 +1,190 @@
+<div ng-controller="addFriendController">
+    <!--高级搜索弹出框-->
+    <script type="text/ng-template" id="addDoctorAdvancedSearchModal.html">
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">高级搜索</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal " role="form" novalidate
+                name="addFriendSearchForm" >
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">地区</label>
+                        <div class="col-sm-9">
+                            <select class="form-control formInput" ng-model="regionValue"
+                                    ng-options="item.name for item in region track by item.id"
+                                    value="{{item.name}}">
+                                <option value="" ng-show="">---请选择地区---</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">医院</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control fieldInput"
+                            ng-model="hospital">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">科室</label>
+                        <div class="col-sm-9">
+                            <select class="form-control formInput" ng-model="departmentValue"
+                                    ng-options="item.name group by item.type for item in department"
+                                    value="{{item.id}}">
+                                <option value="" ng-show="">---请选择科室---</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="cancel()">
+                                    取消
+                                </button>
+                                <button class="btn btn-success popBtn" type="submit"
+                                ng-click="ensure()">确认
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+    <!--高级搜索弹出框-->
+    <!--添加医生弹出框-->
+    <script type="text/ng-template" id="addDoctorModal.html">
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">选择分组</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" >
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">分组名称</label>
+                        <div class="col-sm-9">
+                            <select class="form-control formInput" ng-model="doctorGroupValue"
+                                    ng-options="item.gname for item in doctorGroup track by item.groupid"
+                                    value="{{item.gname}}">
+                                <option value="" ng-show="">---请选择分组---</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="cancel()">
+                                    取消
+                                </button>
+                                <button class="btn btn-success popBtn" type="submit"
+                                        ng-click="ensure()">确认
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+    <!--添加医生弹出框-->
+    <!--header模块-->
+    <div class="header clearfix" id="left">
+        <div class="loginName">
+            <span>{{logName}}</span>
+            <a href="#"></a>
+        </div>
+    </div>
+    <!--header模块-->
+    <div class="content">
+        <div class="addSelectBar clearfix">
+            <button class="btn btn-default btn-back"
+                    ng-click="backToMyfriend()">&lt返回
+            </button>
+            <input type="text" placeholder="用户名、姓名"
+            ng-model="doctorTerm">
+            <button class="btn btn-success select-btn" ng-click="search()">搜索</button>
+            <button class="btn btn-default advanced-btn" ng-click="advancedSearch()">高级搜索</button>
+        </div>
+        <!--搜索栏模块-->
+        <div class="groupMain addFriend">
+            <ul class="friendMain">
+                <li ng-repeat="item in addFriendTable track by $index" class="clearfix">
+                    <div class="col-md-12 ">
+                        <div class="addfriendMain">
+                            <div class="loadTime">
+                                <p>上次登录：{{item.lastlogin}}</p>
+                            </div>
+                            <div class="baseInfo clearfix">
+                                <img afkl-lazy-image="{{item.headpic}}" src="{{item.headpic}}"
+                                     err-src="/IDoctorEnd/image/errorPatientHeaderPic.png">
+                                <div class="doctorBase">
+                                    <p class="clearfix">
+                                        <strong ng-bind="item.truename"> </strong>
+                                        <span>{{item.gender}} {{item.birthday}}</span>
+                                    </p>
+                                    <p>
+                                        <span ng-bind="item.hospital" class="doctorTip"></span>
+                                        <span ng-bind="item.department" class="doctorTip"></span>
+                                        <span ng-bind="item.title" class="doctorTip"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!--医生基本信息-->
+                            <div class="detailInfo clearfix">
+                                <strong class="col-md-1">擅长领域:</strong>
+                                <p class="col-md-11" ng-bind="item.skilled"></p>
+                            </div>
+                            <div class="detailInfo clearfix">
+                                <strong class="col-md-1">职业经历:</strong>
+                                <p class="col-md-11" ng-bind="item.experience"></p>
+                            </div>
+                        </div>
+                        <button class="btn btn-success addDoctor-btn"
+                        ng-click="addDoctor(item.userid)">添加医生</button>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--表格模块-->
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <p>每页显示
+                        <select ng-model="selectValue"
+                                ng-options="item.pagesize for item in pageList track by item.id"
+                                value="{{item.id}}"
+                                ng-change="getPagesize()">
+                        </select>
+                        条，
+                        共{{totalItems}}条记录
+                    </p>
+                </div>
+                <div class="col-md-8 col-sm-12 ">
+                    <ul uib-pagination boundary-links="true" total-items="totalItems"
+                        ng-model="currentPage"
+                        max-size="maxSize"
+                        force-ellipses="true" rotate="true"
+                        previous-text="上一页" next-text="下一页"
+                        first-text="首页" last-text="尾页"
+                        num-pages="numPages"
+                        items-per-page="itemsPerPage"
+                        ng-change="setNumPage()"></ul>
+                    <input type="text" ng-model="jumpTo" ng-keyup="pageKeyup($event)">
+                    <button type="button" class="btn-success" ng-click="setInputPage()">确定</button>
+
+                </div>
+
+            </div>
+        </div>
+        <!--footer模块-->
+    </div>
+</div>

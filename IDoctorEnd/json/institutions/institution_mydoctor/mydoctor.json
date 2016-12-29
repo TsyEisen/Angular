@@ -1,0 +1,20 @@
+{
+  "status": "0",
+  "message": null,
+  "data": {
+    "groupData": [
+      {
+        "groupName": "北京医生",
+        "groupid": "123456789"
+      },
+      {
+        "groupName": "天津医生",
+        "groupid": "987654321"
+      },
+      {
+        "groupName": "上海医生",
+        "groupid": "1564564"
+      }
+    ]
+  }
+}

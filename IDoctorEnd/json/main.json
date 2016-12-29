@@ -1,0 +1,90 @@
+{
+  "status": "0",
+  "message": null,
+  "data": {
+    "data": {
+      "dataCnt": 1000,
+      "dataList": [
+        {
+          "tabMain": [{
+            "image": "image/image.png",
+            "classify": "常规",
+            "name": "王自强",
+            "sex": "男",
+            "age": "34",
+            "launchhspt": "首都医科大学附属友谊医院",
+            "launchtime": "2016-06-04 18:30:25",
+            "screentime": "2016-05-13 09:30:25",
+            "handle": "对方取消"
+          }],
+          "tabTip": [{
+            "time": "2016-06-28 13:20:41",
+            "name": "Wang Tinghong",
+            "sex": "女",
+            "history": "腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3"
+          }]
+        },
+        {
+          "tabMain": [{
+            "image": "image/image.png",
+            "classify": "专家",
+            "name": "王自强",
+            "sex": "男",
+            "age": "34",
+            "launchhspt": "首都医科大学附属友谊医院",
+            "launchtime": "2016-06-04 18:30:25",
+            "screentime": "2016-05-13 09:30:25",
+            "handle": "打开报告"
+          }],
+          "tabTip": [{
+            "time": "2016-06-28 13:20:41",
+            "name": "Wang Tinghong",
+            "sex": "女",
+            "history": "腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3"
+          }]
+        },
+        {
+          "tabMain": [{
+            "image": "image/image.png",
+            "classify": "常规",
+            "name": "王自强",
+            "sex": "男",
+            "age": "34",
+            "launchhspt": "首都医科大学附属友谊医院",
+            "launchtime": "2016-06-04 18:30:25",
+            "screentime": "2016-05-13 09:30:25",
+            "handle": "继续阅片"
+          }],
+          "tabTip": [{
+            "time": "2016-06-28 13:20:41",
+            "name": "Wang Tinghong",
+            "sex": "女",
+            "history": "腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3"
+          }]
+        },
+        {
+          "tabMain": [{
+            "image": "image/image.png",
+            "classify": "常规",
+            "name": "王自强",
+            "sex": "男",
+            "age": "34",
+            "launchhspt": "首都医科大学附属友谊医院",
+            "launchtime": "2016-06-04 18:30:25",
+            "screentime": "2016-05-13 09:30:25",
+            "handle": "接受咨询"
+          }],
+          "tabTip": [{
+            "time": "2016-06-28 13:20:41",
+            "name": "Wang Tinghong",
+            "sex": "女",
+            "history": "腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3天。腹部疼痛，腹泻呕吐3"
+          }]
+        }
+      ]
+    }
+  }
+}
+
+
+

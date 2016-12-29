@@ -1,0 +1,23 @@
+<div ng-controller="institutionSidebarCtrl">
+
+    <div class="sidebar"   resize ng-style="sideStyle()" ng-mouseenter="enter = true" ng-mouseleave="enter = false"  ng-init="enter=false">
+        <div class="logo">
+            <span></span>
+            <h1 class="institution-tit">慧影-机构</h1>
+        </div>
+        <ul class="institutionSideBar">
+            <li ng-repeat="tab in tabs track by $index"
+                ng-class="{'tabActive':isActiveTab(tab.url)}"
+                ng-click="onClickTab(tab,$index)"
+                ui-sref={{tab.path}}
+            ><span ng-style="bgImg[$index]" ng-class="{'checked0':item == 0&&$index ==0,'checked1':item == 1&&$index ==1,
+            'checked2':item == 2&&$index ==2,'checked3':item == 3&&$index ==3,'checked4':item ==4&&$index ==4,
+            'checked5':item == 5&&$index ==5,'checked6':item == 6&&$index ==6,'checked7':item == 7&&$index ==7}">
+            </span><a href="#">{{tab.title}}</a></li>
+        </ul>
+    </div>
+    <div class="myContent" ng-class="{mouseEnter:enter}">
+        <div ui-view=""></div>
+    </div>
+</div>
+

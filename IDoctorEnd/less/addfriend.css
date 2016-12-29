@@ -1,0 +1,70 @@
+.content .addSelectBar {
+  padding-left: 20px;
+}
+.content .addSelectBar input {
+  border: 1px solid #cacacb;
+  width: 300px;
+  border-radius: 4px;
+  line-height: 34px;
+  height: 34px;
+  margin: 20px 10px 20px 20px;
+  font-size: 14px;
+  float: left;
+  padding: 0 10px;
+}
+.content .addSelectBar button {
+  width: 80px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  float: left;
+}
+.content .addSelectBar button.btn-back {
+  background-color: #e7e7e9;
+}
+.content .addSelectBar button.select-btn {
+  margin-right: 10px;
+}
+.content .addSelectBar button.advanced-btn {
+  border-color: #e7e7e9;
+  background-color: #e7e7e9;
+  color: #656565;
+}
+.content .addFriend .friendMain .addfriendMain {
+  width: 85%;
+  float: left;
+}
+.content .addFriend .friendMain .addfriendMain .loadTime {
+  right: 16%;
+}
+.content .addFriend .friendMain .addDoctor-btn {
+  width: 120px;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  right: 1%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@media screen and (max-width: 768px) {
+  .content .addSelectBar input {
+    margin-left: 0;
+    width: 90%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .content .addFriend {
+    width: 100%;
+  }
+  .content .addFriend .friendMain .addfriendMain {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .content .addFriend .friendMain .addfriendMain .loadTime {
+    right: 1%;
+    top: 0;
+  }
+  .content .addFriend .friendMain .addDoctor-btn {
+    position: static;
+    transform: none;
+  }
+}

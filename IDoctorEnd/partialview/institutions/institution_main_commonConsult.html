@@ -1,0 +1,353 @@
+<div class="addShare share">
+    <div class="header clearfix" id="left">
+        <div class="loginName">
+            <span>{{logName}}</span>
+            <a href="#"></a>
+        </div>
+    </div>
+
+    <div class="content instMainExpConsult instMainComConsult">
+        <div class="instMainComConsultInfo">
+            <div class="row form-inline">
+                <div class="input-group col-lg-5 col-md-5 ">
+                    <div class="row commonAskTitle">
+                        <span class="col-lg-2 col-md-2">咨询标题</span>
+                        <input class="col-lg-8 col-md-8 " type="text"  ng-model="askTitle">
+                    </div>
+                </div>
+                <div class="input-group col-lg-5 col-md-5">
+                    <div class="row commonAsknumber">
+                        <span class="col-lg-2 col-md-2">咨询编号</span>
+                        <input class="col-lg-8 col-md-8 " type="text"  ng-model="asknumber">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="screenBar clearfix">
+            <div class="row">
+                <div class="form-inline shareLeft inlineP">
+                    <div class="chooseImg" id="firstchooseImg">
+                    </div>
+                    <span class="littleTile">选择影像</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="table-responsive tableCon postionTop">
+            <table class="table table-hover table-striped table-bordered text-center imgTable tablePositon">
+                <thead>
+                <tr>
+                    <th class="text-center">
+                        <label><input name="Fruit" type="checkbox" value=""/> </label>
+                    </th>
+                    <th class="text-center">影像</th>
+                    <th class="text-center">类别</th>
+                    <th class="text-center">患者ID</th>
+                    <th class="text-center">姓名</th>
+                    <th class="text-center">性别</th>
+                    <th class="text-center">年龄</th>
+                    <th class="text-center">上传时间</th>
+                    <th class="text-center">拍摄时间</th>
+                    <th class="text-center">专家咨询</th>
+                    <th class="text-center">常规咨询</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><label><input name="instMain" type="checkbox" value=""
+                                      ng-model="imageData.checked" ng-change="onChange(imageData)"/> </label></td>
+                    <td><img ng-src="{{user.imageurl}}" ></td>
+                    <td ng-model="user.modality">{{user.modality}}</td>
+                    <td ng-model="user.patientid">{{user.patientid}}</td>
+                    <td ng-model="user.patientname">{{user.patientname}}</td>
+                    <td ng-model="user.gender">{{user.gender}}</td>
+                    <td ng-model="user.age">{{user.age}}</td>
+                    <td ng-model="user.uploadtime">{{user.uploadtime}}</td>
+                    <td ng-model="user.studydate">{{user.studydate}}</td>
+                    <td ng-model="expCount">{{expCount}}条专家咨询</td>
+                    <td ng-model="comCount">{{comCount}}条常规咨询</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="screenBar clearfix">
+            <div class="row">
+                <div class="form-inline shareLeft inlineP">
+                    <div class="chooseImg" id="secndchooseImg">
+                    </div>
+                    <span class="littleTile">邀请医生</span>
+                </div>
+                <div class="form-inline common_consult_doctorlist">
+                    <div class="radio">
+                        <input id="asktype1" type="radio" checked="" value="1" name="asktype" ng-click="inviteList()"> <label for="asktype1">全站所有医生都可以接受邀请</label>
+                    </div>
+                    <div class="radio">
+                        <input id="asktype2" type="radio" value="2" name="asktype" ng-click="inviteList()"> <label for="asktype2">“我的医生”中的所有医生都可以接受邀请</label>
+                    </div>
+                    <div class="radio">
+                        <input id="asktype3" type="radio" value="3" name="asktype" ng-click="inviteList()"> <label
+                            for="asktype3">建立一个邀请列表</label>
+                    </div>
+                </div>
+                <div id="show_doctorlist" style="display: none;">
+                    <!--搜索条件-->
+                    <div class="form-inline searchDcotor">
+                        <!--<div class="addToList">-->
+                        <button class=" btn  btn-primary
+                         addToList" ng-click="inviteadd()">
+                            <i class="iconAdd"></i>添加到列表
+                        </button>
+                        <!--</div>-->
+                        <input class="condition" type="text" placeholder="医生姓名、医院" ng-model="inviteCondition">
+                        <button class="btn btn-primary search" ng-click="askSearch()">搜索</button>
+                        <button class="btn" ng-click="doctorModel('lg')">高级搜索</button>
+                        <button class="btn" ng-click="quickAskSearch()">我的医生</button>
+                    </div>
+                    <!--展现列表-->
+                    <div class="table-responsive tableCon postionTop">
+                        <table class="table table-hover table-striped table-bordered text-center imgTable tablePositon">
+                            <tr>
+                                <th class="text-center">选择</th>
+                                <th class="text-center">头像</th>
+                                <th class="text-center">姓名</th>
+                                <th class="text-center">性别</th>
+                                <th class="text-center">医院</th>
+                                <th class="text-center">科室</th>
+                                <th class="text-center">职称</th>
+                            </tr>
+                            <tr ng-repeat="item in consultComDoctors track by $index">
+                                <td>
+                                    <label><input name="userid" type="checkbox" value={{item.userid}}
+                                                  ng-model="item.checked" ng-change="ChangeDoctor(item)"/> </label>
+                                </td>
+                                <td><img ng-src="{{doctorHeadpic}}" ng-model="doctorHeadpic"></td>
+                                <td ng-model="item.truename">{{item.truename}}</td>
+                                <td ng-model="sex">{{sex}}</td>
+                                <td ng-model="item.hospital">{{item.hospital}}</td>
+                                <td ng-model="item.department">{{item.department}}</td>
+                                <td ng-model="item.skilled">{{item.skilled}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--分页-->
+                    <div class="footer footerPos">
+                        <div class="row">
+                            <p>{{name}}</p>
+                            <div class="col-md-4 col-sm-12">
+                                <p>每页显示
+                                    <select ng-model="selectValue"
+                                            ng-options="item.pagesize for item in pageList track by item.id"
+                                            value="{{item.id}}"
+                                            ng-change="getPagesize()">
+                                    </select>
+                                    条，
+                                    共{{totalItems}}条记录
+                                </p>
+                            </div>
+                            <div class="col-md-8 col-sm-12 ">
+                                <ul uib-pagination boundary-links="true" total-items="totalItems"
+                                    ng-model="currentPage"
+                                    max-size="maxSize"
+                                    force-ellipses="true" rotate="true"
+                                    previous-text="上一页" next-text="下一页"
+                                    first-text="首页" last-text="尾页" num-pages="numPages"
+                                    items-per-page="itemsPerPage"
+                                    ng-change="setNumPage()"></ul>
+                                <input type="text" ng-model="jumpTo" ng-keyup="pageKeyup($event)">
+                                <button type="button" class="btn-primary" ng-click="setInputPage()">确定</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <h2 class="invitetitle">邀请列表</h2>
+                    <div id="doctorListBody" ng-repeat="item in tasks track by $index">
+                        <div class="list-group list-group-lg col-md-7" >
+                            <a class="list-group-item invitelistid" >
+                                <input type="hidden" value={{item.userid}} />
+                                <span class="thumb-sm pull-left mr">
+                                    <img class="img-circle" ng-src={{item.headpic}}></span>
+                                <i  class="glyphicon glyphicon-remove pull-right mt-sm" ng-click="removeInvite(item.id);"  style="margin-right:20px;"></i>
+                                <div><span ng-model="item.truename">
+                                       {{item.truename}}
+                                          </span><span ng-model="item.lastlogin" class="pull-right" style="margin-right:50px;">上次登录时间
+                                          {{item.lastlogin}}</span>
+                                    <span ng-model="item.sex" style="margin-left:10px;">'
+                                            {{item.sex}}
+                                           </span><span ng-model="item.age" style="margin-left:10px;">'
+                                            {{item.age}} 岁</span></div>
+                                <small class="text-muted">个人信息</small>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="screenBar clearfix">
+            <div class="row">
+                <div class="form-inline shareLeft inlineP">
+                    <div class="chooseImg" id="thirdchooseImg">
+                    </div>
+                    <span class="littleTile">咨询信息</span>
+                </div>
+
+                <div class="content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="column">
+                                    <div class="colunmCon formCon">
+                                        <form class="form-horizontal addForm ng-pristine ng-valid ng-valid-date"
+                                              role="form" name="expConsultForm" novalidate>
+
+                                            <div class="form-group myformGroup">
+                                                <div class="col-sm-2 formLeft">
+                                                    <label class="control-label">截止时间<i class="red">*</i></label>
+                                                    <span class="required">  默认为48小时之后</span>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class=" commonConsultTime">
+                                                        <div class="input-group">
+                                                            <input id="endtimeId" type="text" class="form-control"
+                                                                   uib-datepicker-popup="{{format}}" ng-model="endtime"
+                                                                   is-open="popup1.opened" ng-required="true"
+                                                                   close-text="关闭"
+                                                                   30 clear-text="清空" current-text="今天"
+                                                                   alt-input-formats="altInputFormats"/>
+                                                            <span class="input-group-btn">
+               <button type="button" class="btn btn-default" ng-click="open1()"><i
+                       class="glyphicon glyphicon-th"></i></button>
+           </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group myformGroup">
+                                                <div class="col-sm-2 formLeft">
+                                                    <label class="control-label">基本病史<i class="red">*</i></label>
+                                                    <span class="required">患者患病史、手术史、过敏史、输血史等</span>
+                                                </div>
+                                                <div class="col-sm-10 formRight">
+                                                    <textarea class="form-control"
+                                                              ng-model="patitentHistory"></textarea>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group myformGroup">
+
+                                                <div class="col-sm-10 formRight">
+                                                    <div class="">
+                                                        <button class="mybtn btn-primary seach-btn buttonPositon" id="btnLaunchAsk"
+                                                                ng-click="addCommonAsk()">发起咨询
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!--高级搜索弹出框-->
+<script type="text/ng-template" id="InstCommonAsk_DoctorModal.html">
+
+    <div class="popBox advancedSearch">
+        <div class="modal-header text-center">
+            <button type="button" class="close" ng-click="closeShare()"><span
+                    aria-hidden="true">&times;</span><span
+                    class="sr-only">Close</span></button>
+            <h4 class="modal-title">高级搜索</h4>
+        </div>
+
+        <div class="screenBar clearfix">
+            <div class="row">
+
+                <div class="form-inline shareLeft inlineP">
+                    <div class="input-group">
+                        <span>地区</span>
+
+                        <select ng-model="selectProvince"
+                                ng-options="item.name for item in provinces " value="{{item.code}}"
+                                ng-change="clickProvince()">
+
+                        </select>
+                        <select ng-model="selectCity"
+                                ng-options="item.name  for item in citys" value="{{item.code}}"
+                                ng-change="clickCity()">
+                            <option value="">市/区</option>
+                        </select>
+                        <select ng-model="selectDistrict"
+                                ng-options="item.name  for item in districts"
+                                value="{{item.code}}"
+                                ng-change="clickDistrict()"><option value="">区/县</option>
+                        </select>
+                    </div>
+                </div>
+                    <div class="form-inline shareLeft">
+                        <div class="input-group">
+                            <span>职称</span>
+                            <select ng-model="doctor_title" class="select2" ng-options="doctor.name as doctor.name for doctor in consultCalls" class="ng-pristine ng-valid ng-empty ng-touched" ><option value="">不限</option></select>
+                        </div>
+                        <div class="input-group">
+                            <span>科室</span>
+                            <select id="ask-department"
+                                    ng-model = "engineer.currentActivity"
+                                    class="hospitalOffices"
+                                    ng-options = "a.name group by a.type for a in activities"
+                                    value="{{a.id}}">
+                                <option value="">全部科室</option>
+                            </select >
+                        </div>
+                    </div>
+                    <div class="form-inline shareLeft">
+                        <div class="input-group">
+                            <span>医院</span>
+                            <input type="text" placeholder="医院" class="hospital_doctor" ng-model="hospital"
+                            >
+                        </div>
+                    </div>
+
+                <div class="form-line">
+
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="cancelSearch()">
+                                    取消
+                                </button>
+                                <button class="btn btn-success popBtn" type="submit"
+                                        ng-click="ensureSearch()">确认
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        <!--<button class="mybtn btn-primary seach-btn" ng-click="expertDocSearch()">搜索</button>-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</script>

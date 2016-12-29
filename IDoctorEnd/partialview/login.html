@@ -1,0 +1,309 @@
+<div ng-controller="loginCtrl">
+    <div class="loginContent " win-height>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 hidden-sm hidden-xs" win-height>
+                    <div class="banner-l">
+                        <div class="imgBox">
+                            <div class="banner-txt clearfix">
+                                <h2>汇医慧影</h2>
+                                <span>智慧影像云平台</span>
+                            </div>
+                            <img class="img-responsive" src="image/banner-pic.png" alt=""/></div>
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12" win-height>
+                    <div class="banner-r">
+                        <div class="loginBox">
+                            <span class="cloud"></span>
+                            <h2>登录影像云平台</h2>
+
+
+                            <form class="text-center" name="doctorLoginForm" novalidate
+                                  ng-submit="doctorLoginSubmit(doctorLoginForm.$valid)">
+                                <input type="text" placeholder="请输入用户名" class="userInfo"
+                                       name="phone"  required
+                                       ng-model="userdata.phone"
+                                >
+                                <p class="error" ng-show="(doctorLoginForm.phone.$touched && doctorLoginForm.phone.$invalid)
+                                ||(doctorLoginForm.phone.$invalid && submitted)">
+                                    请输入用户名</p>
+                                <input type="password" placeholder="请输入密码" class="userInfo"
+                                       name="password" required ng-model="userdata.password">
+                                <p class="error" ng-show="(doctorLoginForm.password.$touched && doctorLoginForm.password.$invalid)
+                                ||(doctorLoginForm.password.$invalid && submitted)">
+                                    请输入正确密码</p>
+                                <!--<button>d登录</button>-->
+                                <input type="submit" class="submit-btn" value="登录">
+                            </form>
+
+
+
+                            <!--<form class="text-center" name="hospitalAddForm"-->
+                                  <!--ng-submit="hospitalSubmitForm(hospitalAddForm.$valid)" novalidate>-->
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="col-md-5 control-label formLabel">代理商名称：</label>-->
+                                    <!--<div class="col-md-7">-->
+                                        <!--<p class="form-control-static" ng-model="agencyName">{{agencyName}}</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="col-md-5 control-label formLabel">开始代理时间：</label>-->
+                                    <!--<div class="col-md-7">-->
+                                        <!--<p class="form-control-static" ng-model="startData">{{startData}}</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="control-label col-md-5 formLabel">结束代理时间：</label>-->
+                                    <!--<div class="col-md-7">-->
+                                        <!--<p class="form-control-static" ng-model="endData">{{endData}}</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="control-label col-md-5 formLabel">医院名称：</label>-->
+
+                                    <!--<div class="col-md-7">-->
+                                        <!--<input class="form-control formInput" type="text"-->
+                                               <!--name="hospitalname"-->
+                                               <!--required-->
+                                               <!--ng-model="userdata.name"-->
+                                               <!--ng-focus="hospitalNameFocus()"-->
+                                               <!--ng-class="{'has-success':hospitalAddForm.hospitalname.$valid && hospitalAddForm.hospitalname.touched,-->
+                               <!--'has-error':hospitalAddForm.hospitalname.$invalid && hospitalAddForm.hospitalname.touched }">-->
+                                        <!--<span class="tip">必填项</span>-->
+                                        <!--<p class="error"-->
+                                           <!--ng-show="(hospitalAddForm.hospitalname.$touched && hospitalAddForm.hospitalname.$invalid)||-->
+                                   <!--(hospitalAddForm.hospitalname.$invalid && submitted)"-->
+                                        <!--&gt;请输入医院名称</p>-->
+                                        <!--<p class="error"-->
+                                           <!--ng-show="hospitalNameError">医院名称重复</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="control-label col-md-5 formLabel">医院联系人：</label>-->
+                                    <!--<div class="col-md-7">-->
+                                        <!--<input class="form-control formInput" type="text"-->
+                                               <!--name="linkPerson" ng-model="userdata.linkPerson"-->
+                                               <!--ng-class="{'has-success':hospitalAddForm.linkPerson.$valid && hospitalAddForm.linkPerson.touched,-->
+                               <!--'has-error':hospitalAddForm.linkPerson.$invalid && hospitalAddForm.linkPerson.touched }">-->
+                                        <!--<p class="error"-->
+                                           <!--ng-show="(hospitalAddForm.linkPerson.$touched && hospitalAddForm.linkPerson.$invalid)-->
+                                   <!--||(hospitalAddForm.linkPerson.$invalid && submitted)"-->
+                                        <!--&gt;请输入医院联系人</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="control-label col-md-5 formLabel">医院联系方式：</label>-->
+                                    <!--<div class="col-md-7">-->
+                                        <!--<input class="form-control formInput" type="text" name="mobile"-->
+                                               <!--required-->
+                                               <!--ng-minlength="11"-->
+                                               <!--ng-maxlength="11"-->
+                                               <!--ng-focus="hospitalmobileFocus()"-->
+                                               <!--ng-pattern="/^1[3|4|5|7|8][0-9]\d{8}$/"-->
+                                               <!--ng-model="userdata.mobile"-->
+                                               <!--ng-class="{'has-success':hospitalAddForm.mobile.$valid && hospitalAddForm.mobile.touched,-->
+                               <!--'has-error':hospitalAddForm.mobile.$invalid && hospitalAddForm.mobile.touched }">-->
+                                        <!--<span class="tip">必填项</span>-->
+                                        <!--<p class="error"-->
+                                           <!--ng-show="(hospitalAddForm.mobile.$touched && hospitalAddForm.mobile.$invalid)-->
+                                   <!--||(hospitalAddForm.mobile.$invalid && submitted)"-->
+                                        <!--&gt;请输入医院正确的手机11位数联系方式</p>-->
+                                        <!--<p class="error"-->
+                                           <!--ng-show="mobileError">请输入医院联系方式重复</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="control-label col-md-5 formLabel">医院登录名：</label>-->
+                                    <!--<div class="col-md-7">-->
+                                        <!--<input class="form-control formInput" type="text" name="loginame"-->
+                                               <!--required-->
+                                               <!--ng-focus="hospitalLogFocus()"-->
+                                               <!--ng-model="userdata.loginName"-->
+                                               <!--ng-class="{'has-success':hospitalAddForm.loginame.$valid && hospitalAddForm.loginame.touched,-->
+                               <!--'has-error':hospitalAddForm.loginame.$invalid && hospitalAddForm.loginame.touched }">-->
+                                        <!--<span class="tip">必填项</span>-->
+                                        <!--<p class="error"-->
+                                           <!--ng-show="(hospitalAddForm.loginame.$touched && hospitalAddForm.loginame.$invalid)-->
+                                   <!--||(hospitalAddForm.loginame.$invalid && submitted)"-->
+                                        <!--&gt;请输入医院登录名</p>-->
+                                        <!--<p class="error"-->
+                                           <!--ng-show="loginameError">医院登录名重复</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="control-label col-md-5 formLabel">登录密码：</label>-->
+                                    <!--<div class="col-md-7">-->
+                                        <!--<input class="form-control formInput" type="password" name="password"-->
+                                               <!--required-->
+                                               <!--ng-minlength="6"-->
+                                               <!--ng-maxlength="20"-->
+                                               <!--ng-model="userdata.passWord"-->
+                                               <!--ng-class="{'has-success':hospitalAddForm.password.$valid && hospitalAddForm.password.touched,-->
+                               <!--'has-error':hospitalAddForm.password.$invalid && hospitalAddForm.password.touched }">-->
+                                        <!--<span class="tip">必填项</span>-->
+                                        <!--<p class="error"-->
+                                           <!--ng-show="(hospitalAddForm.password.$touched && hospitalAddForm.password.$invalid)-->
+                                   <!--||(hospitalAddForm.password.$invalid && submitted)"-->
+                                        <!--&gt;请输入正确6-20位字符登录密码</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="control-label col-md-5 formLabel">医院类型：</label>-->
+                                    <!--<div class="col-md-7">-->
+                                        <!--<select class="form-control formInput" ng-model="selectTypeValue"-->
+                                                <!--ng-options="item.name for item in selectType track by item.type"-->
+                                                <!--value="{{item.type}}" >-->
+                                            <!--<option value="" ng-show="">-&#45;&#45;请选择-&#45;&#45;</option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="control-label col-md-5 formLabel">医院规模：</label>-->
+                                    <!--<div class="col-md-7">-->
+                                        <!--<select class="form-control formInput" ng-model="selectScaleValue"-->
+                                                <!--ng-options="item.name for item in selectScale track by item.type"-->
+                                                <!--value="{{item.type}}" >-->
+                                            <!--<option value="" ng-show="">-&#45;&#45;请选择-&#45;&#45;</option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="control-label col-md-5 formLabel">医院计费规则：</label>-->
+                                    <!--<div class="col-md-7">-->
+                                        <!--<select class="form-control formInput" ng-model="selectAccountRuleValue"-->
+                                                <!--ng-options="item.name for item in selectAccountRule track by item.type"-->
+                                                <!--required-->
+                                                <!--name="accountRule"-->
+                                                <!--value="{{item.type}}" >-->
+                                            <!--<option value="" ng-show="">-&#45;&#45;请选择-&#45;&#45;</option>-->
+                                        <!--</select>-->
+                                        <!--<span class="tip">必填项</span>-->
+                                        <!--<p class="error"-->
+                                           <!--ng-show="(hospitalAddForm.accountRule.$invalid && submitted)"-->
+                                        <!--&gt;请选择医院计费规则</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="control-label col-md-5 formLabel">医院用户类型：</label>-->
+                                    <!--<div class="col-md-7">-->
+                                        <!--<select class="form-control formInput" ng-model="selectCustomerValue"-->
+                                                <!--required-->
+                                                <!--name="customerType"-->
+                                                <!--ng-options="item.name for item in selectCustomerType track by item.type"-->
+                                                <!--value="{{item.type}}" >-->
+                                            <!--<option value="" ng-show="">-&#45;&#45;请选择-&#45;&#45;</option>-->
+                                        <!--</select>-->
+                                        <!--<span class="tip">必填项</span>-->
+                                        <!--<p class="error"-->
+                                           <!--ng-show="(hospitalAddForm.customerType.$invalid && submitted)"-->
+                                        <!--&gt;请选择医院用户类型</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label for="dtp_input1" class="control-label col-md-5">医院试用开始时间:</label>-->
+                                    <!--<div class="input-group form_date col-md-7 tryTime" data-date=""-->
+                                         <!--data-date-format="dd MM yyyy" data-link-field="dtp_input1"-->
+                                         <!--data-link-format="yyyy-mm-dd">-->
+                                        <!--<input id="datetimeStart" class="form-control" type="text" value="" readonly-->
+                                               <!--placeholder="点击选择" ng-model="userdata.probationStart" ng-change="getStartime()" style="cursor:pointer">-->
+                                    <!--<span class="input-group-addon glyphicon glyphicon-remove false"-->
+                                          <!--ng-click="clearStartData()"></span>-->
+                                    <!--</div>-->
+                                    <!--<input type="hidden" id="dtp_input1" value=""/>-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label for="dtp_input2" class="control-label col-md-5">医院试用结束时间:</label>-->
+                                    <!--<div class="input-group form_date col-md-7 tryTime" data-date=""-->
+                                         <!--data-date-format="dd MM yyyy" data-link-field="dtp_input2"-->
+                                         <!--data-link-format="yyyy-mm-dd">-->
+                                        <!--<input id="datetimeEnd" class="form-control" type="text" value="" readonly-->
+                                               <!--placeholder="点击选择" ng-model="userdata.probationEnd" ng-change="getEndtime()" style="cursor:pointer">-->
+                                    <!--<span class="input-group-addon glyphicon glyphicon-remove false"-->
+                                          <!--ng-click="clearEndData()"></span>-->
+                                    <!--</div>-->
+                                    <!--<input type="hidden" id="dtp_input2" value=""/>-->
+                                <!--</div>-->
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="control-label col-md-5 formLabel" ng-model="selectListValue.list">{{selectListValue.list}}含常规咨询数：</label>-->
+                                    <!--<div class="col-md-7">-->
+                                        <!--<input class="form-control formInput" type="text" name="consultOfCommon"-->
+                                               <!--ng-model="userdata.consultOfCommon"-->
+                                               <!--ng-pattern="/^[0-9]*$/"-->
+                                               <!--ng-class="{'has-success':hospitalAddForm.consultOfCommon.$valid && hospitalAddForm.consultOfCommon.touched,-->
+                               <!--'has-error':hospitalAddForm.consultOfCommon.$invalid && hospitalAddForm.consultOfCommon.touched }">-->
+                                        <!--<p class="error"-->
+                                           <!--ng-show="(hospitalAddForm.consultOfCommon.$touched && hospitalAddForm.consultOfCommon.$invalid)-->
+                                   <!--||(hospitalAddForm.consultOfCommon.$invalid && submitted)"-->
+                                        <!--&gt;请输入数字</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="control-label col-md-5 formLabel" ng-model="selectListValue.list">{{selectListValue.list}}含专家咨询数：</label>-->
+                                    <!--<div class="col-md-7">-->
+                                        <!--<input class="form-control formInput" type="text" name="consultOfExpert"-->
+                                               <!--ng-pattern="/^[0-9]*$/"-->
+                                               <!--ng-model="userdata.consultOfExpert"-->
+                                               <!--ng-class="{'has-success':hospitalAddForm.consultOfExpert.$valid && hospitalAddForm.consultOfExpert.touched,-->
+                               <!--'has-error':hospitalAddForm.consultOfExpert.$invalid && hospitalAddForm.consultOfExpert.touched }">-->
+                                        <!--<p class="error"-->
+                                           <!--ng-show="(hospitalAddForm.consultOfExpert.$touched && hospitalAddForm.consultOfExpert.$invalid)-->
+                                   <!--||(hospitalAddForm.consultOfExpert.$invalid && submitted)"-->
+                                        <!--&gt;请输入数字</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="control-label col-md-5 formLabel">常规咨询超出每例：</label>-->
+                                    <!--<div class="col-md-7 eachcase">-->
+                                        <!--<input class="form-control formInput" type="text" name="extraConsultOfCommon"-->
+                                               <!--ng-pattern="/^[0-9]*$/"-->
+                                               <!--ng-model="userdata.extraConsultOfCommon"-->
+                                               <!--ng-class="{'has-success':hospitalAddForm.extraConsultOfCommon.$valid && hospitalAddForm.extraConsultOfCommon.touched,-->
+                               <!--'has-error':hospitalAddForm.extraConsultOfCommon.$invalid && hospitalAddForm.extraConsultOfCommon.touched }">-->
+                                        <!--<p class="error"-->
+                                           <!--ng-show="(hospitalAddForm.extraConsultOfCommon.$touched && hospitalAddForm.extraConsultOfCommon.$invalid)-->
+                                   <!--||(hospitalAddForm.extraConsultOfCommon.$invalid && submitted)"-->
+                                        <!--&gt;请输入数字</p>-->
+                                        <!--<span>元</span>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group formItem">-->
+                                    <!--<label class="control-label col-md-5 formLabel">专家咨询超出每例：</label>-->
+                                    <!--<div class="col-md-7 eachcase">-->
+                                        <!--<input class="form-control formInput" type="text" name="extraConsultOfExpert"-->
+                                               <!--ng-pattern="/^[0-9]*$/"-->
+                                               <!--ng-model="userdata.extraConsultOfExpert"-->
+                                               <!--ng-class="{'has-success':hospitalAddForm.extraConsultOfExpert.$valid && hospitalAddForm.extraConsultOfExpert.touched,-->
+                               <!--'has-error':hospitalAddForm.extraConsultOfExpert.$invalid && hospitalAddForm.extraConsultOfExpert.touched }">-->
+
+                                        <!--<p class="error"-->
+                                           <!--ng-show="(hospitalAddForm.extraConsultOfExpert.$touched && hospitalAddForm.extraConsultOfExpert.$invalid)-->
+                                   <!--|| (hospitalAddForm.extraConsultOfExpert.$invalid && submitted)">请输入数字</p>-->
+                                        <!--<span>元</span>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<span ng-model="msg" class="submitTip" >{{msg}}</span>-->
+                                <!--<div class=" form-group formItem formBtn text-center">-->
+                                    <!--<div class="col-md-12 col-sm-6 col-xs-6">-->
+                                        <!--<button class="save-btn">保存</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</form>-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<button ng-click="loginTo()">登录</button>-->
+</div>
+

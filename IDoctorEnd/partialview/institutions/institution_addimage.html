@@ -1,0 +1,67 @@
+<div ng-controller="institution_addImageCtrl">
+    <div class="header clearfix">
+        <div class="loginName">
+            <span>{{logName}}</span>
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="addImg">
+            <div class="backBar">
+                <button class="btn btn-default back-btn" ng-click="backToImg()">&lt返回</button>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="column" addresize>
+                            <div class="title">新的影像</div>
+                            <div class="colunmCon">
+                                <div class="tab-btns clearfix">
+                                    <button ng-class="{true:'currentBtn'}[iscurrented]" ng-click="ChangeShowLocal()">
+                                        本地上传
+                                    </button>
+                                    <button ng-class="{false:'currentBtn'}[iscurrented]" ng-click="ChangeShowCloud()">
+                                        云端获取
+                                    </button>
+                                </div>
+                                <div ng-switch="show" class="uploadBar">
+                                    <div ng-switch-when="local">
+                                        <div class="uploadInput">
+                                            <input type="text" class="form-control">
+                                            <button class="file-btn">选择文件</button>
+                                            <div class="fileName">
+                                                <span>1. 张三的影像.jpg</span>
+                                                <span>2. 张三的影像.jpg</span>
+                                                <span>3. 张三的影像.jpg</span>
+                                            </div>
+                                            <button type="button" class="btn btn-success btn-block ensure-btn">
+                                                开始上传
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--本地上传内容-->
+                                    <div ng-switch-when="cloud">
+                                        <div class="uploadInput">
+                                            <div class="input-group cloudInput">
+                                                <div class="input-group-addon inputLabel">影像ID</div>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="input-group cloudInput">
+                                                <div class="input-group-addon inputLabel">验证码</div>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <button type="button" class="btn btn-success btn-block ensure-btn">
+                                                获取
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

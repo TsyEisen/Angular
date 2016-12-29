@@ -1,0 +1,140 @@
+<div ng-controller="institution_expertController" class="consult institution_expert">
+    <div class="header clearfix" id="left">
+        <div class="searchbar">
+            <!--<input type="text" placeholder="患者姓名&ID、医生姓名" ng-model="mianiless">-->
+            <input type="text" placeholder="患者姓名&ID、医生姓名"
+                   ng-model="totalSearch">
+            <div class="glass" ng-click="mainSearch()">
+                <button class="mainSearch"></button>
+            </div>
+        </div>
+        <div class="loginName">
+            <span>{{logName}}</span>
+            <a href="#"></a>
+        </div>
+    </div>
+
+
+    <div class="content">
+        <div class="container-fluid addBar">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="mybtn btn-primary add-btn" ng-click="jumpToConsult()">专家咨询</button>
+                </div>
+            </div>
+        </div>
+        <!--addBar模块-->
+
+        <!--筛选栏-->
+        <div class="screenBar clearfix">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="selectBtn insExptab">
+                        <ul>
+                            <li><button class="btn active" id="totalCount" ng-click="getAskAll()">总数量<span ng-model="totalCount">{{totalCount}}</span></button></li>
+                            <li><button class="btn" id="hasCompleted" ng-click="getCompletedAsk()">已完成<span ng-model="hasCompleted">{{hasCompleted}}</span></button></li>
+                            <li><button class="btn" id="unCompleted" ng-click="getUnfinishedAsk()">未完成<span ng-model="unCompleted">{{unCompleted}}</span></button></li>
+                        </ul>
+                    </div>
+                    <div class="selectTime">
+                        <div class="form-inline">
+                            <div class="input-group">
+                                <input ng-model="patientInfo" type="text" placeholder="患者姓名&ID、医生姓名" class="form-control tit-input"/>
+                            </div>
+                            <button ng-click="asksearch()" class="mybtn btn-primary seach-btn">搜索</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--screenBar模块-->
+        <!--表格模块-->
+        <div class="table-responsive tableCon">
+            <table class="table table-hover table-striped table-bordered text-center imgTable">
+                <tr>
+                    <th class="text-center">影像</th>
+                    <th class="text-center">咨询医生</th>
+                    <th class="text-center">类别</th>
+                    <th class="text-center">患者ID</th>
+                    <th class="text-center">姓名</th>
+                    <th class="text-center">性别</th>
+                    <th class="text-center">年龄</th>
+                    <th class="text-center">上传时间</th>
+                    <th class="text-center">发起时间</th>
+                    <th class="text-center">专家咨询</th>
+                </tr>
+                <tr ng-repeat="item in expAskLists track by $index">
+                    <td><img ng-src="{{item.imagePath}}" ng-model="item.imagePath" ></td>
+                    <td ng-bind="item.truename">{{item.truename}}</td>
+                    <td ng-bind="item.modality">{{item.modality}}</td>
+                    <td ng-bind="item.patientid">{{item.patientid}}</td>
+                    <td ng-bind="item.patientname">{{item.patientname}}</td>
+                    <td ng-bind="item.gender">{{item.gender}}</td>
+                    <td ng-model="item.patientAge">{{item.patientAge}}</td>
+                    <td ng-bind="item.uploadtime">{{item.uploadtime}}</td>
+                    <td ng-bind="item.addtime">{{item.addtime}}</td>
+                    <!--"expert": "1"            1 已发起 2阅片中 3已拒绝 4已完成-->
+                    <td ng-model="item.status" ng-switch ="item.status">
+                        <!--<div  ng-switch-when="0">-->
+                            <!--<div class="payed imgstatus">已付款</div>-->
+                        <!--</div>-->
+                        <div class="fly"  ng-switch-when="1">
+                            <div class="flyback">已发起</div>
+                        </div>
+                        <div class="reading"  ng-switch-when="2">
+                            <div class="readingback">阅片中</div>
+                        </div>
+                        <div class= "refaused"  ng-switch-when="3">
+                            <div class="refausedtback">已拒绝</div>
+                        </div>
+                        <div class="complent"  ng-switch-when="4">
+                            <div class="complentback">已完成</div>
+                        </div>
+                        <!--<div   ng-switch-when="5">-->
+                            <!--<div class="review">已审核</div>-->
+                        <!--</div>-->
+                        <!--<div ng-switch-when="6">-->
+                            <!--<div class="canceled">已取消</div>-->
+                        <!--</div>-->
+                        <!--<div ng-switch-when="7">-->
+                            <!--<div class="canceled">过期</div>-->
+                        <!--</div>-->
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!--footer模块-->
+        <div  class="footer">
+            <div class="row">
+                <p>{{name}}</p>
+                <div class="col-md-4 col-sm-12">
+                    <p>每页显示
+                        <select ng-model="selectValue"
+                                ng-options="item.pagesize for item in pageList track by item.id" value="{{item.id}}"
+                                ng-change="getPagesize()">
+                        </select>
+                        条，
+                        共{{totalItems}}条记录
+                    </p>
+                </div>
+                <div class="col-md-8 col-sm-12 ">
+                    <ul uib-pagination boundary-links="true" total-items="totalItems"
+                        ng-model="currentPage"
+                        max-size="maxSize"
+                        force-ellipses="true" rotate="true"
+                        previous-text="上一页" next-text="下一页"
+                        first-text="首页" last-text="尾页"
+                        num-pages="numPages"
+                        items-per-page="itemsPerPage"
+                        ng-change="setNumPage()"></ul>
+                    <input type="text" ng-model="jumpTo" ng-keyup="pageKeyup($event)">
+                    <button type="button" class="btn-primary" ng-click="setInputPage()">确定</button>
+
+                </div>
+
+
+            </div>
+        </div>
+        <!--content结束-->
+    </div>
+</div>

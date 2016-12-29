@@ -1,0 +1,74 @@
+.instMainComConsult .instMainComConsultInfo {
+  margin-top: 20px!important;
+}
+.instMainComConsult .instMainComConsultInfo span {
+  text-align: center;
+  display: inline-block;
+  margin-top: 10px;
+}
+.instMainComConsult .instMainComConsultInfo input {
+  border: 2px solid #E0E0E0;
+  height: 40px;
+  padding-left: 10px;
+}
+.instMainComConsult .common_consult_doctorlist {
+  margin: 15px;
+  margin-left: 50px;
+}
+.instMainComConsult .common_consult_doctorlist .radio {
+  margin-right: 30px;
+}
+.instMainComConsult .searchDcotor {
+  margin-left: 20px;
+}
+.instMainComConsult .searchDcotor .addToList .iconAdd {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 4px 4px 0;
+  background: url("../../image/institution/sprite.png") -88px -40px no-repeat;
+}
+.instMainComConsult .searchDcotor .search {
+  width: 95px;
+}
+.instMainComConsult .searchDcotor .condition {
+  border: 2px solid #E0E0E0;
+  width: 20%;
+  height: 40px;
+  padding-left: 10px;
+}
+.instMainComConsult .invitetitle {
+  margin: 20px 0 10px 30px;
+  color: #000;
+}
+.instMainComConsult #doctorListBody {
+  margin-left: 30px;
+}
+.instMainComConsult #doctorListBody .list-group {
+  margin-bottom: 0px!important;
+}
+.advancedSearch .modal-header {
+  background-color: #fff;
+}
+.advancedSearch .modal-title {
+  color: #000;
+}
+.advancedSearch select {
+  width: 150px;
+  height: 40px;
+  margin-right: 20px;
+  line-height: 2;
+}
+.advancedSearch .screenBar {
+  margin-top: 30px;
+}
+.advancedSearch .form-inline {
+  margin-top: 30px;
+}
+.advancedSearch .btnGroup {
+  margin-bottom: 50px;
+}
+.advancedSearch .btnGroup button {
+  margin-right: 50px;
+}

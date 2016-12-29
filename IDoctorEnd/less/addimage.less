@@ -1,0 +1,118 @@
+@mainGreen: #5eca5d;
+//主题绿
+@gray-base: #656565;
+@gray-darker: #282828;
+@gray-dark: #323232;
+@gray: #1e1e1e;
+@gray-light: #e7e7e9;
+@gray-lighter: #cacacb;
+.content {
+  padding-bottom: 0;
+  .addImg {
+    background-color: #ebedf0;
+    .backBar {
+      padding: 20px 0 10px 20px;
+      .back-btn {
+        width: 80px;
+      }
+    }
+
+    .column {
+      width: 84.2%;
+      background-color: #fff;
+      margin: 0 auto;
+      margin-top: 20px;
+      margin-bottom: 80px;
+      .title {
+        font-size: 20px;
+        color: #505050;
+        padding-bottom: 20px;
+        background-color: #ebedf0;
+      }
+      .colunmCon {
+        width: 79%;
+        margin: 0 auto;
+        .tab-btns {
+          margin-bottom: 100px;
+          height: 50px;
+          button {
+            width: 50%;
+            padding: 0;
+            background-color: #fff;
+            font-size: 18px;
+            line-height: 57px;
+            float: left;
+            border-bottom: 1px solid #d2d2d2;
+            color: #a0a0a0;
+            &.currentBtn {
+              color: @mainGreen;
+              border-bottom: 1px solid @mainGreen;
+            }
+            &.test {
+              color: red;
+            }
+          }
+        }
+        .uploadBar {
+          padding: 0 70px;
+          .uploadInput {
+            position: relative;
+            .inputLabel{
+              border-radius: 0;
+              background-color: #fff;
+              color:#646464;
+              font-size: 16px;
+              //width: 86px;
+              border-right: 0;
+            }
+            .cloudInput{
+              margin-bottom: 20px;
+            }
+            input {
+              height: 40px;
+              border-radius: 0;
+              padding-right: 140px;
+            }
+            .file-btn {
+              line-height: 36px;
+              border: 1px solid #b4b4b4;
+              background-color: #ebedf0;
+              color: #646464;
+              width: 120px;
+              position: absolute;
+              top: 0;
+              right: 0;
+            }
+            .fileName {
+              margin: 10px 0 18px 0;
+              span {
+                line-height: 34px;
+                font-size: 14px;
+                display: block;
+              }
+            }
+            .ensure-btn {
+              height: 40px;
+              border-radius: 0;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content .addImg .column {
+    width: 100%;
+    .colunmCon {
+      .uploadBar {
+        padding: 0 10px;
+      }
+      .tab-btns{
+        margin-bottom: 30px;
+      }
+    }
+  }
+}

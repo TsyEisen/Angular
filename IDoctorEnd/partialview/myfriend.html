@@ -1,0 +1,239 @@
+<div ng-controller="myFriendController">
+    <!--新建分组弹出框-->
+    <script type="text/ng-template" id="newBuildFriendGruopModal.html">
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">新建分组</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal " role="form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">分组名称</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" ng-model="newGroupName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="cancel()">
+                                    取消
+                                </button>
+                                <button class="btn btn-success popBtn" type="button"
+                                        ng-click="ensure()">确认
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+    <!--新建分组弹出框-->
+    <!--编辑病例分组弹出框-->
+    <script type="text/ng-template" id="editFriendGruopModal.html">
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">编辑分组</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal " role="form" novalidate
+                      name="newIllGroupForm" ng-submit="newGroupForm(newIllGroupForm.$valid)">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">分组名称</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="请输入分组名称"
+                                   ng-model="groupEditName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="cancel()">
+                                    取消
+                                </button>
+                                <button class="btn btn-success popBtn" type="submit"
+                                        ng-click="ensure()">确认
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+    <!--编辑病例分组弹出框-->
+    <!--高级搜索弹出框-->
+    <script type="text/ng-template" id="doctorFriendHighSearchModal.html">
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">编辑分组</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal " role="form" novalidate
+                      name="newIllGroupForm" ng-submit="newGroupForm(newIllGroupForm.$valid)">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">姓名</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control"
+                                   ng-model="high.term" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">性别</label>
+                        <div class="col-sm-9">
+                            <label class="radio-inline">
+                                <input type="radio" name="sex" value="1"
+                                       ng-model="high.gender">
+                                <label>男</label>
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="sex" value="2"
+                                       ng-model="high.gender">
+                                <label>女</label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="cancel()">
+                                    取消
+                                </button>
+                                <button class="btn btn-success popBtn" type="submit"
+                                        ng-click="ensure()">确认
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+    <!--高级搜索弹出框-->
+    <div class="header clearfix" id="left">
+        <div class="loginName">
+            <span>{{logName}}</span>
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="content nonPaddingCon" autoheight ng-style="style()">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="sideNav">
+                    <div class="tit clearfix">
+                        <h3>我的朋友圈</h3>
+                        <button class="mybtn btn-success add-btn"
+                                ng-click="jumpToAddFriend()">新增好友
+                        </button>
+                    </div>
+                    <div class="input-group">
+                        <input class="form-control advanced-search-bar" type="text"
+                               ng-model="friendTerm"
+                               placeholder="用户名、姓名">
+                        <div class="input-group-addon glass"
+                             ng-click="friendTermData()"></div>
+
+                    </div>
+                    <h4 class="text-center advanced-search-tit" ng-click="highSerach()">高级搜索</h4>
+                    <div class="group-tit clearfix">
+                        <h5>好友分组</h5>
+                        <button class="btn btn-success new-btn" ng-click="newFriendGroup()">新建</button>
+                    </div>
+                    <ul class="group-content">
+                        <li ng-repeat="item in group track by $index" class="clearfix"
+                            ng-class-odd="'oddLi'" ng-class="{'chosen':current == $index,'default':current!=$index}"
+                        >
+                            <h6 ng-model="item" ng-click="changeList($index)">{{item.gname}}</h6>
+                            <button class="delete-btn" ng-click="removeGroup(item.groupid)"></button>
+                            <button class="edit-btn" ng-click="editGroup(item.groupid,item.gname)"></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-9 friendRight" autoheight ng-style="style()">
+                <div class="groupMain" id="rightTable">
+                    <div class="title">
+                        <h6>分组名称:<span ng-bind="groupname"></span></h6>
+                    </div>
+                    <ul class="friendMain">
+                        <li ng-repeat="item in friendList track by $index" ng-mouseenter="show = true" ng-mouseleave="show = false">
+                            <div class="loadTime">
+                                <p>上次登录：{{item.lastlogin}}</p>
+                                <button ng-show="show" ng-click="removeDoctor(item.groupid,item.userid,item.username)"></button>
+                            </div>
+                            <div class="baseInfo clearfix">
+                                <img afkl-lazy-image="{{item.headpic}}" src="{{item.headpic}}" err-src="/IDoctorEnd/image/errorPatientHeaderPic.png">
+                                <div class="doctorBase">
+                                    <p class="clearfix">
+                                        <strong ng-bind="item.truename"> </strong>
+                                        <span>{{item.gender}} {{item.birthday}}岁</span>
+                                    </p>
+                                    <p>
+                                        <span ng-bind="item.hospital" class="doctorTip"></span>
+                                        <span ng-bind="item.department" class="doctorTip"></span>
+                                        <span ng-bind="item.title" class="doctorTip"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!--医生基本信息-->
+                            <div class="detailInfo clearfix">
+                                <strong class="col-md-1">擅长领域:</strong>
+                                <p class="col-md-11" ng-bind="item.skilled" ></p>
+                            </div>
+                            <div class="detailInfo clearfix">
+                                <strong class="col-md-1">职业经历:</strong>
+                                <p class="col-md-11" ng-bind="item.experience" ></p>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="footer">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12">
+                            <p>每页显示
+                                <select ng-model="selectValue"
+                                        ng-options="item.pagesize for item in pageList track by item.id"
+                                        value="{{item.id}}"
+                                        ng-change="getPagesize()">
+                                </select>
+                                条，
+                                共{{totalItems}}条记录
+                            </p>
+                        </div>
+                        <div class="col-md-9 col-sm-12 ">
+                            <ul uib-pagination boundary-links="true" total-items="totalItems"
+                                ng-model="currentPage"
+                                max-size="maxSize"
+                                force-ellipses="true" rotate="true"
+                                previous-text="上一页" next-text="下一页"
+                                first-text="首页" last-text="尾页"
+                                num-pages="numPages"
+                                items-per-page="itemsPerPage"
+                                ng-change="setNumPage()"></ul>
+                            <input type="text" ng-model="jumpTo" ng-keyup="pageKeyup($event)">
+                            <button type="button" class="btn-success" ng-click="setInputPage()">确定</button>
+                        </div>
+
+                    </div>
+                </div>
+                <!--footer模块-->
+            </div>
+
+        </div>
+    </div>
+</div>

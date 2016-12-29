@@ -1,0 +1,20 @@
+{
+  "status": "0",
+  "message": null,
+  "data": {
+    "responsedata": [
+      {
+        "id": "123",
+        "type":"MR"
+      },
+      {
+        "id": "456",
+        "type":"CT"
+      },
+      {
+        "id": "789",
+        "type":"CR"
+      }
+    ]
+  }
+}

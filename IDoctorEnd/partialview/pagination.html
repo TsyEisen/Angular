@@ -1,0 +1,22 @@
+<div>
+    <div class="col-md-4 col-sm-12">
+        <p>每页显示
+            <select ng-model="selectValue"
+                    ng-options="item.pagesize for item in pageList track by item.id" value="{{item.id}}"
+                    ng-change="getPagesize()">
+            </select>
+            条，
+            共{{totalItems}}条记录
+        </p>
+    </div>
+    <div class="col-md-8 col-sm-12 ">
+        <ul uib-pagination boundary-links="true" total-items="totalItems"
+            ng-model="currentPage"
+            max-size="maxSize"
+            force-ellipses="true" rotate="true"
+            previous-text="上一页" next-text="下一页"
+            first-text="首页" last-text="尾页" ng-change="setNumPage()"></ul>
+        <input type="text" ng-model="jumpTo" ng-keyup="pageKeyup($event)">
+        <button type="button" class="btn-success" ng-click="setInputPage()">确定</button>
+    </div>
+</div>

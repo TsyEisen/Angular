@@ -1,0 +1,170 @@
+<div ng-controller="addIllnessController">
+    <div class="header clearfix">
+        <div class="loginName">
+            <span>{{logName}}</span>
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="addImg">
+            <div class="backBar">
+                <button class="btn btn-default back-btn" ng-click="backToIllness()">&lt返回</button>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="column">
+                            <div class="title">新的病例</div>
+                            <div class="colunmCon formCon">
+                                <form class="form-horizontal addForm" role="form"
+                                      name="addCardForm"
+                                ng-submit="addCardFormSubmit(addCardForm.$valid)">
+                                    <div class="form-group myformGroup">
+                                        <div class="col-sm-2 formLeft">
+                                            <label class="control-label patient-head">患者头像</label>
+                                        </div>
+
+                                        <div class="col-sm-10 formRight">
+                                            <img ng-src="{{imgSrc}}">
+                                            <div class="btnBox">
+                                                <div class="file-btn"><span>选择文件</span></div>
+                                                <input type="file" accept="image/*" id="myfile" class="file-input"
+                                                       onchange="angular.element(this).scope().img_upload(this.files)"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group myformGroup">
+                                        <div class="col-sm-2 formLeft">
+                                            <label class="control-label">姓名<i class="red">*</i></label>
+                                            <span class="red required">提交后不可修改</span>
+                                        </div>
+                                        <div class="col-sm-10 formRight">
+                                            <input type="text" class="form-control fieldInput"
+                                                   name="addcardname"
+                                                   required ng-model="patientname">
+                                            <p class="formerror" ng-show="addCardForm.addcardname.$touched && addCardForm.addcardname.$invalid">
+                                                请输入姓名</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group myformGroup">
+                                        <div class="col-sm-2 formLeft">
+                                            <label class="control-label">性别<i class="red">*</i></label>
+                                            <span class="red required">提交后不可修改</span>
+                                        </div>
+                                        <!--<label for="inputPassword3" class="col-sm-2 control-label">Password</label>-->
+                                        <div class="col-sm-10 formRight">
+                                            <label class="radio-inline">
+                                                <input type="radio" name="addcardgender" value="1"
+                                                       required
+                                                       ng-model="gender">
+                                                <label>男</label>
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="addcardgender" value="2"
+                                                       required
+                                                       ng-model="gender">
+                                                <label>女</label>
+                                            </label>
+                                            <p class="formerror" ng-show="addCardForm.addcardgender.$touched && addCardForm.addcardgender.$invalid">
+                                                请选择性别</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group myformGroup">
+                                        <div class="col-sm-2 formLeft">
+                                            <label class="control-label">年龄<i class="red">*</i></label>
+                                            <span class="red required">提交后不可修改</span>
+                                        </div>
+                                        <div class="col-sm-10 formRight">
+                                            <input type="text" class="form-control fieldInput"
+                                                   required name="addcardage"
+                                                   ng-model="age">
+                                            <p class="formerror" ng-show="addCardForm.addcardage.$touched && addCardForm.addcardage.$invalid">
+                                                请输入年龄</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group myformGroup">
+                                        <div class="col-sm-2 formLeft">
+                                            <label class="control-label">就诊时间</label>
+                                            <span class="gray required">输入第一次就诊时间</span>
+                                        </div>
+                                        <div class="col-sm-10 formRight">
+                                            <input type="text" class="form-control fieldInput" uib-datepicker-popup
+                                                   placeholder="点击选择"
+                                                   ng-model="visitTime" is-open="visitPopupOpened"
+                                                   datepicker-options="visitTimeOptions"
+                                                   close-text="关闭" current-text="今天" clear-text="清除"
+                                                   ng-click="visitOpen()"/>
+
+                                            <span class="glyphicon glyphicon-calendar calendar"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group myformGroup">
+                                        <div class="col-sm-2 formLeft">
+                                            <label class="control-label">联系方式</label>
+                                            <span class="gray required">输入有效的联系方式</span>
+                                        </div>
+                                        <div class="col-sm-10 formRight">
+                                            <input type="text" class="form-control fieldInput"
+                                                   name="addcardtel"
+                                                   ng-model="tel"
+                                                   ng-minlength="11" ng-maxlength="11"
+                                                   ng-pattern="/^1[3|4|5|7|8][0-9]\d{8}$/">
+                                            <p class="formerror" ng-show="addCardForm.addcardtel.$touched && addCardForm.addcardtel.$invalid">
+                                                请输入正确11位手机号码</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group myformGroup">
+                                        <div class="col-sm-2 formLeft">
+                                            <label class="control-label">地址</label>
+                                            <span class="gray required">输入您的地址信息</span>
+                                        </div>
+                                        <div class="col-sm-10 formRight">
+                                            <input type="text" class="form-control fieldInput"
+                                                   ng-model="address">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group myformGroup">
+                                        <div class="col-sm-2 formLeft">
+                                            <label class="control-label">所属分组</label>
+                                            <span class="gray required">选择病例所在的分组</span>
+                                        </div>
+                                        <div class="col-sm-10 formRight">
+                                            <select class="form-control fieldInput degreeSelect "
+                                                    required
+                                                    ng-model="groupName"
+                                                    ng-options="item.groupid as item.gname for item in cardGroup"
+                                                    value="{{item.gname}}">
+                                                <option value="" ng-show="">--请选择--</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group myformGroup">
+                                        <div class="col-sm-2 formLeft">
+                                            <label class="control-label">备注</label>
+                                            <span class="gray required">病例相关的提示信息</span>
+                                        </div>
+                                        <div class="col-sm-10 formRight">
+                                            <textarea class="form-control"
+                                                      ng-model="memo"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group myformGroup">
+                                        <div class="col-sm-12 text-center">
+                                            <button class="btn btn-success btn-ensure"
+                                            type="submit">确认新建
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

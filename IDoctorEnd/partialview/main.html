@@ -1,0 +1,143 @@
+<div ng-controller="mainController">
+    <div ng-model="responseMSG"></div>
+    <div class="header clearfix" id="left">
+        <div class="searchbar">
+            <input type="text" placeholder="患者姓名、咨询标题"
+                   ng-model="totalSearch">
+            <div class="glass" ng-click="mainSearch()">
+                <button class="mainSearch"></button>
+            </div>
+
+        </div>
+        <div class="loginName">
+            <span>{{logName}}</span>
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="content" id="main_Con">
+        <!--筛选栏-->
+        <div class="screenBar clearfix doctorContent">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="selectBtn">
+                        <uib-tabset active="active" type="pills">
+                            <uib-tab class="mybtn btn-default"
+                                     index="$index" ng-repeat="tab in tabs" heading="{{tab.title}}"
+                                     select="getType($index)" active="tab.active">
+                            </uib-tab>
+                        </uib-tabset>
+                    </div>
+                    <div class="selectTime">
+                        <div class="form-inline">
+                            <timebase time="startDate" date-options="startOptions"
+                                      placeholder="startPlaceholder"></timebase>
+                            <span>-</span>
+                            <timebase time="endDate" date-options="endOptions"
+                                      placeholder="endPlaceholder"></timebase>
+                            <div class="input-group">
+                                <input type="text" placeholder="咨询标题" class="form-control tit-input"
+                                       ng-model="askTit"/>
+                            </div>
+                            <button class="mybtn btn-success seach-btn" ng-click="search()">搜索</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--screenBar模块-->
+        <div class="table-responsive tableCon">
+            <table class="table table-hover text-center ">
+                <thead>
+                <tr>
+                    <th class="text-center">影像</th>
+                    <th class="text-center"></th>
+                    <th class="text-center">姓名</th>
+                    <th class="text-center">性别</th>
+                    <th class="text-center">年龄</th>
+                    <th class="text-center">发起医院</th>
+                    <th class="text-center">咨询发起时间</th>
+                    <th class="text-center">影像拍摄时间</th>
+                    <th class="text-center">操作</th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="tableTab in tableTabs track by $index">
+                <tr ng-repeat="item in tableTab.tabMain track by $index">
+                    <td>
+                        <img afkl-lazy-image="{{item.image}}" src="{{item.image}}" err-src="/IDoctorEnd/image/imgError.png">
+                    </td>
+                    <td class="tdSnd" ng-switch on="item.asktype">
+                        <button class="mybtn btn-default classify-btn" ng-bind="item.asktype"
+                                ng-switch-when="常规"></button>
+                        <button class="mybtn btn-default classify-btn expert" ng-bind="item.asktype"
+                                ng-switch-when="专家"
+                        ></button>
+                    </td>
+                    <td ng-bind="item.patientname"></td>
+                    <td ng-bind="item.sex"></td>
+                    <td ng-bind="item.age"></td>
+                    <td ng-bind="item.hospital"></td>
+                    <td ng-bind="item.addtime"></td>
+                    <td ng-bind="item.uploadtime"></td>
+                    <td class="handle-td" ng-switch on="item.handle" rowspan="2">
+                        <button ng-bind="item.handle" class="btn btn-success handle-btn"
+                                ng-switch-when="打开报告" ng-click="imageReport(item.askid)"></button>
+                        <button ng-bind="item.handle" class="btn btn-primary handle-btn"
+                                ng-switch-when="继续阅片" ng-click="readImage(item.askid)"></button>
+                        <button ng-bind="item.handle" class="btn btn-info handle-btn"
+                                ng-switch-when="接受咨询" ng-click="changeAskStatus(2,item.askid,item.asktype)"></button>
+                        <button ng-bind="item.handle" class="btn btn-danger handle-btn"
+                                ng-switch-when="对方取消" disabled></button>
+                        <button ng-bind="item.handle" class="btn btn-danger handle-btn"
+                                ng-switch-when="已拒绝" disabled></button>
+                        <button ng-bind="item.handle" class="btn btn-warning handle-btn" disabled
+                                ng-switch-when="已审核,无法操作" ></button>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in tableTab.tabTip track by $index" class="cut">
+                    <td colspan="1"></td>
+                    <td colspan="7" class="tipTd">
+                        <p>
+                            <strong>咨询标题：</strong>
+                            <span ng-bind="item.title"></span>
+                            <strong>基本病史：</strong><span ng-bind="item.memo"></span>
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--tableCon模块-->
+        <!--<div ng-controller="PaginationCtrl" class="footer">-->
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <p>每页显示
+                        <select ng-model="selectValue"
+                                ng-options="item.pagesize for item in pageList track by item.id" value="{{item.id}}"
+                                ng-change="getPagesize()">
+                        </select>
+                        条，
+                        共{{totalItems}}条记录
+                    </p>
+                </div>
+                <div class="col-md-8 col-sm-12 ">
+                    <ul uib-pagination boundary-links="true" total-items="totalItems"
+                        ng-model="currentPage"
+                        max-size="maxSize"
+                        force-ellipses="true" rotate="true"
+                        previous-text="上一页" next-text="下一页"
+                        first-text="首页" last-text="尾页" num-pages="numPages"
+                        items-per-page="itemsPerPage"
+                        ng-change="setNumPage()"></ul>
+                    <input type="text" ng-model="jumpTo" ng-keyup="pageKeyup($event)">
+                    <button type="button" class="btn-success" ng-click="setInputPage()">确定</button>
+                </div>
+            </div>
+        </div>
+        <!--footer模块-->
+    </div>
+    <!--content-->
+</div>

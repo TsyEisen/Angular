@@ -1,0 +1,147 @@
+
+<div ng-controller="institutionDoctorCtrl">
+    <!--新建分组弹出框-->
+    <script type="text/ng-template" id="newBuildGruopModal.html">
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="vm.cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">新建分组</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal " role="form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">分组名称</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="vm.cancel()">
+                                    取消
+                                </button>
+                                <button class="btn btn-success popBtn" type="button"
+                                        ng-click="vm.ensure()">确认
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+    <!--新建分组弹出框-->
+    <div class="header clearfix" id="left">
+        <div class="loginName">
+            <span>{{logName}}</span>
+            <a href="#"></a>
+        </div>
+    </div>
+    <div class="content nonPaddingCon">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="sideNav" illnessresize>
+                    <div class="tit clearfix">
+                        <h3>我的医生</h3>
+                        <button class="mybtn btn-primary add-btn"
+                                ng-click="jumpToAddDoctor()">新增医生
+                        </button>
+                    </div>
+                    <div class="input-group">
+                        <input class="form-control advanced-search-bar" type="text"
+                               placeholder="用户名、姓名">
+                        <div class="input-group-addon glass"></div>
+
+                    </div>
+                    <h4 class="text-center advanced-search-tit">高级搜索</h4>
+                    <div class="group-tit clearfix">
+                        <h5>医生分组</h5>
+                        <button class="btn btn-primary new-btn" ng-click="newBuildGroup()">新建</button>
+                    </div>
+                    <ul class="group-content">
+                        <li ng-repeat="item in group track by $index" class="clearfix"
+                            ng-class-odd="'oddLi'" ng-class="{'institutionChosen':current == $index,'institutionDefault':current!=$index}"
+                            ng-click="changeList($index)">
+                            <h6 ng-bind="item.groupName"></h6>
+                            <button class="delete-btn"></button>
+                            <button class="edit-btn"></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="groupMain">
+                    <div class="title">
+                        <h6>分组名称:<span ng-bind="groupname"></span></h6>
+                    </div>
+                    <ul class="friendMain">
+                        <li ng-repeat="item in friendGroup track by $index" ng-mouseenter="show = true" ng-mouseleave="show = false">
+                            <div class="loadTime">
+                                <p>上次登录：{{item.loadtime}}</p>
+                                <button ng-show="show" ></button>
+                            </div>
+                            <div class="baseInfo clearfix">
+                                <img ng-src="{{item.picture}}">
+                                <div class="doctorBase">
+                                    <p class="clearfix">
+                                        <strong ng-bind="item.name"> </strong>
+                                        <span>{{item.sex}} {{item.age}}</span>
+                                    </p>
+                                    <p>
+                                        <span ng-bind="item.hospital" class="doctorTip"></span>
+                                        <span ng-bind="item.department" class="doctorTip"></span>
+                                        <span ng-bind="item.position" class="doctorTip"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!--医生基本信息-->
+                            <div class="detailInfo clearfix">
+                                <strong class="col-md-1">擅长领域:</strong>
+                                <p class="col-md-11" ng-bind="item.goodField" ></p>
+                            </div>
+                            <div class="detailInfo clearfix">
+                                <strong class="col-md-1">职业经历:</strong>
+                                <p class="col-md-11" ng-bind="item.experience" ></p>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="footer">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12">
+                            <p>每页显示
+                                <select ng-model="selectValue"
+                                        ng-options="item.pagesize for item in pageList track by item.id"
+                                        value="{{item.id}}"
+                                        ng-change="getPagesize()">
+                                </select>
+                                条，
+                                共{{totalItems}}条记录
+                            </p>
+                        </div>
+                        <div class="col-md-9 col-sm-12 ">
+                            <ul uib-pagination boundary-links="true" total-items="totalItems"
+                                ng-model="currentPage"
+                                max-size="maxSize"
+                                force-ellipses="true" rotate="true"
+                                previous-text="上一页" next-text="下一页"
+                                first-text="首页" last-text="尾页" ng-change="setNumPage()"></ul>
+                            <input type="text" ng-model="jumpTo" ng-keyup="pageKeyup($event)">
+                            <button type="button" class="btn-primary" ng-click="setInputPage()">确定</button>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!--footer模块-->
+            </div>
+
+        </div>
+    </div>
+</div>

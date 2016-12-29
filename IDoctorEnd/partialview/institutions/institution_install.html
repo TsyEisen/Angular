@@ -1,0 +1,194 @@
+<div ng-controller="institution_installController" class="ng-scope install institution_install">
+    <div class="header clearfix" id="left">
+        <div class="loginName">
+            <span>{{logName}}</span>
+            <a href="#"></a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="row">
+            <div class="col-md-3 illneesize">
+                <div class="sideNav">
+                    <div class="settingTitle">设置</div>
+                    <ul class="group-content">
+                        <li ng-repeat="item in group track by $index" class="clearfix"
+                            ng-class-odd="'oddLi'" ng-class="{'chosen':current == $index,'default':current!=$index}"
+                            ng-click="changeList($index)">
+                            <h6 ng-bind="item.groupName"></h6>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9" id="rightCon">
+                <div class="groupMain">
+                    <div class="baseMes" install ng-show='firstState.show'>
+                        <div class="privacy-title">
+                            查看您的机构信息维护列表
+                        </div>
+                        <div class="border-line">
+                            <div class="col-md-3 leftFont" >用户名</div>
+                            <div class="col-md-9 rightBorder">
+                                <div class="input-group">
+                                    <input type="text" class="form-control borderRadus fieldInput detailInput ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="userName" disabled="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-line2">
+                            <div class="col-md-3 leftFont" >上次登录时间</div>
+                            <div class="col-md-9 rightBorder2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control borderRadus fieldInput detailInput ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="lastTime" disabled="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-line2">
+                            <div class="col-md-3 leftFont" >邮箱</div>
+                            <div class="col-md-9 rightBorder2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control tit-input borderRadus" ng-model="adress">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="privacy-title" id="per_mes">
+                            认证个人信息
+                        </div>
+                        <div class="border-line2 firstBorder">
+                            <div class="col-md-3 leftFont" >所在地址</div>
+                            <div class="col-md-9 rightBorder2" id="selectBox">
+                                <div class="btn-group">
+                                    <select ng-model="myHispotial" ng-options="item.type for item in hispotials track by item.id"
+                                            value="{{item.type}}">
+                                        <option value="" ng-show="">---请选择---</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-line2">
+                            <div class="col-md-3 leftFont" ></div>
+                            <div class="col-md-9 rightBorder2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control tit-input borderRadus" placeholder="" ng-model="hostipalName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-line2">
+                            <div class="col-md-3 leftFont" >名称</div>
+                            <div class="col-md-9 rightBorder2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control tit-input borderRadus" ng-model="like">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-line2">
+                            <div class="col-md-3 leftFont" >联系电话</div>
+                            <div class="col-md-9 rightBorder2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control tit-input borderRadus" ng-model="like">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-line2">
+                            <div class="col-md-3 leftFont" >网址</div>
+                            <div class="col-md-9 rightBorder2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control tit-input borderRadus" ng-model="like">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cardIcon">
+                            <div class="col-md-3 leftcard" >机构logo</div>
+                            <div class="col-md-9 rightBorder">
+                                <img class="card" ng-src="{{zhiimgSrc}}">
+                                <div class="btnBox">
+                                    <div class="file-btn"><span>选择文件</span></div>
+                                    <input type="file" accept="image/*" id="myZhi" class="file-input" onchange="angular.element(this).scope().img_uploadzhi(this.files)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-line2">
+                            <div class="col-md-3 leftFont instrute" >简介</div>
+                            <div class="col-md-9 rightBorder2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control tit-input borderRadus" ng-model="like" style="height:80px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footerBorder footstyle">
+                            <button class="mybtn btn-primary sure-btn buttonPositon" ng-click="postMesmangerset()">确认更新</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="privacy" install  ng-show='thirdState.show'>
+                    <div class="privacy-title">
+                        勾选下面的设置，将避免搜索引擎找到您
+                    </div>
+
+                    <div class="labelBorder">
+                        <label><input class="form-group-lg" type="checkbox" value="" ng-model="isOtherfind">禁止其他用户找我（好友除外）</label>
+                        <label><input class="form-group-lg" type="checkbox" value="" ng-model="isHostipalmes">禁止医生找我（医生朋友除外）</label>
+                        <label><input class="form-group-lg" type="checkbox" value="" ng-model="isHostpitailfind">禁止医疗机构找我（好友除外）</label>
+                    </div>
+
+
+                    <div class="privacy-title">
+                        勾选下面的设置，将避免接受信息
+                    </div>
+
+                    <div class="labelBorder">
+                        <label><input class="form-group-lg" type="checkbox" value="" ng-model="isOthermes">禁止接受其他用户（好友除外）的消息</label>
+                        <label><input class="form-group-lg" type="checkbox" value="" ng-model="isDoctormes">禁止接受医生（医生朋友除外）的消息</label>
+                        <label><input class="form-group-lg" type="checkbox" value="" ng-model="isHostipalmes">禁止接受医疗机构（好友除外）的消息</label>
+                    </div>
+                    <div class="privacy-title">
+                        勾选下面的设置阅片获取影像的格式（DICOM/JPG）
+                    </div>
+
+                    <div class="labelBorder">
+                        <label><input class="form-group-lg" type="checkbox" value="" ng-model="isDICOMimg">获取DICOM原图影像</label>
+                        <label><input class="form-group-lg" type="checkbox" value="" ng-model="isJPGimg">获取JPG格式影像</label>
+                    </div>
+
+                    <div class="footerBorder">
+                        <button class="mybtn btn-primary sure-btn buttonPositon" ng-click="postPrivacymangerset()">确认</button>
+                    </div>
+                </div>
+
+                <div class="password" install ng-show='secondState.show'>
+                    <div class="privacy-title">
+                        修改您的密码
+                    </div>
+                    <div class="labelBorder col-md-9">
+                        <div>
+                            <div class="outBorder">
+                                <div class="input-group inputGroup">
+                                    <input type="text" class="form-control tit-input noradius" ng-model="oldPassword">
+                                </div>
+                                <div class="littTitle">原密码</div>
+                            </div>
+                            <div class="outBorder">
+                                <div class="input-group inputGroup">
+                                    <input type="text" class="form-control tit-input noradius" ng-model="newPassword">
+                                </div>
+                                <div class="littTitle">新密码</div>
+                            </div>
+                            <div class="outBorder">
+                                <div class="input-group inputGroup">
+                                    <input type="text" class="form-control tit-input noradius" ng-model="passwordAgain">
+                                </div>
+                                <div class="littTitle">确认密码</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footerBorder footstyle">
+                        <button class="mybtn btn-primary sure-btn buttonPositon" ng-click="postPasswordmangerset()">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

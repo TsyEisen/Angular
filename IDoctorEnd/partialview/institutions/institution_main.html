@@ -1,0 +1,411 @@
+<div ng-controller="institutionMainCtrl">
+    <div class="header clearfix" id="left">
+        <div class="searchbar">
+            <input type="text" placeholder="患者姓名&ID、医院名称、咨询标题"
+                   ng-model="totalSearch">
+            <div class="glass" ng-click="mainSearch()">
+                <button class="mainSearch"></button>
+            </div>
+
+        </div>
+        <div class="loginName">
+            <span>{{logName}}xxx医院</span>
+            <a href="#"></a>
+        </div>
+    </div>
+
+    <!--统计部分-->
+    <div class="institution_statistics container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="sectionContent">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4"><span class="bigFont bigFont1" ng-model="count_total">{{count_total}}</span></div>
+                        <div class="col-md-4 col-sm-4 commonFont">CT <span ng-model="count_CT">{{count_CT}}</span></div>
+                        <div class="col-md-4  col-sm-4commonFont">MR <span ng-model="count_MR">{{count_MR}}</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 commonFont">影像数量</div>
+                        <div class="col-md-4 col-sm-4 commonFont" ng-model="count_DX">DX <span>{{count_DX}}</span></div>
+                        <div class="col-md-4 col-sm-4 commonFont" ng-model="count_CR">CR <span>{{count_CR}}</span></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="sectionContent">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6"><span class="bigFont bigFont2"  ng-model="exp_askCount">{{exp_askCount}}</span></div>
+
+                        <div class="col-md-6 col-sm-6 commonFont" ng-model="exp_completedAskCount">已完成<span> {{exp_completedAskCount}} </span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 commonFont">专家咨询</div>
+
+                        <div class="col-md-6 col-sm-6 commonFont" ng-model="exp_unfinishedAskCount">未完成 <span>{{exp_unfinishedAskCount}}</span></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-3 col-sm-6">
+                <div class="sectionContent">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6"><span class="bigFont bigFont4" ng-model="common_askCount">{{common_askCount}}</span></div>
+
+                        <div class="col-md-6 col-sm-6 commonFont">已完成 <span ng-model="common_completedAskCount">{{common_completedAskCount}}</span></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 commonFont">常规咨询</div>
+
+                        <div class="col-md-6 col-sm-6 commonFont"
+                        ng-model="common_unfinishedAskCount">未完成 <span>{{common_unfinishedAskCount}}</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="sectionContent">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6"><span class="bigFont bigFont3" ng-model="myDoctorCount">{{myDoctorCount}}</span></div>
+
+                        <div class="col-md-6 col-sm-6 commonFont" ng-model="platformExportCount">平台专家 <span>{{platformExportCount}}</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 commonFont">我的医生</div>
+
+                        <div class="col-md-6 col-sm-6 commonFont" ng-model="platformDoctorCount">平台医生 <span>{{platformDoctorCount}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--内容部分-->
+    <div class="content">
+        <!--筛选栏-->
+        <div class="screenBar clearfix">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>{{dt1}}</p>
+                    <div class="selectBtn institutionTab">
+                        <uib-tabset active="active" type="pills" id="timeBg">
+                            <uib-tab class="mybtn btn-danger"
+                                     index="$index" ng-repeat="tab in tabs" heading="{{tab.title}}"
+                                     select="getType($index)" active="tab.active">
+                            </uib-tab>
+                        </uib-tabset>
+                    </div>
+                    <div class="selectTime">
+                        <div class="form-inline">
+                            <timebase time="startDate" date-options="startOptions"
+                                      placeholder="startPlaceholder"></timebase>
+                            <span>-</span>
+                            <timebase time="endDate" date-options="endOptions"
+                                      placeholder="endPlaceholder"></timebase>
+                            <select name="" id="" ng-model="selectImgType"
+                                    ng-options="item.type for item in imageTypes track by item.id" value="{{item.id}}"
+                                    ng-change="getImageType()"
+                            ></select>
+                            <button class="mybtn btn-primary seach-btn" ng-click="search()">搜索</button>
+                        </div>
+                    </div>
+                    <div class="action">
+                        <ul>
+                            <li><button class="btn" ng-click="editImage($index)">编辑</button></li>
+                            <li><button class="btn" ng-click="electronicReport()">电子单</button></li>
+                            <li><button class="btn" ng-click="shareImage()">分享</button></li>
+                            <li>
+                                <button class="btn  btn-primary
+                         expertBtn" ng-click="expConsult()">
+                                    <i class="iconAdd"></i>专家咨询
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn  btn-primary commonBtn" ng-click="commonConsult()">
+                                    <i class="iconAdd"></i>常规咨询
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--screenBar模块-->
+        <div class="table-responsive tableCon">
+            <table class="table table-hover text-center ">
+                <thead>
+                <tr>
+                    <th class="text-center">
+                        <label><input name="Fruit" type="checkbox" value="" /> </label>
+                    </th>
+                    <th class="text-center">影像</th>
+                    <th class="text-center">类别</th>
+                    <th class="text-center">患者ID</th>
+                    <th class="text-center">姓名</th>
+                    <th class="text-center">性别</th>
+                    <th class="text-center">年龄</th>
+                    <th class="text-center">上传时间</th>
+                    <th class="text-center">拍摄时间</th>
+                    <th class="text-center">专家咨询</th>
+                    <th class="text-center">常规咨询</th>
+                </tr>
+                </thead>
+                <tbody >
+                <tr ng-repeat="item in tableTabs track by $index">
+                    <td> <label><input name="instMain" type="checkbox" value=""
+                                       ng-model="item.checked" ng-change="onChange(item)"/></label></td>
+                    <td><img ng-src="{{item.imageurl}}" ng-model="item.imageurl" ></td>
+                    <td ng-model="item.modality">{{item.modality}}</td>
+                    <td ng-model="item.patientid">{{item.patientid}}</td>
+                    <td ng-model="item.patientname">{{item.patientname}}</td>
+                    <td ng-model="item.gender">{{item.gender}}</td>
+                    <td ng-model="item.patientAge">{{item.patientAge}}</td>
+                    <td ng-model="item.uploadtime">{{item.uploadtime}}</td>
+                    <td ng-model="item.studydate">{{item.studydate}}</td>
+                    <td id="bigAskStatus" +$index  ng-model="item.expCount"   ng-switch ="item.expStatusNow">
+                        <div class="" ng-switch-when="0">
+                            <span class="payed imgstatus">已付款</span>
+                        </div>
+                        <div class=""  ng-switch-when="1">
+                            <span class="flyback imgstatus">已发起</span>
+                        </div>
+                        <div class=""  ng-switch-when="2">
+                            <span class="readingback imgstatus">阅片中</span>
+                        </div>
+                        <div class= ""  ng-switch-when="3">
+                            <span class="refausedtback imgstatus">已拒绝</span>
+                        </div>
+                        <div class=""  ng-switch-when="4">
+                            <span class="complentback imgstatus">已完成</span>
+                        </div>
+                        <div class=""  ng-switch-when="5">
+                            <span class="review imgstatus">已审核</span>
+                        </div>
+                        <div class="" ng-switch-when="6">
+                            <span class="canceled imgstatus">已取消</span>
+                        </div>
+                        <div class="" ng-switch-when="7">
+                            <span class="canceled imgstatus">过期</span>
+                        </div>
+                        <div class="" ng-switch-when="8">
+                            <span class="canceled imgstatus">被取消</span>
+                        </div>
+                        <div class="" ng-switch-default>
+                            <span class="canceled imgstatus">无</span>
+                        </div>
+                        <span class="askStatusCount">
+                        {{item.expCount}}条咨询
+                        </span>
+                    </td>
+                    <td id="normalAskStatus" +$index ng-model="item.commonAskCount"  ng-switch ="item.commonStatusNow">
+                        <div class="" ng-switch-when="0">
+                            <span class="payed imgstatus">已付款</span>
+                        </div>
+                        <div class=""  ng-switch-when="1">
+                            <span class="flyback imgstatus">已发起</span>
+                        </div>
+                        <div class=""  ng-switch-when="2">
+                            <span class="readingback imgstatus">阅片中</span>
+                        </div>
+                        <div class= ""  ng-switch-when="3">
+                            <span class="refausedtback imgstatus">已拒绝</span>
+                        </div>
+                        <div class=""  ng-switch-when="4">
+                            <span class="complentback imgstatus">已完成</span>
+                        </div>
+                        <div class=""  ng-switch-when="5">
+                            <span class="review imgstatus">已审核</span>
+                        </div>
+                        <div class="" ng-switch-when="6">
+                            <span class="canceled imgstatus">已取消</span>
+                        </div>
+                        <div class="" ng-switch-when="7">
+                            <span class="canceled imgstatus">过期</span>
+                        </div>
+                        <div class="" ng-switch-when="8">
+                            <span class="canceled imgstatus">被取消</span>
+                        </div>
+                        <div class="" ng-switch-default>
+                            <span class="canceled imgstatus">无</span>
+                        </div>
+                        <span class="askStatusCount">{{item.commonAskCount}}条咨询</span>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <p>每页显示
+                        <select ng-model="selectValue"
+                                ng-options="item.pagesize for item in pageList track by item.id" value="{{item.id}}"
+                                ng-change="getPagesize()">
+                        </select>
+                        条，
+                        共{{totalItems}}条记录
+                    </p>
+                </div>
+                <div class="col-md-8 col-sm-12 ">
+                    <ul uib-pagination boundary-links="true"  class="paginationStyle" total-items="totalItems"
+                        ng-model="currentPage"
+                        max-size="maxSize"
+                        force-ellipses="true" rotate="true"
+                        previous-text="上一页" next-text="下一页"
+                        num-pages="numPages"
+                        items-per-page="itemsPerPage"
+                        first-text="首页" last-text="尾页" ng-change="setNumPage()"></ul>
+                    <input type="text" ng-model="jumpTo" ng-keyup="pageKeyup($event)">
+                    <button type="button" class="btn-primary" ng-click="setInputPage()">确定</button>
+                </div>
+            </div>
+        </div>
+        <!--footer模块-->
+    </div>
+    <!--编辑弹出框-->
+    <script type="text/ng-template" id="InstImageEditModal.html">
+        <p class="errorMsg" width-size
+           ng-show="(editImgForm.age.$touched && editImgForm.age.$invalid)
+                ||(editImgForm.age.$invalid && submitted)"
+        >其输入正确的年龄</p>
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">编辑影像</h4>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-horizontal " role="form" novalidate
+                      name="editImgForm" ng-submit="imgForm(editImgForm.$valid)">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">患者姓名</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" required
+                                   ng-model="user.name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">年龄</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" required
+                                   name="age" ng-pattern="/^\d{1,3}$/"
+                                   ng-model="user.age">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">性别</label>
+                        <div class="col-sm-9">
+                            <label class="radio-inline">
+                                <input type="radio" name="sex" value="1" ng-checked="{{user.sex}}==0?true:false"
+                                       ng-model="user.sex">
+                                <label>男</label>
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="sex" value="2"
+                                       ng-checked="{{user.sex}}==1?true:false">
+                                <label>女</label>
+                            </label>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">拍摄机构</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control"
+                                   ng-model="user.organization">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">拍摄日期</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control fieldInput" uib-datepicker-popup
+                                   placeholder={{date}}
+                                   ng-model="date" is-open="visitPopupOpened"
+                                   datepicker-options="visitTimeOptions"
+                                   close-text="关闭" current-text="今天" clear-text="清除"
+                                   ng-click="visitOpen()"/>
+                            <span class="glyphicon glyphicon-calendar calendar"  ng-click="visitOpen()"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">影像类型</label>
+                        <div class="col-sm-9">
+                            <select class="form-control formInput" ng-model="user.type"
+                                    ng-change="selected()"
+                                    ng-options="item.type for item in imageTypes track by item.id"
+                                    value="{{item.id}}">
+                                <option value="" ng-show="">{{user.type}}</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="cancel()">
+                                    取消
+                                </button>
+                                <button class="btn btn-success popBtn" type="submit"
+                                        ng-click="ensure()">确认
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+
+    <!--分享弹出框-->
+
+    <script type="text/ng-template" id="InstShareQRcodeModal.html">
+
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="closeShare()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">分享成功</h4>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-horizontal " role="form" novalidate
+                      name="editImgForm" ng-submit="imgForm(editImgForm.$valid)">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">分享地址</label>
+                        <span ng-model="shareURL">{{shareURL}}</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">分享二维码</label>
+                        <img ng-src="{{shareQRcodeImg}}" ng-model="shareQRcodeImg" alt="">
+                    </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <div class="btnGroup">
+                                    <button class="btn btn-default popBtn" type="button"
+                                            ng-click="cancelShare()">
+                                        取消
+                                    </button>
+                                    <button class="btn btn-success popBtn" type="submit"
+                                            ng-click="ensureShare()">确认
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </script>
+
+
+
+</div>

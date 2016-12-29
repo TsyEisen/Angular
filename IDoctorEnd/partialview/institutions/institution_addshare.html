@@ -1,0 +1,475 @@
+<div  class="addShare">
+    <!--//影像列表弹出窗-->
+    <script type="text/ng-template" id="addShareImgHighSearchModal.html">
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">高级搜索</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal " role="form" name="addShareImgForm"
+                      ng-submit="ImgHighForm(addShareImgForm.$valid)">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">姓名</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control"
+                                   ng-model="truename">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">患者ID</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control"
+                                   ng-model="patientid">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">上传日期</label>
+                        <div class="col-sm-9">
+                            <div class="form-inline">
+                                <div class="timeInput">
+                                    <timebase time="startUploaderDate" date-options="startUploaderOptions"
+                                              placeholder="startUploaderPlaceholder" class="highSearchTime"></timebase>
+                                    <span>-</span>
+                                    <timebase time="endUploaderDate" date-options="endUploaderOptions"
+                                              placeholder="endUploaderPlaceholder" class="highSearchTime"></timebase>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">拍摄日期</label>
+                        <div class="col-sm-9">
+                            <div class="form-inline">
+                                <div class="timeInput">
+                                    <timebase time="startScreenDate" date-options="startScreenOptions"
+                                              placeholder="startScreenPlaceholder" class="highSearchTime"></timebase>
+                                    <span>-</span>
+                                    <timebase time="endScreenDate" date-options="endScreenOptions"
+                                              placeholder="endScreenPlaceholder" class="highSearchTime"></timebase>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="cancel()">
+                                    关闭
+                                </button>
+                                <button class="btn btn-success popBtn" type="submit"
+                                        ng-click="ensure()">查询
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+
+    <!--//病例列表弹出窗-->
+    <script type="text/ng-template" id="addShareCardHighSearchModal.html">
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">高级搜索</h4>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-horizontal " role="form" name="addShareCardForm"
+                      ng-submit="CardHighForm(addShareCardForm.$valid)">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">患者姓名</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control"
+                                   ng-model="card.patientname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">患者ID</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control"
+                                   ng-model="card.patientid">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">年龄</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control"
+                                   ng-model="card.age">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">性别</label>
+                        <div class="col-sm-9">
+                            <label class="radio-inline">
+                                <input type="radio" name="sex" value="1"
+                                       ng-model="card.gender">
+                                <label>男</label>
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="sex" value="2"
+                                       ng-model="card.gender">
+                                <label>女</label>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">就诊时间</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control fieldInput" uib-datepicker-popup="{{format}}"
+                                   ng-model="card.visittime" is-open="visittimeOpened"
+                                   datepicker-options="visittimeOptions"
+                                   close-text="关闭" current-text="今天" clear-text="清除"
+                                   ng-click="visittimeOpen()"/>
+                            <span class="glyphicon glyphicon-calendar calendar"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <div class="btnGroup">
+                                <button class="btn btn-default popBtn" type="button"
+                                        ng-click="cancel()">
+                                    关闭
+                                </button>
+                                <button class="btn btn-success popBtn" type="submit">查询
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+
+
+    <!--//病例列表弹出窗-->
+    <script type="text/ng-template" id="addShareQRModal.html">
+        <div class="popBox">
+            <div class="modal-header text-center">
+                <button type="button" class="close" ng-click="cancel()"><span
+                        aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">分享</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal ">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">分享地址</label>
+                        <div class="col-sm-9">
+                            <p ng-bind="qrurl" ng-click="jumpToLink()" class="qrUrl"></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">分享二维码</label>
+                        <div class="col-sm-9">
+                            <img id="qrModal" ng-src="{{qrfile}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12 text-center">
+                            <button class=" btn btn-default popBtn"
+                                    ng-click="cancel()">关闭
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+
+    <div class="header clearfix" id="left">
+        <div class="loginName">
+            <span>{{logName}}</span>
+            <a href="#"></a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="screenBar clearfix">
+            <div class="row">
+                <div class="form-inline shareLeft inlineP">
+                    <div class="chooseImg" id="firstchooseImg">
+                    </div>
+                    <span class="littleTile">选择影像</span>
+                </div>
+
+                <div class="form-inline shareLeft inlineP">
+                    <div class="input-group">
+                        <input type="text" placeholder="患者姓名、ID" class="form-control tit-input inputwidth"
+                               ng-model="imgAskTerm">
+                    </div>
+                    <button class="mybtn btn-success seach-btn" ng-click="imgSearch()">搜索</button>
+                    <button class="mybtn seach-btn" ng-click="imgHighSearch()">高级搜索</button>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive tableCon postionTop">
+            <table class="table table-hover table-striped table-bordered text-center imgTable tablePositon">
+                <tr>
+                    <th class="text-center">选择</th>
+                    <th class="text-center">影像</th>
+                    <th class="text-center">类别</th>
+                    <th class="text-center">患者ID</th>
+                    <th class="text-center">姓名</th>
+                    <th class="text-center">性别</th>
+                    <th class="text-center">年龄</th>
+                    <th class="text-center">医疗机构</th>
+                    <th class="text-center">上传时间</th>
+                    <th class="text-center">拍摄时间</th>
+                    <th class="text-center">专家咨询</th>
+                    <th class="text-center">常规咨询</th>
+                </tr>
+                <tr ng-repeat="item in imageTableData track by $index">
+                    <td style="width: 60px;">
+                        <input type="radio" name="myImg" ng-value="item.imageid" ng-model="radioData[$parent.$index]"
+                               ng-change="onImgChange(item.imageid)">
+                    </td>
+                    <td style="width: 60px;">
+                        <img afkl-lazy-image="{{item.image}}" src="{{item.image}}" class="imgPositon"
+                             err-src="/IDoctorEnd/image/imgError.png">
+                    </td>
+                    <td ng-bind="item.modality"></td>
+                    <td ng-bind="item.patientid"></td>
+                    <td ng-bind="item.patientname"></td>
+                    <td ng-bind="item.sex"></td>
+                    <td ng-bind="item.birthday"></td>
+                    <td ng-bind="item.institutionname"></td>
+                    <td ng-bind="item.uploaddate"></td>
+                    <td ng-bind="item.studydate"></td>
+                    <td id="bigAskStatus" +$index ng-model="item.expCount"><span class="askStatusCount">{{item.expCount}}条咨询</span>
+                    </td>
+                    <td id="normalAskStatus" +$index ng-model="item.commonAskCount"><span class="askStatusCount">{{item.commonAskCount}}条咨询</span>
+                    </td>
+                    <!--<td class="sideSircle" ng-switch on="item.expeconsult">-->
+                    <!--<button ng-switch-default class="mybtn btn-default classify-btn ng-binding">-->
+                    <!--{{item.expeconsult}}条咨询-->
+                    <!--</button>-->
+                    <!--<button ng-bind="item.expeconsult" ng-switch-when="0"-->
+                    <!--class="mybtn btn-default classify-btn ng-binding displaynone"></button>-->
+                    <!--</td>-->
+                    <!--<td class="sideSircle" ng-switch on="item.norconsult">-->
+                    <!--<button ng-switch-default class="mybtn btn-default classify-btn ng-binding">-->
+                    <!--{{item.norconsult}}条咨询-->
+                    <!--</button>-->
+                    <!--<button ng-bind="item.norconsult" ng-switch-when="0"-->
+                    <!--class="mybtn btn-default classify-btn ng-binding displaynone"></button>-->
+                    <!--</td>-->
+                </tr>
+            </table>
+        </div>
+        <div class="footer footerPos">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <p>每页显示
+                        <select ng-model="selectImgValue"
+                                ng-options="item.pagesize for item in pageImgList track by item.id" value="{{item.id}}"
+                                ng-change="getImgPagesize()">
+                        </select>
+                        条，
+                        共{{totalImgItems}}条记录
+                    </p>
+                </div>
+                <div class="col-md-8 col-sm-12 ">
+                    <ul uib-pagination boundary-links="true" total-items="totalImgItems"
+                        ng-model="currentImgPage"
+                        max-size="maxSize"
+                        force-ellipses="true" rotate="true"
+                        previous-text="上一页" next-text="下一页"
+                        first-text="首页" last-text="尾页"
+                        num-pages="numImgPages" items-per-page="itemsImgPerPage"
+                        ng-change="setImgNumPage()"></ul>
+                    <input type="text" ng-model="jumpImgTo" ng-keyup="pageImgKeyup($event)">
+                    <button type="button" class="btn-success" ng-click="setInputImgPage()">确定</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="screenBar clearfix">
+            <div class="row">
+                <div class="form-inline shareLeft inlineP">
+                    <div class="chooseImg" id="secndchooseImg">
+                    </div>
+                    <span class="littleTile">选择病例</span>
+                </div>
+
+                <div class="form-inline shareLeft inlineP">
+                    <div class="input-group">
+                        <input type="text" placeholder="患者姓名" ng-model="cardAskTerm"
+                               class="form-control tit-input inputwidth">
+                    </div>
+                    <button class="mybtn btn-success seach-btn" ng-click="cardSearch()">搜索</button>
+                    <button class="mybtn seach-btn" ng-click="cardHighSearch()">高级搜索</button>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive tableCon postionTop">
+            <table class="table table-hover table-striped table-bordered text-center imgTable tablePositon">
+                <tr>
+                    <th class="text-center">选择</th>
+                    <th class="text-center">头像</th>
+                    <th class="text-center">姓名</th>
+                    <th class="text-center">性别</th>
+                    <th class="text-center">年龄</th>
+                    <th class="text-center">就诊日期</th>
+                    <th class="text-center">地址</th>
+                    <th class="text-center">备注</th>
+                </tr>
+                <tr ng-repeat="item in cardTableData track by $index">
+                    <td style="width: 60px;">
+                        <input type="radio" name="myImg" ng-value="item.cardid" ng-model="radioData[$parent.$index]"
+                               ng-change="onCardChange(item.cardid)">
+                    </td>
+                    <td style="width: 60px;">
+                        <img afkl-lazy-image="{{item.headpic}}" src="{{item.headpic}}" class="imgPositon headPic">
+                    </td>
+                    <td ng-bind="item.patientname"></td>
+                    <td ng-bind="item.gender"></td>
+                    <td ng-bind="item.age"></td>
+                    <td ng-bind="item.visittime"></td>
+                    <td ng-bind="item.address"></td>
+                    <td ng-bind="item.memo"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="footer footerPos">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <p>每页显示
+                        <select ng-model="selectCardValue"
+                                ng-options="item.pagesize for item in pageCardList track by item.id"
+                                value="{{item.id}}"
+                                ng-change="getCardPagesize()">
+                        </select>
+                        条，
+                        共{{totalCardItems}}条记录
+                    </p>
+                </div>
+                <div class="col-md-8 col-sm-12 ">
+                    <ul uib-pagination boundary-links="true" total-items="totalCardItems"
+                        ng-model="currentCardPage"
+                        max-size="maxSize"
+                        force-ellipses="true" rotate="true"
+                        previous-text="上一页" next-text="下一页"
+                        first-text="首页" last-text="尾页"
+                        num-pages="numCardPages" items-per-page="itemsCardPerPage"
+                        ng-change="setCardNumPage()"></ul>
+                    <input type="text" ng-model="jumpToCard" ng-keyup="pageCardKeyup($event)">
+                    <button type="button" class="btn-success" ng-click="setCardInputPage()">确定</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="screenBar clearfix">
+        <div class="row">
+            <div class="form-inline shareLeft inlineP">
+                <div class="chooseImg" id="thirdchooseImg">
+                </div>
+                <span class="littleTile">分享设置</span>
+            </div>
+            <div class="share-setting">
+                <div class="smallTitlename col-md-1 col-sm-12">
+                    分享名称
+                </div>
+                <div class="input-group col-md-10 col-sm-12">
+                    <input type="text" class="form-control tit-input borderRadus"
+                           ng-model="shareName">
+                </div>
+            </div>
+            <div class="checkbox shareCkeckbox form-group-lg">
+                <span class="smallTitlename col-md-1 col-sm-12"></span>
+                <label class="smallTitlename col-md-10 col-sm-12">
+                    <button class="anonymousBtn" ng-click="anonymousChange()"
+                            ng-class="{'checked':anonymous == 1}">
+                    </button>
+                    影像信息匿名化
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="screenBar clearfix">
+        <div class="row">
+            <div class="form-inline shareLeft inlineP">
+                <div class="chooseImg" id="quechooseImg">
+                </div>
+                <span class="littleTile">共享限制</span>
+            </div>
+
+            <div class="paddingleft">
+                <span class="smallTitlename col-md-1 col-sm-12"></span>
+                <div class="col-md-10 col-sm-12 radio-border">
+                    <div class="radio" ng-repeat="item in sharePrivacy  track by $index">
+                        <label>
+                            <input type="radio" name="sharedRadios"
+                                   ng-checked="item.checked"
+                                   ng-click="onPrivaryChange(item.id)">
+                            <span>{{item.con}}</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--<div class="share-setting">-->
+            <!--<div class="smallTitlename col-md-1 col-sm-12">-->
+            <!--分享对象-->
+            <!--</div>-->
+            <!--<div class="input-group col-md-10 col-sm-12">-->
+            <!--<input type="text"  class="form-control tit-input borderRadus" ng-model="shareOption">-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <div class="share-setting" ng-show="showCheckcode">
+                <div class="smallTitlename col-md-1 col-sm-12">
+                    验证码
+                </div>
+                <div class="input-group col-md-10 col-sm-12">
+                    <input type="text" class="form-control tit-input" id="passWord"
+                           required
+                           ng-minlength="4" maxlength="4"
+                           ng-model="shareCheckcode">
+                </div>
+            </div>
+
+
+            <div class="share-setting">
+                <div class="smallTitlename col-md-1 col-sm-12">
+                    截止日期
+                </div>
+
+                <div class="form-inline timeStamp">
+                    <div class="timeInput">
+                        <div class="input-group col-md-10 col-sm-12" id="endDate">
+                            <timebase time="shareTime" date-options="shareOptions"
+                                      class="shareTime"></timebase>
+                            <div class="calender"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footerBorder">
+            <button class="mybtn btn-success seach-btn buttonPositon" ng-click="beginShare()">分享</button>
+        </div>
+
+    </div>
+</div>
+</div>

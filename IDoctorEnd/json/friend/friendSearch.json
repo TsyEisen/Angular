@@ -1,0 +1,24 @@
+{
+  "status": "0",
+  "message": null,
+  "data": {
+    "responsedata": [
+      {
+        "department": "科室一",
+        "id": "1"
+      },
+      {
+        "department": "科室二",
+        "id": "2"
+      },
+      {
+        "department": "科室三",
+        "id": "3"
+      },
+      {
+        "department": "科室四",
+        "id": "4"
+      }
+    ]
+  }
+}

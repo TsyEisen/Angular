@@ -1,0 +1,151 @@
+
+@mainBlue: #4887dc;
+@mainGreen: #5eca5d;
+@mainSky:#3DD2D8;
+@mainFont:#78785B;
+@mainYellow:#EBCA29;
+//主题蓝
+@gray-dark:#323232;
+//顶部统计部分
+.institution_statistics{
+  width:100%;
+  background-color:#282828;
+  .row{
+    .col-md-3{
+      padding:10px 10px;
+   .sectionContent{
+       background-color: #323232;
+       height: 140px;
+       padding:24px 70px;
+     .bigFont{
+       font-size: 30px;
+     }
+     .bigFont1{
+       color:@mainSky;
+     }
+     .bigFont2{
+       color:@mainBlue;
+     } .bigFont3{
+         color:@mainGreen;
+       } .bigFont4{
+           color:@mainYellow;
+         }
+     .bigFont1{
+       color:@mainSky;
+     }
+
+
+     .commonFont{
+       color:@mainFont;
+     }
+}
+    }
+  }
+
+}
+
+//内容部分
+//搜索栏
+.content{
+  //影像类别的选择
+  .selectBtn{
+    &.institutionTab{
+      .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+        background-color: @mainBlue;
+      }
+      .nav > li > a:hover, .nav > li > a:focus {
+        text-decoration: none;
+        color: #fff;
+        background-color: @mainBlue;
+      }
+    }
+  }
+  select{
+    width: 120px;
+    height: 40px;
+    padding-bottom:5px;
+    margin:0 10px 0 10px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: 1px solid #ccc;
+    color:#999999;
+    font-size:14px;
+  }
+  //功能按钮的设置
+  .action{
+    float:right;
+    margin:20px 20px 0 0;
+    ul{
+      li{
+        float:left;
+        margin-left:10px;
+        button{
+          height: 40px;
+          background-color: #fff;
+          border: 1px solid #ccc;
+        }
+        .expertBtn{
+          background-color: @mainBlue;
+        }
+        .commonBtn{
+          background-color: @mainGreen;
+        }
+        .iconAdd{
+          width: 18px;
+          height: 18px;
+          display: inline-block;
+          vertical-align: middle;
+          margin:0 4px 4px 0;
+          background:url("../../image/institution/sprite.png") -88px -40px no-repeat;
+        }
+
+      }
+    }
+  }
+}
+
+
+
+//编辑影像
+.glyphicon-calendar:before {
+  content: '\e109';
+  display: none;
+}
+
+.consultSmallTitle{
+  color:#999999;
+  font-size:12px;
+  text-align: left;
+}
+.consultBigTitle{
+  text-align: left;
+}
+
+.form-horizontal .control-label {
+  text-align: left;
+}
+.commonConsultTime{
+  width: 100%;;
+}
+
+
+@media screen and (min-width: 992px) {
+  .footer{
+    select{
+      width: 60px;
+      height:30px;
+      margin: 20px  10px;
+    }
+    .pagination {
+      li{
+        a{
+          margin: 12px  10px;
+        }
+        overflow: hidden;
+      }
+    }
+    input{
+      margin: 20px  12px !important;
+    }
+  }
+}

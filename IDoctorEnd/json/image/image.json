@@ -1,0 +1,45 @@
+{
+  "status": "0",
+  "message": null,
+  "data": {
+    "dataCnt":1000,
+    "responseData": [
+      {
+        "image": "image/image.png",
+        "classify": "CT",
+        "patientID": "M-201606091599",
+        "name": "王自强",
+        "sex": "男",
+        "age": "34",
+        "launchtime": "2016-06-04 18:30:25",
+        "screentime": "2016-05-13 09:30:25",
+        "launchIP": "101.201.223.204",
+        "imageID":"123"
+      },
+      {
+        "image": "image/image.png",
+        "classify": "CT",
+        "patientID": "M-201606091599",
+        "name": "王自强",
+        "sex": "男",
+        "age": "34",
+        "launchtime": "2016-06-04 18:30:25",
+        "screentime": "2016-05-13 09:30:25",
+        "launchIP": "101.201.223.204",
+        "imageID":"456"
+      },
+      {
+        "image": "image/image.png",
+        "classify": "CT",
+        "patientID": "M-201606091599",
+        "name": "王自强",
+        "sex": "男",
+        "age": "34",
+        "launchtime": "2016-06-04 18:30:25",
+        "screentime": "2016-05-13 09:30:25",
+        "launchIP": "101.201.223.204",
+        "imageID":"789"
+      }
+    ]
+  }
+}

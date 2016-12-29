@@ -1,0 +1,17 @@
+.insExptab li {
+  float: left;
+  margin-right: 20px;
+  line-height: 40px;
+}
+.insExptab li button {
+  height: 40px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+}
+.insExptab li button:hover {
+  background-color: #4887DC;
+}
+.insExptab li .active {
+  background-color: #4987DC;
+  color: #fff;
+}
