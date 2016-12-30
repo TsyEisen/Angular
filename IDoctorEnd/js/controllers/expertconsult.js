@@ -617,7 +617,6 @@
                 startingDay: 1,
                 showWeeks: false,
                 maxDate: $scope.studyendtime,
-
             };
             $scope.studyendtimeOptions = {
                 startingDay: 1,
@@ -763,3 +762,16 @@
 
             }])
 })(angular);
+
+
+
+
+
+
+
+
+
+
+
+$b
+

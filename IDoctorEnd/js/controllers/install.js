@@ -244,7 +244,7 @@
                 };
             };
 
-                // 确认信息提交
+            // 确认信息提交
             $scope.personInfo_Submit = function (isValid) {
                 if (isValid) {
                     var formData = new FormData();
@@ -266,11 +266,17 @@
                             + birthday.substr(8, 2);
                         formData.append("birthday", birthday);
                     }
-                    doctorService.updataPersonInfo(formData).then(function (response) {
+
+                    console.log("个人信息参数",$scope.user);
+
+                    var info = {userid:$scope.user.userid,updateuser:1,email:"516769647@qq.com"};
+                    info = angular.extend(formData,$scope.user);
+                    console.log("个人信息参数",info);
+                    doctorService.updataPersonInfo(info).then(function (response) {
+                        console.log("个人信息保存后的结构",response);
                         var result = response.result;
-                        if(result == 1){
-                            alert("个人信息修改成功");
-                            alert("审核中");
+                        if(result == 0){
+                            alert("个人信息修改成功,审核中...");
                         } else if (result == -1) {
                             if (user.status == 1 || user.status == 3) {
                                alert("提交审核失败");
